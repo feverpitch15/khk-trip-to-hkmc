@@ -343,9 +343,58 @@
   }
   .budget-summary .amount { font-size: 30px; font-weight: 800; font-family: var(--font-hand); }
   .budget-summary .lbl { font-size: 12px; opacity: 0.9; }
+  .budget-breakdown {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin-top: 6px;
+  }
+  .budget-breakdown .piece {
+    background: rgba(255,255,255,0.22);
+    padding: 3px 9px; border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2px;
+  }
   .budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
   .budget-grid div { background: rgba(255,255,255,0.18); padding: 8px 10px; border-radius: 8px; font-size: 12px; }
   .budget-grid strong { display: block; font-size: 15px; margin-top: 2px; }
+
+  .rate-editor {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.22);
+  }
+  .rate-head {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; opacity: 0.92; font-weight: 600;
+    cursor: pointer; user-select: none;
+  }
+  .rate-head .chev {
+    font-size: 12px;
+    transition: transform .18s;
+  }
+  .rate-head.open .chev { transform: rotate(90deg); }
+  .rate-body {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    margin-top: 8px;
+  }
+  .rate-body.hidden { display: none; }
+  .rate-row {
+    background: rgba(255,255,255,0.18);
+    border-radius: 8px; padding: 8px 10px;
+  }
+  .rate-row label {
+    display: block; font-size: 10px; opacity: 0.88;
+    margin-bottom: 3px; font-weight: 600;
+  }
+  .rate-row input {
+    width: 100%;
+    background: rgba(255,255,255,0.28);
+    border: 0; color: #fffdf7;
+    padding: 4px 6px; border-radius: 6px;
+    font-size: 14px; font-weight: 700;
+    font-family: inherit;
+  }
+  .rate-row input:focus {
+    outline: 2px solid rgba(255,255,255,0.5);
+  }
 
   .expense-form {
     display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
@@ -356,6 +405,48 @@
     font-family: inherit;
   }
   .expense-form input[type="text"] { grid-column: span 2; }
+
+  .currency-pills {
+    display: inline-flex; gap: 4px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    grid-column: span 2;
+  }
+  .currency-pill {
+    flex: 1;
+    padding: 7px 8px;
+    background: transparent;
+    border: 0;
+    border-radius: 7px;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .currency-pill.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(125,79,34,0.25);
+  }
+  .expense-form .add-btn-full { grid-column: span 2; }
+
+  .amt-box {
+    text-align: right; display: flex; align-items: center; gap: 6px;
+  }
+  .amt-main { font-weight: 700; font-size: 14px; line-height: 1.2; }
+  .amt-sub {
+    font-size: 11px; color: var(--muted); font-weight: 600;
+    margin-top: 1px;
+  }
+  .curr-tag {
+    display: inline-block; margin-left: 4px;
+    font-size: 10px; color: var(--primary-dark);
+    background: var(--surface-2); border-radius: 4px;
+    padding: 1px 5px; font-weight: 700;
+  }
   .btn {
     padding: 10px 14px; border: 0; border-radius: 10px; cursor: pointer;
     background: var(--primary); color: #fff; font-weight: 700; font-size: 14px;
@@ -768,6 +859,132 @@
     border-top: 1px dashed var(--border);
   }
 
+  /* Food tab */
+  .food-tabs {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin: 0 0 14px;
+  }
+  .food-tab {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .food-tab.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+  .food-section-head {
+    display: flex; align-items: center; gap: 10px;
+    margin: 18px 0 10px;
+    font-size: 13px; font-weight: 700;
+    color: var(--primary-dark);
+    letter-spacing: 0.3px;
+  }
+  .food-section-head:first-child { margin-top: 6px; }
+  .food-section-head .line {
+    flex: 1; height: 1px; background: var(--border);
+  }
+  .food-list {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .food-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow-soft);
+    transition: transform .08s, box-shadow .15s, border-color .15s;
+  }
+  .food-item:active {
+    transform: scale(0.98);
+    border-color: var(--primary);
+  }
+  .food-item-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 8px; margin-bottom: 5px;
+  }
+  .food-item-names { min-width: 0; }
+  .food-item-name {
+    font-weight: 700; font-size: 14.5px; color: var(--text);
+    line-height: 1.3;
+  }
+  .food-item-name-en {
+    display: block;
+    font-size: 11px; color: var(--muted);
+    font-weight: 500;
+    margin-top: 1px;
+    font-family: var(--font-hand-en);
+    letter-spacing: 0.3px;
+  }
+  .food-region {
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .food-region.r-hk { background: #e4ece2; color: #4d7256; }
+  .food-region.r-mc { background: #f7e3d8; color: #b06038; }
+  @media (prefers-color-scheme: dark) {
+    .food-region.r-hk { background: #2d3d2f; color: #a5c9ac; }
+    .food-region.r-mc { background: #4a2d1f; color: #e09d78; }
+  }
+  .food-item-desc {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .food-item-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 10px;
+    font-size: 11px;
+    color: var(--muted);
+    align-items: center;
+  }
+  .food-item-meta .m-price {
+    color: var(--success); font-weight: 700;
+  }
+  .food-item-meta .m-kid {
+    color: var(--accent); font-weight: 700;
+  }
+  .food-item-meta .m-note {
+    color: var(--primary-dark); font-weight: 500;
+  }
+  .food-item-go {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  /* iOS Safari: prevent auto-zoom on input focus.
+     Safari only zooms in when an input's font-size < 16px, so we force 16px on mobile. */
+  @media (max-width: 719px) {
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    input:not([type]),
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+
   @media (min-width: 720px) {
     .info-grid { grid-template-columns: 1fr 1fr; }
     nav.tabs button { font-size: 11px; }
@@ -1109,8 +1326,27 @@
     <h2 class="title"><span class="emoji">💰</span> 예산 관리</h2>
 
     <div class="budget-summary">
-      <div class="lbl">총 지출</div>
+      <div class="lbl">총 지출 (원화 환산)</div>
       <div class="amount" id="total-amount">₩0</div>
+      <div class="budget-breakdown" id="budget-breakdown"></div>
+
+      <div class="rate-editor">
+        <div class="rate-head" id="rate-head" onclick="toggleRateEditor()">
+          <span>💱 환율 <span id="rate-summary" style="opacity:0.85; font-weight:500;"></span></span>
+          <span class="chev">▸</span>
+        </div>
+        <div class="rate-body hidden" id="rate-body">
+          <div class="rate-row">
+            <label>🇭🇰 1 HKD = ? 원</label>
+            <input type="number" id="rate-hkd" inputmode="decimal" step="1" />
+          </div>
+          <div class="rate-row">
+            <label>🇲🇴 1 MOP = ? 원</label>
+            <input type="number" id="rate-mop" inputmode="decimal" step="1" />
+          </div>
+        </div>
+      </div>
+
       <div class="budget-grid" id="budget-cat-grid"></div>
     </div>
 
@@ -1118,7 +1354,12 @@
       <h3>➕ 지출 추가</h3>
       <div class="expense-form">
         <input type="text" id="exp-name" placeholder="예: 디즈니랜드 티켓" />
-        <input type="number" id="exp-amount" placeholder="금액 (원)" inputmode="numeric" />
+        <div class="currency-pills" id="exp-currency-pills">
+          <button type="button" class="currency-pill active" data-curr="KRW">🇰🇷 원</button>
+          <button type="button" class="currency-pill" data-curr="HKD">🇭🇰 HKD</button>
+          <button type="button" class="currency-pill" data-curr="MOP">🇲🇴 MOP</button>
+        </div>
+        <input type="number" id="exp-amount" placeholder="금액 (원)" inputmode="decimal" step="0.01" />
         <select id="exp-cat">
           <option value="항공">✈️ 항공</option>
           <option value="숙박">🏨 숙박</option>
@@ -1128,7 +1369,7 @@
           <option value="쇼핑">🛍️ 쇼핑</option>
           <option value="기타">💳 기타</option>
         </select>
-        <button class="btn" onclick="addExpense()">추가</button>
+        <button class="btn add-btn-full" onclick="addExpense()">추가</button>
       </div>
       <div class="expense-list" id="expense-list"></div>
     </div>
@@ -1137,80 +1378,36 @@
   <!-- PLACES -->
   <section class="section" id="places">
     <h2 class="title"><span class="emoji">📍</span> 명소 가이드</h2>
+    <p class="lead">카드를 탭하면 구글 지도에서 위치가 열려요. 🇭🇰 홍콩 / 🇲🇴 마카오 배지로 지역을 확인해요.</p>
 
-    <div class="card">
-      <h3>🏰 아이가 좋아할 곳</h3>
-      <details>
-        <summary>홍콩 디즈니랜드 <span class="pill kid">아이 추천</span></summary>
-        <p style="font-size:13px;">미취학~초등 아이에게 최고. 입장권 한국 사전 예매가 저렴. 마이 매직 포토 패키지 고려.</p>
-      </details>
-      <details>
-        <summary>오션파크 <span class="pill kid">아이 추천</span></summary>
-        <p style="font-size:13px;">판다, 해양관, 놀이기구가 골고루. 반나절 코스 가능. 케이블카 경치 좋음.</p>
-      </details>
-      <details>
-        <summary>마카오 베네시안 곤돌라 <span class="pill kid">아이 추천</span></summary>
-        <p style="font-size:13px;">실내 운하에서 곤돌라 타기. 뱃사공이 노래도 불러줌. 사진 명소.</p>
-      </details>
-      <details>
-        <summary>스타페리 <span class="pill kid">아이 추천</span></summary>
-        <p style="font-size:13px;">저렴한 뱃놀이. 2층에서 바람 맞으며 5분, 아이 반응 좋음.</p>
-      </details>
+    <div class="food-tabs" id="place-tabs">
+      <button class="food-tab active" data-place-cat="all">전체</button>
+      <button class="food-tab" data-place-cat="kid">🎡 아이추천</button>
+      <button class="food-tab" data-place-cat="must">🌆 필수관광</button>
+      <button class="food-tab" data-place-cat="view">🌅 전망·야경</button>
+      <button class="food-tab" data-place-cat="culture">🏛 문화·유적</button>
+      <button class="food-tab" data-place-cat="shop">🛍 쇼핑·야시장</button>
+      <button class="food-tab" data-place-cat="nature">🌿 자연·힐링</button>
     </div>
 
-    <div class="card">
-      <h3>🌆 필수 관광지</h3>
-      <details>
-        <summary>빅토리아 피크 <span class="pill must">필수</span></summary>
-        <p style="font-size:13px;">홍콩 최고 전망. 피크트램 예약 필수. 해질녘 노을~야경 타이밍이 최고.</p>
-      </details>
-      <details>
-        <summary>침사추이 & 심포니 오브 라이트 <span class="pill must">필수</span></summary>
-        <p style="font-size:13px;">매일 저녁 8시 무료 야경쇼 (10분). 에비뉴 오브 스타 산책.</p>
-      </details>
-      <details>
-        <summary>세나도 광장 & 성 바울 성당 (마카오) <span class="pill must">필수</span></summary>
-        <p style="font-size:13px;">유네스코 세계유산. 포르투갈풍 바닥 타일, 파사드만 남은 성당.</p>
-      </details>
-      <details>
-        <summary>템플스트리트 야시장</summary>
-        <p style="font-size:13px;">저녁 7시 이후 활발. 길거리 음식, 기념품. 지갑 조심.</p>
-      </details>
-    </div>
+    <div id="place-content"></div>
   </section>
 
   <!-- FOOD -->
   <section class="section" id="food">
     <h2 class="title"><span class="emoji">🍜</span> 맛집 추천</h2>
-    <p class="lead">아이가 함께 가도 좋은 곳 위주로.</p>
+    <p class="lead">가게 카드를 탭하면 구글 지도에서 위치가 열려요.</p>
 
-    <div class="card">
-      <h3>🥟 딤섬 & 중식</h3>
-      <details><summary>팀호완 (Tim Ho Wan) <span class="pill eat">미슐랭</span></summary>
-        <p style="font-size:13px;">세계 최저가 미슐랭. 차슈바오(BBQ 번), 하가우 꼭 먹어보세요. 아이도 좋아함.</p></details>
-      <details><summary>임금헌 (Yum Cha)</summary>
-        <p style="font-size:13px;">팬더, 돼지 모양의 귀여운 딤섬. 아이 사진 찍기 좋음.</p></details>
-      <details><summary>카우키 (Kau Kee)</summary>
-        <p style="font-size:13px;">브리스킷 누들. 어른 추천, 매우 현지스러움.</p></details>
+    <div class="food-tabs" id="food-tabs">
+      <button class="food-tab active" data-food-cat="all">전체</button>
+      <button class="food-tab" data-food-cat="dimsum">🥟 딤섬·광둥</button>
+      <button class="food-tab" data-food-cat="noodle">🍜 누들·완탕</button>
+      <button class="food-tab" data-food-cat="cha">🧋 차찬텡·카페</button>
+      <button class="food-tab" data-food-cat="dessert">🍮 디저트·베이커리</button>
+      <button class="food-tab" data-food-cat="macau">🇵🇹 마카오 특선</button>
     </div>
 
-    <div class="card">
-      <h3>🍮 디저트 & 간식</h3>
-      <details><summary>마가렛 에그타르트 (마카오)</summary>
-        <p style="font-size:13px;">포르투갈식 에그타르트 원조. 따끈할 때 먹어야.</p></details>
-      <details><summary>허유산 (Hui Lau Shan)</summary>
-        <p style="font-size:13px;">망고 디저트 체인. 아이가 환호.</p></details>
-      <details><summary>Jenny Bakery 쿠키</summary>
-        <p style="font-size:13px;">선물용 최고. 공항에서도 구매 가능하지만 줄이 김.</p></details>
-    </div>
-
-    <div class="card">
-      <h3>🍽️ 한식/양식 (아이 입맛 비상시)</h3>
-      <details><summary>리틀 바오 (Little Bao)</summary>
-        <p style="font-size:13px;">퓨전 바오 버거. 아이가 잘 먹음.</p></details>
-      <details><summary>호텔 조식 뷔페</summary>
-        <p style="font-size:13px;">아이가 편식해도 안전한 옵션 다양.</p></details>
-    </div>
+    <div id="food-content"></div>
   </section>
 
   <!-- PHRASES -->
@@ -1543,19 +1740,66 @@
   renderChecklist();
 
   // ---------- Budget ----------
+  const DEFAULT_RATES = { HKD: 175, MOP: 170 };
+  const CURR_SYMBOL = { KRW: '₩', HKD: 'HK$', MOP: 'MOP$' };
+  const CURR_FLAG   = { KRW: '🇰🇷', HKD: '🇭🇰', MOP: '🇲🇴' };
+  let expCurrency = 'KRW';
+
   function getExpenses() {
     try { return JSON.parse(store.get('expenses') || '[]'); } catch(e) { return []; }
   }
   function saveExpenses(list) {
     store.set('expenses', JSON.stringify(list));
   }
+  function getRates() {
+    try {
+      const saved = JSON.parse(store.get('rates') || '{}');
+      return { ...DEFAULT_RATES, ...saved };
+    } catch (_) { return { ...DEFAULT_RATES }; }
+  }
+  function saveRates(rates) {
+    store.set('rates', JSON.stringify(rates));
+  }
+  function toKRW(amount, currency) {
+    const c = currency || 'KRW';
+    const a = Number(amount) || 0;
+    if (c === 'KRW') return Math.round(a);
+    const rates = getRates();
+    return Math.round(a * (rates[c] || 0));
+  }
+  function formatAmount(amount, currency) {
+    const c = currency || 'KRW';
+    const a = Number(amount) || 0;
+    if (c === 'KRW') return '₩' + Math.round(a).toLocaleString();
+    // HKD/MOP: up to 2 decimal places
+    const display = (Math.round(a * 100) / 100).toLocaleString(undefined, { maximumFractionDigits: 2 });
+    return CURR_SYMBOL[c] + display;
+  }
+  function setExpCurrency(c) {
+    expCurrency = c;
+    document.querySelectorAll('#exp-currency-pills .currency-pill').forEach(b => {
+      b.classList.toggle('active', b.dataset.curr === c);
+    });
+    const amtInput = document.getElementById('exp-amount');
+    if (amtInput) {
+      const labels = { KRW: '금액 (원)', HKD: '금액 (HKD)', MOP: '금액 (MOP)' };
+      amtInput.placeholder = labels[c] || '금액';
+    }
+  }
   function addExpense() {
     const name = document.getElementById('exp-name').value.trim();
-    const amount = parseInt(document.getElementById('exp-amount').value, 10);
+    const amount = parseFloat(document.getElementById('exp-amount').value);
     const cat = document.getElementById('exp-cat').value;
-    if (!name || !amount) { alert('이름과 금액을 입력하세요'); return; }
+    if (!name || !amount || isNaN(amount)) { alert('이름과 금액을 입력하세요'); return; }
     const list = getExpenses();
-    list.push({ id: Date.now(), name, amount, cat, date: new Date().toISOString() });
+    list.push({
+      id: Date.now(),
+      name,
+      amount,
+      currency: expCurrency,
+      cat,
+      date: new Date().toISOString(),
+    });
     saveExpenses(list);
     document.getElementById('exp-name').value = '';
     document.getElementById('exp-amount').value = '';
@@ -1566,13 +1810,60 @@
     saveExpenses(list);
     renderExpenses();
   }
+  function renderRates() {
+    const rates = getRates();
+    const h = document.getElementById('rate-hkd');
+    const m = document.getElementById('rate-mop');
+    if (h && document.activeElement !== h) h.value = rates.HKD;
+    if (m && document.activeElement !== m) m.value = rates.MOP;
+    const sum = document.getElementById('rate-summary');
+    if (sum) sum.textContent = `(HK$1≈₩${rates.HKD} · MOP$1≈₩${rates.MOP})`;
+  }
+  function updateRate(curr, raw) {
+    const v = parseFloat(raw);
+    if (isNaN(v) || v <= 0) return;
+    const rates = getRates();
+    rates[curr] = Math.round(v * 100) / 100;
+    saveRates(rates);
+    renderRates();
+    renderExpenses();
+    schedulePublishSafe();
+  }
+  function toggleRateEditor() {
+    const body = document.getElementById('rate-body');
+    const head = document.getElementById('rate-head');
+    body.classList.toggle('hidden');
+    head.classList.toggle('open', !body.classList.contains('hidden'));
+  }
   function renderExpenses() {
     const list = getExpenses();
-    const total = list.reduce((s, e) => s + e.amount, 0);
-    document.getElementById('total-amount').textContent = '₩' + total.toLocaleString();
 
+    // Total (converted to KRW)
+    const totalKRW = list.reduce((s, e) => s + toKRW(e.amount, e.currency), 0);
+    document.getElementById('total-amount').textContent = '₩' + totalKRW.toLocaleString();
+
+    // Breakdown by original currency
+    const byCurr = { KRW: 0, HKD: 0, MOP: 0 };
+    list.forEach(e => {
+      const c = e.currency || 'KRW';
+      byCurr[c] = (byCurr[c] || 0) + (Number(e.amount) || 0);
+    });
+    const bdEl = document.getElementById('budget-breakdown');
+    bdEl.innerHTML = '';
+    ['KRW', 'HKD', 'MOP'].forEach(c => {
+      if (byCurr[c] > 0) {
+        const piece = document.createElement('span');
+        piece.className = 'piece';
+        piece.textContent = `${CURR_FLAG[c]} ${formatAmount(byCurr[c], c)}`;
+        bdEl.appendChild(piece);
+      }
+    });
+
+    // Category totals in KRW
     const byCat = {};
-    list.forEach(e => { byCat[e.cat] = (byCat[e.cat] || 0) + e.amount; });
+    list.forEach(e => {
+      byCat[e.cat] = (byCat[e.cat] || 0) + toKRW(e.amount, e.currency);
+    });
     const grid = document.getElementById('budget-cat-grid');
     grid.innerHTML = '';
     const icons = { 항공:'✈️', 숙박:'🏨', 식비:'🍜', 교통:'🚇', 관광:'🎢', 쇼핑:'🛍️', 기타:'💳' };
@@ -1582,6 +1873,7 @@
       grid.appendChild(cell);
     });
 
+    // Expense list
     const el = document.getElementById('expense-list');
     if (!list.length) {
       el.innerHTML = '<div class="empty">아직 등록된 지출이 없어요.</div>';
@@ -1590,21 +1882,42 @@
     el.innerHTML = '';
     list.slice().reverse().forEach(e => {
       const d = new Date(e.date);
+      const c = e.currency || 'KRW';
+      const mainAmt = formatAmount(e.amount, c);
+      const subAmt = c !== 'KRW' ? `≈ ₩${toKRW(e.amount, c).toLocaleString()}` : '';
+      const currTag = c !== 'KRW' ? `<span class="curr-tag">${CURR_FLAG[c]} 현지결제</span>` : '';
       const item = document.createElement('div');
       item.className = 'expense-item';
       item.innerHTML = `
         <div>
-          <div><b>${icons[e.cat]||''} ${e.name}</b></div>
+          <div><b>${icons[e.cat]||''} ${e.name}</b>${currTag}</div>
           <div class="meta">${e.cat} · ${d.getMonth()+1}/${d.getDate()}</div>
         </div>
-        <div style="display:flex; align-items:center; gap:6px;">
-          <b>₩${e.amount.toLocaleString()}</b>
+        <div class="amt-box">
+          <div>
+            <div class="amt-main">${mainAmt}</div>
+            ${subAmt ? `<div class="amt-sub">${subAmt}</div>` : ''}
+          </div>
           <button onclick="delExpense(${e.id})" title="삭제">×</button>
         </div>
       `;
       el.appendChild(item);
     });
   }
+
+  // wire currency pill clicks + rate editor inputs
+  document.querySelectorAll('#exp-currency-pills .currency-pill').forEach(btn => {
+    btn.addEventListener('click', () => setExpCurrency(btn.dataset.curr));
+  });
+  ['rate-hkd', 'rate-mop'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', () => {
+      const curr = id === 'rate-hkd' ? 'HKD' : 'MOP';
+      updateRate(curr, el.value);
+    });
+  });
+  renderRates();
   renderExpenses();
 
   // ---------- Wishlist ----------
@@ -1769,6 +2082,277 @@
     });
   });
   renderWishlist();
+
+  // ---------- Food (맛집) ----------
+  const FOOD_CAT_LABEL = {
+    dimsum: '🥟 딤섬·광둥 요리',
+    noodle: '🍜 누들·완탕·로컬',
+    cha: '🧋 차찬텡·홍콩 카페',
+    dessert: '🍮 디저트·베이커리',
+    macau: '🇵🇹 마카오 포르투갈식'
+  };
+  const FOOD_CAT_ORDER = ['dimsum', 'noodle', 'cha', 'dessert', 'macau'];
+
+  const FOOD_DATA = [
+    // 딤섬·광둥
+    { id:'f1',  cat:'dimsum', region:'hk', name:'팀호완 (센트럴)', nameEn:'Tim Ho Wan Central', desc:'미쉐린 1스타 딤섬. 바삭한 BBQ번(차슈바오)이 시그니처예요.', price:'1인 HK$120~180', kid:true,  note:'센트럴 IFC몰 근처' },
+    { id:'f2',  cat:'dimsum', region:'hk', name:'딤딤섬 (완차이)', nameEn:'DimDimSum Wan Chai', desc:'토끼/돼지 모양 딤섬이 귀여워 아이가 좋아해요. 줄 짧은 편.', price:'1인 HK$100~150', kid:true,  note:'완차이역 도보 5분' },
+    { id:'f3',  cat:'dimsum', region:'hk', name:'련향거 (셩완)', nameEn:'Lin Heung Kui Sheung Wan', desc:'카트 딤섬 전통을 고수하는 곳. 옛 홍콩 분위기 그대로.', price:'1인 HK$120~180', kid:false, note:'셩완역 A2 출구' },
+    { id:'f4',  cat:'dimsum', region:'hk', name:'룽킹힌 (포시즌스)', nameEn:'Lung King Heen Four Seasons', desc:'세계 최초 미쉐린 3스타 중식당. 기념일용.', price:'런치 HK$800+', kid:false, note:'센트럴 포시즌스 호텔 4F' },
+    { id:'f5',  cat:'dimsum', region:'hk', name:'만호 (만다린 오리엔탈)', nameEn:'Man Ho Hong Kong', desc:'정통 광둥 파인다이닝. 북경오리와 딤섬 런치코스.', price:'런치 HK$600+', kid:false, note:'JW 매리어트 3F' },
+    { id:'f6',  cat:'dimsum', region:'hk', name:'원딤섬 (침사추이)', nameEn:'One Dim Sum Tsim Sha Tsui', desc:'가성비 미쉐린 빕구르망. 새우창펀이 별미.', price:'1인 HK$80~120', kid:true,  note:'프린스에드워드역' },
+
+    // 누들·완탕
+    { id:'f7',  cat:'noodle', region:'hk', name:'맥만기 (센트럴)', nameEn:'Mak Man Kee Noodle Shop', desc:'70년 전통 완탕미엔. 새우가 탱글한 대표 맛집.', price:'1인 HK$60~80',  kid:true,  note:'조던역 부근' },
+    { id:'f8',  cat:'noodle', region:'hk', name:'카우키 (센트럴)', nameEn:'Kau Kee Restaurant', desc:'브리스킷 누들(우육면)의 원조. 줄이 길어요.', price:'1인 HK$70~100', kid:true,  note:'셩완역 A2' },
+    { id:'f9',  cat:'noodle', region:'hk', name:'침차이키 (완차이)', nameEn:'Tsim Chai Kee Noodle', desc:'초대형 새우완탕 3알이 들어간 완탕면. 미쉐린 빕구르망.', price:'1인 HK$50~70',  kid:true,  note:'센트럴역 도보 5분' },
+    { id:'f10', cat:'noodle', region:'hk', name:'호렁퐁 (콩기) 카트누들', nameEn:'Kung Wo Dou Bun Chong', desc:'카트누들(차찬면) 원조 스타일. 토핑 골라담기.', price:'1인 HK$50~70',  kid:true,  note:'섬수이포 지역' },
+    { id:'f11', cat:'noodle', region:'hk', name:'쿵울완탕 (완차이)', nameEn:'Ho Hung Kee Wan Chai', desc:'미쉐린 1스타 완탕면. 깔끔한 국물.', price:'1인 HK$90~130', kid:true,  note:'코즈웨이베이 Hysan Place 12F' },
+    { id:'f12', cat:'noodle', region:'hk', name:'레이가든 (IFC)', nameEn:'Lei Garden IFC', desc:'광둥식 면과 딤섬 둘 다 괜찮아요. 가족 모임용.', price:'1인 HK$200~300', kid:true,  note:'IFC몰 3F' },
+
+    // 차찬텡·카페
+    { id:'f13', cat:'cha', region:'hk', name:'란퐁유엔 (센트럴)', nameEn:'Lan Fong Yuen', desc:'실크스타킹 밀크티 원조. 프렌치토스트도 필수.', price:'1인 HK$60~90',  kid:true,  note:'센트럴 가격로(Gage St)' },
+    { id:'f14', cat:'cha', region:'hk', name:'카페 드 코랄', nameEn:'Cafe de Coral', desc:'홍콩식 패스트 차찬텡. 아침/점심 가성비 최고.', price:'1인 HK$40~70',  kid:true,  note:'전 지역 체인' },
+    { id:'f15', cat:'cha', region:'hk', name:'초이퐁 (센트럴)', nameEn:'Tsui Wah Restaurant', desc:'24시간 영업. 콘덴스밀크 토스트, 버터빵 필수.', price:'1인 HK$60~100', kid:true,  note:'여러 지점, 센트럴 본점' },
+    { id:'f16', cat:'cha', region:'hk', name:'호놀룰루 커피숍', nameEn:'Honolulu Coffee Shop', desc:'에그타르트 + 파인애플번이 맛있는 올드스쿨 차찬텡.', price:'1인 HK$50~80',  kid:true,  note:'완차이역 A3' },
+    { id:'f17', cat:'cha', region:'hk', name:'캐피탈 카페 (완차이)', nameEn:'Capital Cafe Wan Chai', desc:'치즈오믈렛 + 트러플 토스트. 인스타 핫플.', price:'1인 HK$80~120', kid:true,  note:'완차이역 A3' },
+    { id:'f18', cat:'cha', region:'hk', name:'오스트레일리아 데어리 컴퍼니', nameEn:'Australia Dairy Company', desc:'스크램블에그 + 찐우유푸딩. 줄 서도 빨라요.', price:'1인 HK$50~80',  kid:true,  note:'조던역 C2' },
+
+    // 디저트·베이커리
+    { id:'f19', cat:'dessert', region:'hk', name:'타이청 베이커리 (센트럴)', nameEn:'Tai Cheong Bakery', desc:'홍콩 최고의 에그타르트. 겉바속촉.', price:'1개 HK$12',     kid:true,  note:'센트럴 라이언락 St' },
+    { id:'f20', cat:'dessert', region:'hk', name:'허키우 (침사추이)', nameEn:'Hui Lau Shan', desc:'망고 디저트 전문. 망고 + 사고 + 포멜로.', price:'1인 HK$50~80',  kid:true,  note:'침사추이 네이선로드' },
+    { id:'f21', cat:'dessert', region:'hk', name:'예상숨 (몽콕)', nameEn:'Yee Shun Dairy Company', desc:'생강우유푸딩 원조. 진저밀크의 교과서.', price:'1인 HK$30~50',  kid:true,  note:'몽콕역 E2' },
+    { id:'f22', cat:'dessert', region:'hk', name:'허니문 디저트', nameEn:'Honeymoon Dessert', desc:'망고·두리안 디저트 체인. 가족 여행 디저트 코스.', price:'1인 HK$50~80',  kid:true,  note:'침사추이, 코즈웨이베이 지점' },
+    { id:'f23', cat:'dessert', region:'hk', name:'키친 세이브 (센트럴)', nameEn:'Kitchen Save Bakery', desc:'파인애플번(보로바오)이 특히 맛있는 로컬 베이커리.', price:'1인 HK$30~50',  kid:true,  note:'셩완역 A2' },
+    { id:'f24', cat:'dessert', region:'hk', name:'제니 베이커리 (침사추이)', nameEn:'Jenny Bakery', desc:'곰돌이 틴케이스 쿠키. 선물용 최고.', price:'소박스 HK$75',  kid:true,  note:'침사추이 Mirador Mansion' },
+
+    // 마카오 특선
+    { id:'f25', cat:'macau', region:'mc', name:'로드 스토우 베이커리', nameEn:'Lord Stow\'s Bakery Coloane', desc:'콜로안 본점의 원조 포르투갈식 에그타르트.', price:'1개 MOP$12',     kid:true,  note:'콜로안 빌리지' },
+    { id:'f26', cat:'macau', region:'mc', name:'마가렛 카페 에 나타', nameEn:'Margaret\'s Cafe e Nata', desc:'시내 접근성 좋은 에그타르트 맛집. 로드 스토우와 쌍벽.', price:'1개 MOP$10',     kid:true,  note:'세나도 광장 근처' },
+    { id:'f27', cat:'macau', region:'mc', name:'리토랄 (타이파)', nameEn:'Restaurante Litoral Taipa', desc:'마카오 포르투갈식 정통. 아프리칸 치킨 + 바칼라우.', price:'1인 MOP$200~350', kid:true,  note:'타이파 빌리지' },
+    { id:'f28', cat:'macau', region:'mc', name:'안토니오 (타이파)', nameEn:'Antonio Restaurante', desc:'포르투갈 셰프 운영. 문어요리·새끼돼지가 별미.', price:'1인 MOP$400+',    kid:false, note:'타이파 빌리지' },
+    { id:'f29', cat:'macau', region:'mc', name:'웡치케이 (세나도)', nameEn:'Wong Chi Kei Senado', desc:'80년 전통 광둥식 완탕면. 마카오 시내 점심 추천.', price:'1인 MOP$60~100',  kid:true,  note:'세나도 광장' },
+    { id:'f30', cat:'macau', region:'mc', name:'콤 다이 칠리 크랩', nameEn:'Kam Dai Seafood', desc:'마카오식 매운 게요리. 신선한 해산물.', price:'1인 MOP$250~400', kid:false, note:'콜로안 항구' },
+    { id:'f31', cat:'macau', region:'mc', name:'세라두라 (여러 곳)', nameEn:'Serradura Macau', desc:'마카오 국민 디저트 "톱밥 푸딩". 호텔 카페에서도 판매.', price:'1인 MOP$40~60',   kid:true,  note:'시내 디저트 카페 전반' }
+  ];
+
+  let foodFilter = 'all';
+
+  function foodMapUrl(r) {
+    const q = [r.nameEn, r.note, r.region === 'hk' ? 'Hong Kong' : 'Macau']
+      .filter(Boolean).join(' ');
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+
+  function foodItemHtml(r) {
+    const regionCls = r.region === 'hk' ? 'r-hk' : 'r-mc';
+    const regionLbl = r.region === 'hk' ? '🇭🇰 홍콩' : '🇲🇴 마카오';
+    const kidIcon = r.kid ? '<span>👶 아이OK</span>' : '';
+    return `
+      <a class="food-item" href="${foodMapUrl(r)}" target="_blank" rel="noopener">
+        <div class="food-item-head">
+          <div class="food-item-names">
+            <div class="food-item-name">${escapeHtml(r.name)}</div>
+            <div class="food-item-name-en">${escapeHtml(r.nameEn)}</div>
+          </div>
+          <span class="food-region ${regionCls}">${regionLbl}</span>
+        </div>
+        <div class="food-item-desc">${escapeHtml(r.desc)}</div>
+        <div class="food-item-meta">
+          <span>💳 ${escapeHtml(r.price)}</span>
+          ${kidIcon}
+          <span>📍 ${escapeHtml(r.note)}</span>
+          <span class="food-item-go">🗺 지도 →</span>
+        </div>
+      </a>
+    `;
+  }
+
+  function renderFood() {
+    const el = document.getElementById('food-content');
+    if (!el) return;
+    let html = '';
+    if (foodFilter === 'all') {
+      FOOD_CAT_ORDER.forEach(cat => {
+        const items = FOOD_DATA.filter(r => r.cat === cat);
+        if (!items.length) return;
+        html += `
+          <div class="food-section-head">
+            <span>${FOOD_CAT_LABEL[cat]}</span>
+            <span class="line"></span>
+            <span>${items.length}곳</span>
+          </div>
+          <div class="food-list">
+            ${items.map(foodItemHtml).join('')}
+          </div>
+        `;
+      });
+    } else {
+      const items = FOOD_DATA.filter(r => r.cat === foodFilter);
+      html += `
+        <div class="food-section-head">
+          <span>${FOOD_CAT_LABEL[foodFilter] || ''}</span>
+          <span class="line"></span>
+          <span>${items.length}곳</span>
+        </div>
+        <div class="food-list">
+          ${items.map(foodItemHtml).join('')}
+        </div>
+      `;
+    }
+    el.innerHTML = html;
+  }
+
+  function setFoodFilter(cat) {
+    foodFilter = cat || 'all';
+    document.querySelectorAll('.food-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.foodCat === foodFilter);
+    });
+    renderFood();
+  }
+
+  document.querySelectorAll('.food-tab').forEach(btn => {
+    btn.addEventListener('click', () => setFoodFilter(btn.dataset.foodCat));
+  });
+  renderFood();
+
+  // ---------- Places (명소) ----------
+  const PLACE_CAT_LABEL = {
+    kid:     '🎡 아이가 좋아할 곳',
+    must:    '🌆 필수 관광지',
+    view:    '🌅 전망·야경 스팟',
+    culture: '🏛 문화·역사 유적',
+    shop:    '🛍 쇼핑·야시장',
+    nature:  '🌿 자연·힐링'
+  };
+  const PLACE_CAT_ORDER = ['kid', 'must', 'view', 'culture', 'shop', 'nature'];
+
+  const PLACE_DATA = [
+    // 아이 추천
+    { id:'p1',  cat:'kid', region:'hk', name:'홍콩 디즈니랜드', nameEn:'Hong Kong Disneyland', desc:'미취학~초등 아이에게 최고. 인파 적은 평일 추천. 한국 사전 예매가 저렴해요.', time:'하루 종일', kid:true,  note:'란타우섬 MTR 선니베이역' },
+    { id:'p2',  cat:'kid', region:'hk', name:'오션파크', nameEn:'Ocean Park Hong Kong', desc:'판다·해양관·놀이기구가 고루. 케이블카 경치 필수 체험.', time:'반나절~하루', kid:true,  note:'남부 웡쯔힝역' },
+    { id:'p3',  cat:'kid', region:'hk', name:'스타페리', nameEn:'Star Ferry Tsim Sha Tsui', desc:'5분 뱃놀이로 빅토리아 하버 건너기. 2층 Upper Deck 추천.', time:'10~20분', kid:true, note:'침사추이 ↔ 센트럴/완차이' },
+    { id:'p4',  cat:'kid', region:'hk', name:'홍콩 과학관', nameEn:'Hong Kong Science Museum', desc:'체험형 전시 많음. 비 오거나 더울 때 최고의 실내 대체지.', time:'2~3시간', kid:true,  note:'침사추이 동쪽' },
+    { id:'p5',  cat:'kid', region:'mc', name:'마카오 베네시안 곤돌라', nameEn:'The Venetian Macao Gondola Rides', desc:'실내 운하 곤돌라. 뱃사공 노래까지 포함. 사진 명소.', time:'30분', kid:true, note:'코타이 베네시안 리조트' },
+    { id:'p6',  cat:'kid', region:'mc', name:'마카오 자이언트 판다관', nameEn:'Macao Giant Panda Pavilion', desc:'시민의 섬 공원 안. 무료 입장. 아이가 정말 좋아해요.', time:'1시간', kid:true, note:'콜로안 섬 사이공 공원' },
+
+    // 필수 관광
+    { id:'p7',  cat:'must', region:'hk', name:'빅토리아 피크', nameEn:'Victoria Peak', desc:'홍콩 최고 전망. 피크트램 예약 필수. 해질녘 노을~야경 타이밍 최고.', time:'2~3시간', kid:true,  note:'센트럴 가든로드' },
+    { id:'p8',  cat:'must', region:'hk', name:'심포니 오브 라이트', nameEn:'Symphony of Lights Tsim Sha Tsui', desc:'매일 저녁 8시 무료 야경쇼 (10분). 에비뉴 오브 스타 산책과 세트.', time:'1시간', kid:true, note:'침사추이 프롬나드' },
+    { id:'p9',  cat:'must', region:'hk', name:'란콰이퐁', nameEn:'Lan Kwai Fong Central', desc:'센트럴의 바 거리. 저녁 분위기 구경. 아이는 낮에 지나가는 정도.', time:'1시간', kid:false, note:'센트럴역 D2' },
+    { id:'p10', cat:'must', region:'mc', name:'세나도 광장', nameEn:'Senado Square Macau', desc:'유네스코 세계유산. 포르투갈풍 파도 타일 바닥과 파스텔 건물.', time:'1~2시간', kid:true,  note:'마카오 반도 중심' },
+    { id:'p11', cat:'must', region:'mc', name:'성 바울 성당 유적', nameEn:'Ruins of St. Paul\'s Macau', desc:'마카오 상징. 파사드만 남은 성당. 저녁 조명이 예뻐요.', time:'30~60분', kid:true,  note:'세나도 광장에서 도보 10분' },
+    { id:'p12', cat:'must', region:'mc', name:'몬테 요새', nameEn:'Monte Fortress Macau', desc:'성 바울 옆 언덕. 마카오 박물관 같이 있고 구시가 전망 좋음.', time:'1시간', kid:true, note:'성 바울 유적 옆' },
+
+    // 전망·야경
+    { id:'p13', cat:'view', region:'hk', name:'스카이100', nameEn:'Sky100 Hong Kong Observation Deck', desc:'100층 실내 전망대. 피크보다 덜 붐비고 우천시에도 OK.', time:'1시간', kid:true, note:'구룡역 ICC 100F' },
+    { id:'p14', cat:'view', region:'hk', name:'오존바 (리츠칼튼)', nameEn:'Ozone Bar Ritz Carlton Hong Kong', desc:'세계에서 가장 높은 바 중 하나. 118층. 저녁 드레스코드.', time:'1~2시간', kid:false, note:'구룡역 리츠칼튼 118F' },
+    { id:'p15', cat:'view', region:'hk', name:'애비뉴 오브 스타즈', nameEn:'Avenue of Stars Hong Kong', desc:'침사추이 해변 산책로. 영화인 핸드프린트 + 하버 야경.', time:'30~60분', kid:true, note:'침사추이역 E' },
+    { id:'p16', cat:'view', region:'mc', name:'마카오타워', nameEn:'Macau Tower', desc:'338m 타워. 360도 전망. 용감하다면 스카이점프(233m!).', time:'1~2시간', kid:true, note:'마카오 반도 남쪽' },
+    { id:'p17', cat:'view', region:'mc', name:'스페셜 파리지앵 에펠탑', nameEn:'Eiffel Tower The Parisian Macao', desc:'실물 1/2 크기 에펠탑. 야간 조명쇼. 37층 전망대.', time:'1시간', kid:true, note:'코타이 파리지앵 호텔' },
+
+    // 문화·유적
+    { id:'p18', cat:'culture', region:'hk', name:'만모 사원', nameEn:'Man Mo Temple', desc:'150년 된 도교 사원. 천장 가득한 향 코일이 몽환적.', time:'30분', kid:true, note:'셩완역 할리우드 로드' },
+    { id:'p19', cat:'culture', region:'hk', name:'웡타이신 사원', nameEn:'Wong Tai Sin Temple', desc:'소원 비는 도교 사원. 주말에 특히 붐빔. MTR로 바로.', time:'1시간', kid:true, note:'웡타이신역 B2' },
+    { id:'p20', cat:'culture', region:'hk', name:'텐탄 대불 (란타우)', nameEn:'Tian Tan Big Buddha Lantau', desc:'34m 청동 좌불. 옹핑 케이블카로 올라가는 길이 명물.', time:'반나절', kid:true, note:'란타우 옹핑 빌리지' },
+    { id:'p21', cat:'culture', region:'mc', name:'아마 사원', nameEn:'A-Ma Temple Macau', desc:'500년 된 도교 사원. 마카오 이름의 유래. 유네스코 유산.', time:'30~45분', kid:true, note:'마카오 반도 남쪽' },
+    { id:'p22', cat:'culture', region:'mc', name:'타이파 빌리지', nameEn:'Taipa Village Macau', desc:'포르투갈 식민지 골목. 파스텔 건물, 작은 박물관, 작은 상점.', time:'2~3시간', kid:true, note:'타이파섬 중심' },
+    { id:'p23', cat:'culture', region:'mc', name:'콜로안 빌리지', nameEn:'Coloane Village Macau', desc:'한적한 어촌 마을 분위기. 로드 스토우 베이커리 본점도 여기.', time:'1~2시간', kid:true, note:'콜로안섬 남쪽' },
+
+    // 쇼핑·야시장
+    { id:'p24', cat:'shop', region:'hk', name:'템플스트리트 야시장', nameEn:'Temple Street Night Market', desc:'저녁 7시 이후 활기. 길거리 음식 + 기념품. 흥정 필수.', time:'1~2시간', kid:false, note:'조던역 A' },
+    { id:'p25', cat:'shop', region:'hk', name:'레이디스 마켓', nameEn:'Ladies Market Mong Kok', desc:'몽콕 통사이 거리. 옷·가방·액세서리 저렴. 한낮부터 오픈.', time:'1~2시간', kid:false, note:'몽콕역 E2' },
+    { id:'p26', cat:'shop', region:'hk', name:'IFC 몰', nameEn:'IFC Mall Hong Kong', desc:'센트럴 메인 쇼핑몰. 하이엔드 + 지하 이터리. 공항 익스프레스 연결.', time:'2~3시간', kid:true, note:'센트럴역 A' },
+    { id:'p27', cat:'shop', region:'hk', name:'하버시티', nameEn:'Harbour City Tsim Sha Tsui', desc:'홍콩 최대 쇼핑몰. 하버뷰와 함께 크루즈 탑승 포인트.', time:'반나절', kid:true, note:'침사추이 캔톤 로드' },
+    { id:'p28', cat:'shop', region:'mc', name:'더 그랜드 카날 숍스', nameEn:'Grand Canal Shoppes Macau', desc:'베네시안 안의 이탈리아풍 쇼핑 아케이드. 곤돌라 + 쇼핑.', time:'2~3시간', kid:true, note:'코타이 베네시안 내부' },
+
+    // 자연·힐링
+    { id:'p29', cat:'nature', region:'hk', name:'리펄스 베이', nameEn:'Repulse Bay Beach Hong Kong', desc:'남쪽 해변. 고운 모래 + 카페. 여름엔 수영 가능.', time:'2~3시간', kid:true, note:'6번 버스, 리펄스 베이 정류장' },
+    { id:'p30', cat:'nature', region:'hk', name:'스탠리 마켓', nameEn:'Stanley Market Hong Kong', desc:'한적한 해변 마을. 기념품 골목 + 해변 산책.', time:'2~3시간', kid:true, note:'6·6X번 버스' },
+    { id:'p31', cat:'nature', region:'hk', name:'옹핑 스카이레일', nameEn:'Ngong Ping 360 Cable Car', desc:'25분 케이블카 + 란타우섬 산세. 크리스탈캐빈(바닥투명) 추천.', time:'반나절', kid:true, note:'통충역에서 탑승' },
+    { id:'p32', cat:'nature', region:'mc', name:'학사 비치 (콜로안)', nameEn:'Hac Sa Beach Coloane', desc:'검은 모래 해변. 한적하고 오래 산책하기 좋아요.', time:'2시간', kid:true, note:'콜로안 동남쪽' },
+    { id:'p33', cat:'nature', region:'mc', name:'길리아 언덕', nameEn:'Guia Hill Macau', desc:'등대와 작은 성당이 있는 언덕. 시내 전망 + 산책로.', time:'1~2시간', kid:true, note:'마카오 반도 중앙' }
+  ];
+
+  let placeFilter = 'all';
+
+  function placeMapUrl(p) {
+    const q = [p.nameEn, p.note, p.region === 'hk' ? 'Hong Kong' : 'Macau']
+      .filter(Boolean).join(' ');
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+
+  function placeItemHtml(p) {
+    const regionCls = p.region === 'hk' ? 'r-hk' : 'r-mc';
+    const regionLbl = p.region === 'hk' ? '🇭🇰 홍콩' : '🇲🇴 마카오';
+    const kidIcon = p.kid ? '<span>👶 아이OK</span>' : '<span>🚫 아이X</span>';
+    return `
+      <a class="food-item" href="${placeMapUrl(p)}" target="_blank" rel="noopener">
+        <div class="food-item-head">
+          <div class="food-item-names">
+            <div class="food-item-name">${escapeHtml(p.name)}</div>
+            <div class="food-item-name-en">${escapeHtml(p.nameEn)}</div>
+          </div>
+          <span class="food-region ${regionCls}">${regionLbl}</span>
+        </div>
+        <div class="food-item-desc">${escapeHtml(p.desc)}</div>
+        <div class="food-item-meta">
+          <span>⏱ ${escapeHtml(p.time)}</span>
+          ${kidIcon}
+          <span>📍 ${escapeHtml(p.note)}</span>
+          <span class="food-item-go">🗺 지도 →</span>
+        </div>
+      </a>
+    `;
+  }
+
+  function renderPlaces() {
+    const el = document.getElementById('place-content');
+    if (!el) return;
+    let html = '';
+    if (placeFilter === 'all') {
+      PLACE_CAT_ORDER.forEach(cat => {
+        const items = PLACE_DATA.filter(p => p.cat === cat);
+        if (!items.length) return;
+        html += `
+          <div class="food-section-head">
+            <span>${PLACE_CAT_LABEL[cat]}</span>
+            <span class="line"></span>
+            <span>${items.length}곳</span>
+          </div>
+          <div class="food-list">
+            ${items.map(placeItemHtml).join('')}
+          </div>
+        `;
+      });
+    } else {
+      const items = PLACE_DATA.filter(p => p.cat === placeFilter);
+      html += `
+        <div class="food-section-head">
+          <span>${PLACE_CAT_LABEL[placeFilter] || ''}</span>
+          <span class="line"></span>
+          <span>${items.length}곳</span>
+        </div>
+        <div class="food-list">
+          ${items.map(placeItemHtml).join('')}
+        </div>
+      `;
+    }
+    el.innerHTML = html;
+  }
+
+  function setPlaceFilter(cat) {
+    placeFilter = cat || 'all';
+    document.querySelectorAll('#place-tabs .food-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.placeCat === placeFilter);
+    });
+    renderPlaces();
+  }
+
+  document.querySelectorAll('#place-tabs .food-tab').forEach(btn => {
+    btn.addEventListener('click', () => setPlaceFilter(btn.dataset.placeCat));
+  });
+  renderPlaces();
 
   // ---------- Flights ----------
   const AIRPORT_NAMES = {
@@ -2104,6 +2688,7 @@
       endDate: store.get('endDate') || null,
       flights: getFlights(),
       wishlist: getWishlist(),
+      rates: getRates(),
     };
   }
 
@@ -2132,8 +2717,13 @@
       if (Array.isArray(state.wishlist)) {
         saveWishlist(state.wishlist);
       }
+      // Apply exchange rates
+      if (state.rates && typeof state.rates === 'object') {
+        saveRates(state.rates);
+      }
       // Refresh UI
       renderChecklist();
+      renderRates();
       renderExpenses();
       renderFlights();
       renderWishlist();
@@ -2308,6 +2898,7 @@
   window.delWish = delWish;
   window.toggleWishDone = toggleWishDone;
   window.updateWishStars = updateWishStars;
+  window.toggleRateEditor = toggleRateEditor;
 
   // Kick off weather fetching + auto refresh
   startWeatherAutoRefresh();
