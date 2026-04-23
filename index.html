@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#b47a50" />
+<title>강세진·황은비·강유주의 홍콩·마카오 앨범</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Gaegu:wght@400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f5ede0;
+    --surface: #fffdf7;
+    --surface-2: #f0e4d0;
+    --text: #3d2817;
+    --muted: #8a7058;
+    --primary: #a67040;
+    --primary-dark: #7d4f22;
+    --accent: #c4847f;
+    --accent-2: #7b9c85;
+    --success: #6b9e7b;
+    --border: #e0d2b8;
+    --shadow: 0 8px 24px rgba(125, 79, 34, 0.1);
+    --shadow-soft: 0 2px 8px rgba(125, 79, 34, 0.06);
+    --radius: 16px;
+
+    /* family colors */
+    --dad: #8b5a35;     /* 세진 - 캐러멜 브라운 */
+    --mom: #c97c72;     /* 은비 - 더스티 로즈 */
+    --kid: #d4a574;     /* 유주 - 허니 골드 */
+
+    /* fonts */
+    --font-hand: "Gaegu", "Nanum Pen Script", "Caveat", cursive;
+    --font-hand-en: "Caveat", cursive;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a140f;
+      --surface: #251c14;
+      --surface-2: #2e2318;
+      --text: #f5ede0;
+      --muted: #b8a690;
+      --primary: #d4a574;
+      --primary-dark: #a67040;
+      --accent: #e09d98;
+      --border: #3d2d1c;
+      --shadow: 0 8px 24px rgba(0,0,0,0.4);
+      --shadow-soft: 0 2px 8px rgba(0,0,0,0.3);
+    }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(212, 165, 116, 0.12) 0, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(201, 124, 114, 0.08) 0, transparent 40%);
+    background-attachment: fixed;
+  }
+  .hand { font-family: var(--font-hand); font-weight: 700; }
+
+  header.hero {
+    background:
+      radial-gradient(ellipse at 30% 0%, rgba(255, 236, 210, 0.9) 0, transparent 60%),
+      linear-gradient(160deg, #f6e4c6 0%, #eccfa8 55%, #d9b68c 100%);
+    color: var(--text);
+    padding: 18px 20px 24px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  header.hero::before {
+    /* subtle paper grain */
+    content: "";
+    position: absolute; inset: 0;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 6px),
+      repeating-linear-gradient(-45deg, rgba(125,79,34,0.04) 0 2px, transparent 2px 6px);
+    pointer-events: none;
+  }
+  header.hero::after {
+    /* tape accent */
+    content: "";
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 90px; height: 20px;
+    background: rgba(212, 165, 116, 0.55);
+    border-left: 1px dashed rgba(125, 79, 34, 0.15);
+    border-right: 1px dashed rgba(125, 79, 34, 0.15);
+    box-shadow: 0 2px 4px rgba(125, 79, 34, 0.1);
+  }
+  header.hero .trip-date-chip {
+    display: inline-block;
+    font-family: var(--font-hand-en);
+    font-size: 18px; color: var(--primary-dark);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    position: relative; z-index: 1;
+  }
+  header.hero h1 {
+    margin: 0 0 2px; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+    font-family: var(--font-hand);
+    color: var(--text);
+    position: relative; z-index: 1;
+  }
+  header.hero .sub {
+    font-size: 13px; color: var(--primary-dark); opacity: 0.8;
+    position: relative; z-index: 1;
+    font-weight: 600;
+  }
+
+  /* Family avatars */
+  .family {
+    display: flex; justify-content: center; gap: 18px;
+    margin: 4px 0 14px;
+    position: relative; z-index: 1;
+  }
+  .avatar {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    text-align: center;
+  }
+  .avatar .circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-family: var(--font-hand); font-size: 26px; font-weight: 700;
+    box-shadow: 0 4px 10px rgba(125, 79, 34, 0.25), inset 0 2px 4px rgba(255,255,255,0.2);
+    border: 3px solid rgba(255, 253, 247, 0.9);
+    position: relative;
+    transition: transform .2s;
+  }
+  .avatar:nth-child(1) .circle { background: linear-gradient(135deg, var(--dad), #6b4229); transform: rotate(-4deg); }
+  .avatar:nth-child(2) .circle { background: linear-gradient(135deg, var(--mom), #a85e54); transform: rotate(2deg); }
+  .avatar:nth-child(3) .circle { background: linear-gradient(135deg, var(--kid), #b88550); transform: rotate(-2deg); }
+  .avatar .circle:hover { transform: rotate(0) scale(1.05); }
+  .avatar .name {
+    font-size: 11px; font-weight: 700; color: var(--text); opacity: 0.8;
+  }
+  .avatar .role {
+    font-family: var(--font-hand-en);
+    font-size: 11px; color: var(--muted);
+    margin-top: -2px;
+  }
+  /* online indicator for sync */
+  .avatar .circle.online::after {
+    content: "";
+    position: absolute;
+    right: -2px; bottom: 2px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #4caf7c;
+    border: 2.5px solid var(--surface);
+    box-shadow: 0 0 8px rgba(76, 175, 124, 0.6);
+  }
+
+  .sync-badge {
+    position: absolute; top: 12px; right: 14px;
+    background: rgba(255, 253, 247, 0.85);
+    backdrop-filter: blur(10px);
+    color: var(--primary-dark);
+    border: 1px solid rgba(125, 79, 34, 0.15);
+    border-radius: 999px;
+    padding: 5px 10px; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; gap: 5px; cursor: pointer;
+    font-family: inherit; z-index: 3;
+    box-shadow: var(--shadow-soft);
+  }
+  .sync-badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #94a3b8;
+  }
+  .sync-badge.connecting .dot { background: #e0a34a; animation: pulse 1s infinite; }
+  .sync-badge.connected .dot { background: #4caf7c; box-shadow: 0 0 6px #4caf7c; }
+  .sync-badge.error .dot { background: #c97c72; }
+  @keyframes pulse { 50% { opacity: 0.4; } }
+
+  .countdown {
+    margin-top: 10px;
+    display: flex; gap: 8px;
+    position: relative; z-index: 1;
+  }
+  .countdown .cell {
+    flex: 1;
+    background: rgba(255, 253, 247, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(125, 79, 34, 0.1);
+    border-radius: 12px;
+    padding: 8px 6px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+  }
+  .countdown .num { font-size: 22px; font-weight: 800; color: var(--primary-dark); font-family: var(--font-hand); }
+  .countdown .lbl { font-size: 10px; font-family: var(--font-hand-en); color: var(--muted); letter-spacing: 1px; }
+
+  main {
+    padding: 16px 16px 110px;
+    max-width: 780px; margin: 0 auto;
+  }
+  .section { display: none; animation: fadein .25s ease; }
+  .section.active { display: block; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(6px);} to { opacity:1; transform: none;} }
+
+  h2.title {
+    font-size: 24px; margin: 20px 0 10px; font-weight: 700; letter-spacing: -0.2px;
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-hand);
+    color: var(--primary-dark);
+  }
+  h2.title .emoji { font-size: 24px; }
+  p.lead { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .card::before {
+    /* tiny corner decoration like photo-corner */
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 14px; height: 14px;
+    border-top: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
+    border-top-left-radius: var(--radius);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .card::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 14px; height: 14px;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    border-bottom-right-radius: var(--radius);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .card h3 {
+    margin: 0 0 8px; font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    background: var(--surface-2); color: var(--primary-dark);
+    border: 1px solid var(--border);
+  }
+  .pill.kid { background: #fef3d7; color: #8b5a35; border-color: #e8d4a0; }
+  .pill.must { background: #f5d9d5; color: #8b3a30; border-color: #e8b8b0; }
+  .pill.eat { background: #dee8dd; color: #4a6b52; border-color: #b8cdb8; }
+  @media (prefers-color-scheme: dark) {
+    .pill.kid { background:#3a2e10; color:#e8c87a; border-color:#5a4525;}
+    .pill.must { background:#3a1f1a; color:#e8a79b; border-color:#5a2d28;}
+    .pill.eat { background:#1a2d22; color:#a0c4a5; border-color:#2d4534;}
+  }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+
+  /* Tabs (bottom nav) */
+  nav.tabs {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(255, 253, 247, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-around;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    z-index: 20;
+    box-shadow: 0 -4px 20px rgba(125, 79, 34, 0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    nav.tabs { background: rgba(37, 28, 20, 0.95); }
+  }
+  nav.tabs button {
+    flex: 1; background: none; border: 0; padding: 6px 2px;
+    color: var(--muted); font-size: 10px; font-weight: 600;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    cursor: pointer; border-radius: 10px;
+    transition: color .15s, background .15s;
+    font-family: inherit;
+  }
+  nav.tabs button .ic { font-size: 20px; }
+  nav.tabs button.active {
+    color: var(--primary-dark);
+    background: var(--surface-2);
+  }
+
+  /* Checklist */
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px; padding: 8px 4px;
+    border-bottom: 1px dashed var(--border); cursor: pointer;
+  }
+  .check-item:last-child { border-bottom: 0; }
+  .check-item input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+  .check-item.done label { text-decoration: line-through; color: var(--muted); }
+  .check-item label { flex: 1; font-size: 14px; cursor: pointer; }
+
+  /* Itinerary day */
+  .day-card { border-left: 4px solid var(--accent); }
+  .day-card:nth-of-type(odd) { border-left-color: var(--primary); }
+  .day-card .day-label {
+    font-family: var(--font-hand-en);
+    font-size: 14px; color: var(--primary-dark); font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .day-card h3 { font-size: 17px; font-family: var(--font-hand); font-weight: 700; margin-top: 2px; }
+  .day-date {
+    font-family: var(--font-hand-en);
+    font-size: 12px; color: var(--muted);
+    font-weight: 600; letter-spacing: 0.5px;
+    margin-left: 2px;
+  }
+  .day-date.out-of-range { color: var(--accent); opacity: 0.6; }
+  .timeline { margin-top: 10px; }
+  .timeline-item {
+    display: grid; grid-template-columns: 56px 1fr; gap: 8px;
+    padding: 8px 0; border-top: 1px solid var(--border);
+  }
+  .timeline-item:first-child { border-top: 0; }
+  .tl-time {
+    font-size: 12px; font-weight: 700; color: var(--primary-dark);
+    background: var(--surface-2); padding: 2px 6px; border-radius: 6px;
+    text-align: center; height: fit-content;
+  }
+  .tl-body .ttl { font-weight: 700; font-size: 14px; }
+  .tl-body .desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* Budget */
+  .budget-summary {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent) 100%);
+    color: #fffdf7; border-radius: var(--radius); padding: 16px; margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .budget-summary .amount { font-size: 30px; font-weight: 800; font-family: var(--font-hand); }
+  .budget-summary .lbl { font-size: 12px; opacity: 0.9; }
+  .budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .budget-grid div { background: rgba(255,255,255,0.18); padding: 8px 10px; border-radius: 8px; font-size: 12px; }
+  .budget-grid strong { display: block; font-size: 15px; margin-top: 2px; }
+
+  .expense-form {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .expense-form input, .expense-form select {
+    padding: 10px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface-2); color: var(--text); font-size: 14px;
+    font-family: inherit;
+  }
+  .expense-form input[type="text"] { grid-column: span 2; }
+  .btn {
+    padding: 10px 14px; border: 0; border-radius: 10px; cursor: pointer;
+    background: var(--primary); color: #fff; font-weight: 700; font-size: 14px;
+    font-family: inherit;
+    transition: transform .08s, background .15s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn.ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+  .expense-list { margin-top: 12px; }
+  .expense-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+  }
+  .expense-item:last-child { border-bottom: 0; }
+  .expense-item .meta { font-size: 11px; color: var(--muted); }
+  .expense-item button { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 18px; }
+
+  /* Phrases */
+  .phrase {
+    padding: 10px 4px; border-bottom: 1px solid var(--border);
+  }
+  .phrase:last-child { border-bottom: 0; }
+  .phrase .ko { font-weight: 700; font-size: 14px; }
+  .phrase .en { font-size: 13px; color: var(--accent-2); margin-top: 2px; }
+  .phrase .ca { font-size: 13px; color: var(--primary); margin-top: 2px; }
+
+  /* Info cards */
+  .info-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .info-item {
+    display: flex; align-items: center; gap: 10px; padding: 10px;
+    background: var(--surface-2); border-radius: 10px;
+  }
+  .info-item .ic { font-size: 22px; }
+  .info-item .lbl { font-size: 12px; color: var(--muted); }
+  .info-item .val { font-size: 14px; font-weight: 700; }
+  .info-item a { color: var(--primary); text-decoration: none; font-weight: 700; }
+
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+  details summary { font-weight: 700; cursor: pointer; font-size: 14px; }
+  details[open] summary { margin-bottom: 6px; }
+
+  .progress-bar {
+    height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin-top: 6px;
+  }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width .4s; }
+
+  .empty { text-align: center; color: var(--muted); padding: 20px; font-size: 13px; }
+
+  /* Weather */
+  .weather-head {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .weather-head h3 { flex: 1; margin: 0; }
+  .refresh-btn {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 999px; width: 30px; height: 30px;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--primary-dark); font-size: 14px;
+    transition: transform .2s;
+  }
+  .refresh-btn:active { transform: scale(0.92); }
+  .refresh-btn.spinning { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .weather-scroll {
+    display: flex; gap: 8px;
+    overflow-x: auto;
+    margin: 10px -16px 4px;
+    padding: 4px 16px 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .weather-scroll::-webkit-scrollbar { display: none; }
+  .weather-day {
+    flex: 0 0 108px;
+    scroll-snap-align: start;
+    background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px 6px 12px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+  }
+  .weather-day.today {
+    border: 1.5px dashed var(--primary);
+    background: linear-gradient(180deg, #fff5e4 0%, var(--surface) 100%);
+  }
+  .wd-label {
+    font-family: var(--font-hand-en);
+    font-size: 12px; color: var(--primary-dark);
+    font-weight: 700; letter-spacing: 1px;
+  }
+  .wd-date { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .wd-icon { font-size: 34px; margin: 6px 0 2px; line-height: 1; }
+  .wd-desc {
+    font-size: 12px; font-weight: 700; color: var(--text);
+    min-height: 16px;
+  }
+  .wd-temp {
+    font-family: var(--font-hand);
+    font-size: 17px; font-weight: 700;
+    margin-top: 6px; color: var(--primary-dark);
+  }
+  .wd-temp .lo { color: var(--muted); font-weight: 400; }
+  .wd-temp .sep { color: var(--muted); margin: 0 2px; }
+  .wd-rain {
+    font-size: 11px; color: var(--muted); margin-top: 4px;
+  }
+  .wd-rain.high { color: var(--accent-2); font-weight: 700; }
+
+  .weather-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--muted); margin-top: 2px;
+  }
+  .weather-empty {
+    padding: 22px; text-align: center; color: var(--muted);
+    font-size: 13px; flex: 1; min-height: 100px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Flight boarding pass */
+  .flight-pass {
+    background:
+      linear-gradient(135deg, #fffaec 0%, #f6ecce 100%);
+    border: 1px dashed var(--primary);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+  }
+  .flight-pass::before,
+  .flight-pass::after {
+    /* ticket notch */
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--surface);
+    border: 1px dashed var(--primary);
+    top: 50%; transform: translateY(-50%);
+  }
+  .flight-pass::before { left: -8px; }
+  .flight-pass::after { right: -8px; }
+  .flight-pass-header {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--muted);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .flight-direction { color: var(--primary-dark); letter-spacing: 1px; }
+  .flight-airline-no {
+    color: var(--text);
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: 0.5px;
+  }
+  .flight-pass-route {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    gap: 6px;
+  }
+  .airport-code {
+    font-size: 30px; font-weight: 800; color: var(--primary-dark);
+    font-family: var(--font-hand);
+    line-height: 1;
+  }
+  .airport-time {
+    font-size: 12px; color: var(--muted); margin-top: 2px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-weight: 600;
+  }
+  .airport-name {
+    font-size: 10px; color: var(--muted); margin-top: 1px;
+    font-weight: 500;
+  }
+  .airport.from { text-align: left; }
+  .airport.to { text-align: right; }
+  .plane-arrow {
+    color: var(--primary); font-size: 16px;
+    position: relative;
+    padding: 0 6px;
+  }
+  .plane-arrow::before, .plane-arrow::after {
+    content: ""; position: absolute; top: 50%;
+    width: 22px; height: 1px;
+    border-top: 1px dashed var(--primary);
+  }
+  .plane-arrow::before { right: 100%; }
+  .plane-arrow::after { left: 100%; }
+  .flight-pass-footer {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    margin-top: 10px; font-size: 12px;
+    border-top: 1px dashed rgba(125, 79, 34, 0.3); padding-top: 8px;
+  }
+  .flight-pass-footer .meta { color: var(--muted); font-weight: 600; }
+  .flight-pass-footer .meta b { color: var(--text); margin-right: 4px; }
+  .flight-edit-btn {
+    background: var(--primary);
+    color: #fff; border: 0; border-radius: 8px;
+    padding: 4px 10px; font-size: 11px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+  }
+  .flight-extras {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    font-size: 11px; color: var(--muted);
+    margin-top: 6px;
+  }
+  .flight-extras .tag {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-weight: 600; color: var(--primary-dark);
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+  }
+  .flight-form {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px dashed rgba(125, 79, 34, 0.3);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .flight-form.hidden { display: none; }
+  .flight-form .full { grid-column: 1 / -1; }
+  .flight-form label {
+    font-size: 10px; color: var(--muted); font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .flight-form input, .flight-form textarea {
+    width: 100%;
+    padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--surface); color: var(--text); font-size: 13px;
+    font-family: inherit;
+    margin-top: 2px;
+  }
+  .flight-form textarea { min-height: 50px; resize: vertical; }
+  .flight-form-actions {
+    grid-column: 1 / -1;
+    display: flex; gap: 6px; margin-top: 4px;
+  }
+  .flight-form-actions button { flex: 1; }
+
+  /* Wishlist */
+  .wish-card {
+    background:
+      linear-gradient(180deg, #fff8ea 0%, #fff 100%);
+    border: 1px dashed var(--primary);
+    position: relative;
+  }
+  .wish-card::before {
+    content: "✎";
+    position: absolute;
+    top: -10px; left: 16px;
+    background: var(--accent);
+    color: #fff;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    box-shadow: var(--shadow-soft);
+    transform: rotate(-6deg);
+  }
+  .wish-tabs {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin: 10px 0 12px;
+  }
+  .wish-tab {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .wish-tab.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+  .wish-tab .count {
+    margin-left: 4px;
+    font-size: 11px;
+    opacity: 0.85;
+  }
+  .wish-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px;
+    background: var(--surface-2);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .wish-form .full { grid-column: 1 / -1; }
+  .wish-form input, .wish-form select, .wish-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .wish-form textarea { min-height: 40px; resize: vertical; }
+  .wish-form-row {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+  }
+  .wish-form-row .label {
+    font-size: 11px; color: var(--muted); font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .star-picker {
+    display: inline-flex; gap: 2px;
+    font-size: 20px; line-height: 1;
+    cursor: pointer;
+    user-select: none;
+  }
+  .star-picker .st {
+    color: #d7c5a5;
+    transition: color .1s, transform .1s;
+  }
+  .star-picker .st.on { color: #e8a64a; }
+  .star-picker .st:active { transform: scale(1.2); }
+
+  .wish-list {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .wish-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: start;
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-soft);
+  }
+  .wish-item.done { opacity: 0.55; }
+  .wish-item.done .wish-name { text-decoration: line-through; }
+  .wish-cat-icon {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  .wish-body { min-width: 0; }
+  .wish-name {
+    font-weight: 700; font-size: 14px;
+    color: var(--text);
+    word-break: break-word;
+  }
+  .wish-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .wish-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--muted);
+    letter-spacing: 0.3px;
+  }
+  .wish-tag.region-macau { background: #f7e3d8; color: #b06038; }
+  .wish-tag.region-hk { background: #e4ece2; color: #4d7256; }
+  .wish-tag.region-both { background: #ece4d8; color: var(--primary-dark); }
+  @media (prefers-color-scheme: dark) {
+    .wish-tag.region-macau { background: #4a2d1f; color: #e09d78; }
+    .wish-tag.region-hk { background: #2d3d2f; color: #a5c9ac; }
+    .wish-tag.region-both { background: #3d3020; color: #e0c098; }
+  }
+  .wish-memo {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .wish-stars {
+    display: inline-flex; gap: 1px;
+    font-size: 13px;
+    margin-top: 4px;
+    color: #e8a64a;
+  }
+  .wish-stars .empty { color: var(--border); }
+  .wish-actions {
+    display: flex; flex-direction: column; gap: 4px;
+    align-items: flex-end;
+  }
+  .wish-actions button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 4px;
+    line-height: 1;
+    color: var(--muted);
+  }
+  .wish-actions .done-btn.on { color: var(--success); }
+  .wish-actions .del-btn:hover { color: var(--accent); }
+  .wish-summary {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--muted);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+  }
+
+  @media (min-width: 720px) {
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    nav.tabs button { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <button class="sync-badge" id="sync-badge" onclick="scrollToSync()">
+    <span class="dot"></span><span id="sync-text">미연결</span>
+  </button>
+
+  <div class="family">
+    <div class="avatar">
+      <div class="circle" id="av-dad">세</div>
+      <div class="name">강세진</div>
+      <div class="role">Dad</div>
+    </div>
+    <div class="avatar">
+      <div class="circle" id="av-mom">은</div>
+      <div class="name">황은비</div>
+      <div class="role">Mom</div>
+    </div>
+    <div class="avatar">
+      <div class="circle" id="av-kid">유</div>
+      <div class="name">강유주</div>
+      <div class="role">8 yrs</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;">
+    <div class="trip-date-chip">Hong Kong · Macau</div>
+    <h1>우리 가족 여행가요!</h1>
+    <div class="sub">香港 · 澳門 · Family Album</div>
+  </div>
+
+  <div class="countdown" id="countdown">
+    <div class="cell"><div class="num" id="cd-days">-</div><div class="lbl">DAYS</div></div>
+    <div class="cell"><div class="num" id="cd-hours">-</div><div class="lbl">HOURS</div></div>
+    <div class="cell"><div class="num" id="cd-mins">-</div><div class="lbl">MINS</div></div>
+    <div class="cell"><div class="num" id="cd-secs">-</div><div class="lbl">SECS</div></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section class="section active" id="home">
+    <h2 class="title"><span class="emoji">🏠</span> 홈 대시보드</h2>
+
+    <div class="card" id="sync-card" style="border:2px solid var(--primary);">
+      <h3>👨‍👩‍👧 와이프와 함께 체크하기</h3>
+      <p class="lead" style="margin:0 0 10px;">둘이 같은 <b>가족 코드</b>를 입력하면 체크리스트·예산이 실시간 동기화돼요. (계정 가입 필요 없음)</p>
+      <div style="display:flex; gap:8px; flex-wrap: wrap;">
+        <input type="text" id="family-code" placeholder="예: kim-family-hk-2026"
+               style="flex:1; min-width:160px; padding:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); font-family:inherit; font-size:14px;" />
+        <button class="btn" id="sync-connect-btn" onclick="toggleSync()">연결</button>
+      </div>
+      <div id="sync-info" style="margin-top:8px; font-size:12px; color:var(--muted);">
+        💡 아무 문자열이나 OK. 단, 남이 맞추기 어렵게 지어주세요 (예: 성씨+여행지+날짜)
+      </div>
+      <div id="sync-activity" style="margin-top:6px; font-size:12px; color:var(--primary); display:none;"></div>
+    </div>
+
+    <div class="card">
+      <h3>📅 여행 날짜</h3>
+      <p class="lead" style="margin:0 0 10px;">출발일·귀국일을 설정하면 카운트다운, 날씨 예보, 일정표 날짜가 자동으로 채워져요.</p>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+        <div>
+          <div style="font-size:11px; color:var(--muted); font-weight:700; margin-bottom:4px;">✈️ 출발</div>
+          <input type="date" id="start-date" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); font-family:inherit; font-size:14px;" />
+        </div>
+        <div>
+          <div style="font-size:11px; color:var(--muted); font-weight:700; margin-bottom:4px;">🏠 귀국</div>
+          <input type="date" id="end-date" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); color:var(--text); font-family:inherit; font-size:14px;" />
+        </div>
+      </div>
+      <button class="btn" onclick="saveDate()" style="width:100%;">저장</button>
+      <div id="trip-length" style="margin-top:10px; font-size:14px; font-family:var(--font-hand); font-weight:700; color:var(--primary-dark); text-align:center;"></div>
+    </div>
+
+    <div class="card">
+      <h3>✈️ 항공편 정보</h3>
+      <p class="lead" style="margin:0 0 4px;">출발·귀국 항공편을 등록하면 탑승권처럼 표시돼요.</p>
+
+      <!-- Outbound -->
+      <div class="flight-pass" data-flight="outbound" id="flight-outbound">
+        <div class="flight-pass-header">
+          <span class="flight-direction">🛫 출국</span>
+          <span class="flight-airline-no" id="fo-airline-no">미등록</span>
+        </div>
+        <div class="flight-pass-route">
+          <div class="airport from">
+            <div class="airport-code" id="fo-dep-code">—</div>
+            <div class="airport-time" id="fo-dep-time">--:--</div>
+            <div class="airport-name" id="fo-dep-name">출발지</div>
+          </div>
+          <div class="plane-arrow">✈</div>
+          <div class="airport to">
+            <div class="airport-code" id="fo-arr-code">MFM</div>
+            <div class="airport-time" id="fo-arr-time">--:--</div>
+            <div class="airport-name" id="fo-arr-name">마카오</div>
+          </div>
+        </div>
+        <div class="flight-extras" id="fo-extras"></div>
+        <div class="flight-pass-footer">
+          <span class="meta" id="fo-date-label">날짜 미정</span>
+          <button class="flight-edit-btn" onclick="toggleFlightForm('outbound')">편집</button>
+        </div>
+        <form class="flight-form hidden" id="fo-form" onsubmit="return saveFlight(event,'outbound')">
+          <div class="full"><label>항공사</label><input type="text" name="airline" placeholder="예: 대한항공 / Cathay Pacific" /></div>
+          <div><label>편명</label><input type="text" name="flightNo" placeholder="예: KE609" /></div>
+          <div><label>날짜</label><input type="date" name="date" /></div>
+          <div><label>출발 공항</label><input type="text" name="depAirport" placeholder="ICN" maxlength="20" /></div>
+          <div><label>출발 시각</label><input type="time" name="depTime" /></div>
+          <div><label>도착 공항</label><input type="text" name="arrAirport" placeholder="MFM" maxlength="20" /></div>
+          <div><label>도착 시각</label><input type="time" name="arrTime" /></div>
+          <div><label>터미널</label><input type="text" name="terminal" placeholder="예: T1" /></div>
+          <div><label>좌석</label><input type="text" name="seats" placeholder="23A, 23B, 23C" /></div>
+          <div class="full"><label>예약번호 (PNR)</label><input type="text" name="pnr" placeholder="예: ABC123" /></div>
+          <div class="full"><label>메모</label><textarea name="notes" placeholder="수하물 규정, 기내식 등"></textarea></div>
+          <div class="flight-form-actions">
+            <button type="button" class="btn ghost" onclick="toggleFlightForm('outbound')">취소</button>
+            <button type="submit" class="btn">저장</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Return -->
+      <div class="flight-pass" data-flight="return" id="flight-return">
+        <div class="flight-pass-header">
+          <span class="flight-direction">🛬 귀국</span>
+          <span class="flight-airline-no" id="fr-airline-no">미등록</span>
+        </div>
+        <div class="flight-pass-route">
+          <div class="airport from">
+            <div class="airport-code" id="fr-dep-code">HKG</div>
+            <div class="airport-time" id="fr-dep-time">--:--</div>
+            <div class="airport-name" id="fr-dep-name">홍콩</div>
+          </div>
+          <div class="plane-arrow">✈</div>
+          <div class="airport to">
+            <div class="airport-code" id="fr-arr-code">—</div>
+            <div class="airport-time" id="fr-arr-time">--:--</div>
+            <div class="airport-name" id="fr-arr-name">도착지</div>
+          </div>
+        </div>
+        <div class="flight-extras" id="fr-extras"></div>
+        <div class="flight-pass-footer">
+          <span class="meta" id="fr-date-label">날짜 미정</span>
+          <button class="flight-edit-btn" onclick="toggleFlightForm('return')">편집</button>
+        </div>
+        <form class="flight-form hidden" id="fr-form" onsubmit="return saveFlight(event,'return')">
+          <div class="full"><label>항공사</label><input type="text" name="airline" placeholder="예: 대한항공 / Cathay Pacific" /></div>
+          <div><label>편명</label><input type="text" name="flightNo" placeholder="예: KE610" /></div>
+          <div><label>날짜</label><input type="date" name="date" /></div>
+          <div><label>출발 공항</label><input type="text" name="depAirport" placeholder="HKG" maxlength="20" /></div>
+          <div><label>출발 시각</label><input type="time" name="depTime" /></div>
+          <div><label>도착 공항</label><input type="text" name="arrAirport" placeholder="ICN" maxlength="20" /></div>
+          <div><label>도착 시각</label><input type="time" name="arrTime" /></div>
+          <div><label>터미널</label><input type="text" name="terminal" placeholder="예: T1" /></div>
+          <div><label>좌석</label><input type="text" name="seats" placeholder="23A, 23B, 23C" /></div>
+          <div class="full"><label>예약번호 (PNR)</label><input type="text" name="pnr" placeholder="예: ABC123" /></div>
+          <div class="full"><label>메모</label><textarea name="notes" placeholder="환승, 기내식 등"></textarea></div>
+          <div class="flight-form-actions">
+            <button type="button" class="btn ghost" onclick="toggleFlightForm('return')">취소</button>
+            <button type="submit" class="btn">저장</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✅ 준비 진행률</h3>
+      <div id="prep-summary" style="font-size:13px; color:var(--muted);">체크리스트에서 항목을 확인해보세요.</div>
+      <div class="progress-bar"><div class="progress-fill" id="prep-progress" style="width:0%"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="weather-head">
+        <h3>🌤️ 홍콩 일정별 날씨</h3>
+        <button class="refresh-btn" id="refresh-weather-btn" onclick="refreshWeather()" title="새로고침">↻</button>
+      </div>
+      <div class="weather-scroll" id="weather-scroll">
+        <div class="weather-empty">출발일을 설정하면 날씨 예보가 표시돼요.</div>
+      </div>
+      <div class="weather-footer">
+        <span id="weather-updated">—</span>
+        <span>Open-Meteo · 香港</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>💡 핵심 팁 3가지</h3>
+      <ul style="margin:6px 0 0; padding-left: 18px; font-size:14px;">
+        <li><b>옥토퍼스 카드</b> 도착 직후 공항에서 구매 → MTR, 버스, 트램, 편의점 다 OK</li>
+        <li><b>디즈니랜드 티켓</b>은 한국에서 미리 예매 (현장가 대비 저렴)</li>
+        <li><b>마카오 당일치기</b>는 터보젯 페리 왕복 or 항주아오 대교 버스 추천</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="section" id="itinerary">
+    <h2 class="title"><span class="emoji">📆</span> 5일 일정표</h2>
+    <p class="lead">아이 체력을 고려해 오전은 활동, 오후는 여유롭게 짰어요. 원하면 순서 바꿔도 OK.</p>
+
+    <div class="card wish-card">
+      <h3>📝 우리의 위시리스트</h3>
+      <p class="lead" style="margin: 4px 0 8px;">둘이 같이 가고 싶은 곳을 채워나가요. 별점으로 우선순위를 표시할 수 있어요.</p>
+
+      <div class="wish-tabs" id="wish-tabs">
+        <button class="wish-tab active" data-wish-cat="all">전체 <span class="count" id="wish-count-all">0</span></button>
+        <button class="wish-tab" data-wish-cat="shop">🛍 쇼핑 <span class="count" id="wish-count-shop">0</span></button>
+        <button class="wish-tab" data-wish-cat="sight">🗺 관광 <span class="count" id="wish-count-sight">0</span></button>
+        <button class="wish-tab" data-wish-cat="food">🍜 맛집 <span class="count" id="wish-count-food">0</span></button>
+      </div>
+
+      <div class="wish-form">
+        <input type="text" id="wish-name" placeholder="이름 (예: 빅토리아 피크)" class="full" />
+        <select id="wish-cat">
+          <option value="sight">🗺 관광</option>
+          <option value="food">🍜 맛집</option>
+          <option value="shop">🛍 쇼핑</option>
+        </select>
+        <select id="wish-region">
+          <option value="both">📍 어디든</option>
+          <option value="macau">📍 마카오</option>
+          <option value="hk">📍 홍콩</option>
+        </select>
+        <textarea id="wish-memo" placeholder="메모 (선택) — 예: 와이프가 유튜브에서 발견" class="full"></textarea>
+        <div class="wish-form-row">
+          <span class="label">우선순위</span>
+          <div class="star-picker" id="wish-star-picker" data-value="0">
+            <span class="st" data-val="1">★</span>
+            <span class="st" data-val="2">★</span>
+            <span class="st" data-val="3">★</span>
+          </div>
+          <button class="btn" style="margin-left:auto;" onclick="addWish()">추가하기</button>
+        </div>
+      </div>
+
+      <div class="wish-list" id="wish-list"></div>
+      <div class="wish-summary" id="wish-summary" style="display:none;"></div>
+    </div>
+
+    <div class="card day-card" data-day="1">
+      <div class="day-label">DAY 1 · 마카오 도착 <span class="day-date"></span></div>
+      <h3>🛬 마카오 입성 & 코타이 야경</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="tl-time">오후</div><div class="tl-body"><div class="ttl">마카오 국제공항(MFM) 도착</div><div class="desc">입국 후 셔틀버스 or 택시로 코타이 지역 이동 (대부분 호텔 무료 셔틀 제공)</div></div></div>
+        <div class="timeline-item"><div class="tl-time">16:00</div><div class="tl-body"><div class="ttl">호텔 체크인 & 휴식</div><div class="desc">베네시안·파리지앵·그랜드 리스보아 등 코타이 추천. 장거리 비행 후 아이 낮잠 or 호텔 수영장</div></div></div>
+        <div class="timeline-item"><div class="tl-time">18:30</div><div class="tl-body"><div class="ttl">세나도 광장 저녁 산책</div><div class="desc">포르투갈풍 물결무늬 바닥 타일. 근처 카페에서 포르투갈 요리 or 마카오식 돼지고기 번</div></div></div>
+        <div class="timeline-item"><div class="tl-time">20:30</div><div class="tl-body"><div class="ttl">파리지앵 에펠탑 라이팅</div><div class="desc">일몰 후 조명쇼 장관. 아이와 전망대(37층) 야경 추천</div></div></div>
+      </div>
+    </div>
+
+    <div class="card day-card" data-day="2">
+      <div class="day-label">DAY 2 · 마카오 풀데이 <span class="day-date"></span></div>
+      <h3>🏛️ 마카오 구석구석 탐방</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="tl-time">09:30</div><div class="tl-body"><div class="ttl">성 바울 성당 & 마운트 포트</div><div class="desc">유네스코 세계유산. 파사드만 남은 성당과 뒷편 요새. 완만한 경사라 유주도 OK</div></div></div>
+        <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-body"><div class="ttl">마가렛 에그타르트 (원조)</div><div class="desc">세나도 광장 근처. 줄 서도 먹어볼 가치 있음. 포장해서 이동 간식으로도</div></div></div>
+        <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="ttl">베네시안 실내 곤돌라 & 점심</div><div class="desc">실내 운하에서 곤돌라 타기! 유주 반응 최고. 식당 다양</div></div></div>
+        <div class="timeline-item"><div class="tl-time">15:00</div><div class="tl-body"><div class="ttl">마카오 타워 전망 (일몰)</div><div class="desc">338m 전망대 + 스카이워크 구경. 시간대별 풍경 다름</div></div></div>
+        <div class="timeline-item"><div class="tl-time">17:30</div><div class="tl-body"><div class="ttl">타이파 빌리지 산책</div><div class="desc">포르투갈풍 거리, 파스텔 건물. 골목 예쁨, 사진 명소</div></div></div>
+        <div class="timeline-item"><div class="tl-time">19:30</div><div class="tl-body"><div class="ttl">저녁 (포르투갈식 or 마카오식)</div><div class="desc">포르투갈 치킨, 아프리카 치킨, 미니 에그타르트로 마무리</div></div></div>
+      </div>
+    </div>
+
+    <div class="card day-card" data-day="3">
+      <div class="day-label">DAY 3 · 마카오 → 홍콩 <span class="day-date"></span></div>
+      <h3>⛴️ 페리 이동 & 침사추이 야경</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="tl-time">09:00</div><div class="tl-body"><div class="ttl">호텔 조식 & 여유</div><div class="desc">체크아웃 전까지 수영장 or 산책. 아이 컨디션 관리 우선</div></div></div>
+        <div class="timeline-item"><div class="tl-time">11:00</div><div class="tl-body"><div class="ttl">체크아웃 → 외항 페리 터미널</div><div class="desc">짐 가지고 택시로 이동 (15분 내외). 여권·입국카드 준비</div></div></div>
+        <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="ttl">터보젯 페리 (MFM → HK)</div><div class="desc">1시간 소요. 사전 예매 추천. 창가석이면 유주에게 바닷길 구경</div></div></div>
+        <div class="timeline-item"><div class="tl-time">14:00</div><div class="tl-body"><div class="ttl">홍콩 호텔 체크인</div><div class="desc">침사추이 or 센트럴 지역 추천. MTR 접근성 최우선. 옥토퍼스 카드 구매</div></div></div>
+        <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-body"><div class="ttl">에비뉴 오브 스타 & 해변 산책</div><div class="desc">이소룡 동상, 홍콩 영화 스타 손도장. 침사추이 수변 여유</div></div></div>
+        <div class="timeline-item"><div class="tl-time">18:30</div><div class="tl-body"><div class="ttl">저녁 (딤섬 or 완탕면)</div><div class="desc">팀호완, 카우키 등. 유주는 새우만두·완탕면·볶음밥 안전</div></div></div>
+        <div class="timeline-item"><div class="tl-time">20:00</div><div class="tl-body"><div class="ttl">심포니 오브 라이트 쇼</div><div class="desc">매일 저녁 8시, 수변에서 무료 관람 (10분). 보고 바로 호텔</div></div></div>
+      </div>
+    </div>
+
+    <div class="card day-card" data-day="4">
+      <div class="day-label">DAY 4 · 디즈니랜드 <span class="day-date"></span></div>
+      <h3>🏰 홍콩 디즈니랜드 (유주 메인이벤트!)</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="tl-time">09:30</div><div class="tl-body"><div class="ttl">MTR 디즈니 라인 탑승</div><div class="desc">선니 역에서 디즈니 전용 열차로 환승 (창문이 미키 모양!)</div></div></div>
+        <div class="timeline-item"><div class="tl-time">10:00</div><div class="tl-body"><div class="ttl">개장과 동시에 입장</div><div class="desc">인기 어트랙션 먼저: 아이언맨, 미스틱 포인트, 크리스탈의 미키</div></div></div>
+        <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="ttl">테마 레스토랑 점심</div><div class="desc">Royal Banquet Hall 또는 Tahitian Terrace (캐릭터 푸드)</div></div></div>
+        <div class="timeline-item"><div class="tl-time">15:00</div><div class="tl-body"><div class="ttl">퍼레이드 관람 + 사진</div><div class="desc">메인 스트리트 USA 쪽 자리 일찍 잡기</div></div></div>
+        <div class="timeline-item"><div class="tl-time">20:00</div><div class="tl-body"><div class="ttl">불꽃놀이 "Momentous"</div><div class="desc">성 앞에서 감상 → 바로 호텔 (유주 피곤함 주의)</div></div></div>
+      </div>
+    </div>
+
+    <div class="card day-card" data-day="5">
+      <div class="day-label">DAY 5 · 홍콩 마지막날 & 출국 <span class="day-date"></span></div>
+      <h3>🚡 빅토리아 피크 → 쇼핑 → HKG</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="tl-time">09:00</div><div class="tl-body"><div class="ttl">피크트램 탑승</div><div class="desc">중환에서 출발, 예약 필수! 스카이테라스 428에서 전망 감상</div></div></div>
+        <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-body"><div class="ttl">센트럴 점심 (딤섬)</div><div class="desc">Tim Ho Wan(팀호완) 또는 Yum Cha 추천 (유주용 팬더 번!)</div></div></div>
+        <div class="timeline-item"><div class="tl-time">13:00</div><div class="tl-body"><div class="ttl">스타페리 → 하버시티 쇼핑</div><div class="desc">저렴한 2층 페리(5분), 유주 캐릭터 용품. Jenny Bakery 쿠키는 기념품 최고</div></div></div>
+        <div class="timeline-item"><div class="tl-time">15:30</div><div class="tl-body"><div class="ttl">호텔 체크아웃 → 공항</div><div class="desc">공항 익스프레스(AEL) 이용, 홍콩 시내에서 24분. 인-타운 체크인 활용 시 편해요</div></div></div>
+        <div class="timeline-item"><div class="tl-time">17:00</div><div class="tl-body"><div class="ttl">홍콩 국제공항(HKG) 도착</div><div class="desc">출국 2~2.5시간 전 도착 권장. 마지막 딤섬 or 공차로 피날레</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="section" id="checklist">
+    <h2 class="title"><span class="emoji">✅</span> 체크리스트</h2>
+    <p class="lead">체크한 항목은 자동 저장돼요.</p>
+
+    <div class="card">
+      <h3>🛂 출국 전 필수</h3>
+      <div id="cl-before"></div>
+    </div>
+
+    <div class="card">
+      <h3>🎒 짐 싸기 (공용)</h3>
+      <div id="cl-luggage"></div>
+    </div>
+
+    <div class="card">
+      <h3>🧒 아이(8세) 용품</h3>
+      <div id="cl-kid"></div>
+    </div>
+
+    <div class="card">
+      <h3>💊 비상약 & 의료</h3>
+      <div id="cl-health"></div>
+    </div>
+  </section>
+
+  <!-- BUDGET -->
+  <section class="section" id="budget">
+    <h2 class="title"><span class="emoji">💰</span> 예산 관리</h2>
+
+    <div class="budget-summary">
+      <div class="lbl">총 지출</div>
+      <div class="amount" id="total-amount">₩0</div>
+      <div class="budget-grid" id="budget-cat-grid"></div>
+    </div>
+
+    <div class="card">
+      <h3>➕ 지출 추가</h3>
+      <div class="expense-form">
+        <input type="text" id="exp-name" placeholder="예: 디즈니랜드 티켓" />
+        <input type="number" id="exp-amount" placeholder="금액 (원)" inputmode="numeric" />
+        <select id="exp-cat">
+          <option value="항공">✈️ 항공</option>
+          <option value="숙박">🏨 숙박</option>
+          <option value="식비">🍜 식비</option>
+          <option value="교통">🚇 교통</option>
+          <option value="관광">🎢 관광</option>
+          <option value="쇼핑">🛍️ 쇼핑</option>
+          <option value="기타">💳 기타</option>
+        </select>
+        <button class="btn" onclick="addExpense()">추가</button>
+      </div>
+      <div class="expense-list" id="expense-list"></div>
+    </div>
+  </section>
+
+  <!-- PLACES -->
+  <section class="section" id="places">
+    <h2 class="title"><span class="emoji">📍</span> 명소 가이드</h2>
+
+    <div class="card">
+      <h3>🏰 아이가 좋아할 곳</h3>
+      <details>
+        <summary>홍콩 디즈니랜드 <span class="pill kid">아이 추천</span></summary>
+        <p style="font-size:13px;">미취학~초등 아이에게 최고. 입장권 한국 사전 예매가 저렴. 마이 매직 포토 패키지 고려.</p>
+      </details>
+      <details>
+        <summary>오션파크 <span class="pill kid">아이 추천</span></summary>
+        <p style="font-size:13px;">판다, 해양관, 놀이기구가 골고루. 반나절 코스 가능. 케이블카 경치 좋음.</p>
+      </details>
+      <details>
+        <summary>마카오 베네시안 곤돌라 <span class="pill kid">아이 추천</span></summary>
+        <p style="font-size:13px;">실내 운하에서 곤돌라 타기. 뱃사공이 노래도 불러줌. 사진 명소.</p>
+      </details>
+      <details>
+        <summary>스타페리 <span class="pill kid">아이 추천</span></summary>
+        <p style="font-size:13px;">저렴한 뱃놀이. 2층에서 바람 맞으며 5분, 아이 반응 좋음.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>🌆 필수 관광지</h3>
+      <details>
+        <summary>빅토리아 피크 <span class="pill must">필수</span></summary>
+        <p style="font-size:13px;">홍콩 최고 전망. 피크트램 예약 필수. 해질녘 노을~야경 타이밍이 최고.</p>
+      </details>
+      <details>
+        <summary>침사추이 & 심포니 오브 라이트 <span class="pill must">필수</span></summary>
+        <p style="font-size:13px;">매일 저녁 8시 무료 야경쇼 (10분). 에비뉴 오브 스타 산책.</p>
+      </details>
+      <details>
+        <summary>세나도 광장 & 성 바울 성당 (마카오) <span class="pill must">필수</span></summary>
+        <p style="font-size:13px;">유네스코 세계유산. 포르투갈풍 바닥 타일, 파사드만 남은 성당.</p>
+      </details>
+      <details>
+        <summary>템플스트리트 야시장</summary>
+        <p style="font-size:13px;">저녁 7시 이후 활발. 길거리 음식, 기념품. 지갑 조심.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="section" id="food">
+    <h2 class="title"><span class="emoji">🍜</span> 맛집 추천</h2>
+    <p class="lead">아이가 함께 가도 좋은 곳 위주로.</p>
+
+    <div class="card">
+      <h3>🥟 딤섬 & 중식</h3>
+      <details><summary>팀호완 (Tim Ho Wan) <span class="pill eat">미슐랭</span></summary>
+        <p style="font-size:13px;">세계 최저가 미슐랭. 차슈바오(BBQ 번), 하가우 꼭 먹어보세요. 아이도 좋아함.</p></details>
+      <details><summary>임금헌 (Yum Cha)</summary>
+        <p style="font-size:13px;">팬더, 돼지 모양의 귀여운 딤섬. 아이 사진 찍기 좋음.</p></details>
+      <details><summary>카우키 (Kau Kee)</summary>
+        <p style="font-size:13px;">브리스킷 누들. 어른 추천, 매우 현지스러움.</p></details>
+    </div>
+
+    <div class="card">
+      <h3>🍮 디저트 & 간식</h3>
+      <details><summary>마가렛 에그타르트 (마카오)</summary>
+        <p style="font-size:13px;">포르투갈식 에그타르트 원조. 따끈할 때 먹어야.</p></details>
+      <details><summary>허유산 (Hui Lau Shan)</summary>
+        <p style="font-size:13px;">망고 디저트 체인. 아이가 환호.</p></details>
+      <details><summary>Jenny Bakery 쿠키</summary>
+        <p style="font-size:13px;">선물용 최고. 공항에서도 구매 가능하지만 줄이 김.</p></details>
+    </div>
+
+    <div class="card">
+      <h3>🍽️ 한식/양식 (아이 입맛 비상시)</h3>
+      <details><summary>리틀 바오 (Little Bao)</summary>
+        <p style="font-size:13px;">퓨전 바오 버거. 아이가 잘 먹음.</p></details>
+      <details><summary>호텔 조식 뷔페</summary>
+        <p style="font-size:13px;">아이가 편식해도 안전한 옵션 다양.</p></details>
+    </div>
+  </section>
+
+  <!-- PHRASES -->
+  <section class="section" id="phrases">
+    <h2 class="title"><span class="emoji">🗣️</span> 여행 회화</h2>
+    <p class="lead">홍콩은 영어가 잘 통하지만, 광둥어 한 마디가 분위기를 바꿔요.</p>
+
+    <div class="card">
+      <h3>기본 인사</h3>
+      <div class="phrase"><div class="ko">안녕하세요</div><div class="en">Hello</div><div class="ca">你好 네이호우 (nei5 hou2)</div></div>
+      <div class="phrase"><div class="ko">감사합니다 (음식/서비스)</div><div class="en">Thank you</div><div class="ca">唔該 음꼬이 (m4 goi1)</div></div>
+      <div class="phrase"><div class="ko">감사합니다 (선물/호의)</div><div class="en">Thanks (gift)</div><div class="ca">多謝 도쩨 (do1 ze6)</div></div>
+      <div class="phrase"><div class="ko">죄송합니다</div><div class="en">Sorry / Excuse me</div><div class="ca">對唔住 도이음쥬 (deoi3 m4 zyu6)</div></div>
+    </div>
+
+    <div class="card">
+      <h3>식당에서</h3>
+      <div class="phrase"><div class="ko">메뉴판 주세요</div><div class="en">Menu, please</div><div class="ca">唔該, 餐牌 음꼬이, 찬파이</div></div>
+      <div class="phrase"><div class="ko">이거 주세요</div><div class="en">I'll have this</div><div class="ca">我要呢個 응요우 니고</div></div>
+      <div class="phrase"><div class="ko">계산해주세요</div><div class="en">Check, please</div><div class="ca">埋單 마이단 (maai4 daan1)</div></div>
+      <div class="phrase"><div class="ko">맵지 않게 해주세요</div><div class="en">Not spicy, please</div><div class="ca">唔該, 唔辣 음꼬이 음랏</div></div>
+    </div>
+
+    <div class="card">
+      <h3>이동 / 위급</h3>
+      <div class="phrase"><div class="ko">이거 얼마예요?</div><div class="en">How much?</div><div class="ca">幾多錢? 게이도친?</div></div>
+      <div class="phrase"><div class="ko">도와주세요</div><div class="en">Help me!</div><div class="ca">救命! 까우멩!</div></div>
+      <div class="phrase"><div class="ko">화장실 어디예요?</div><div class="en">Where is the toilet?</div><div class="ca">洗手間喺邊度? 사이사우깐 하이빈도우?</div></div>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="section" id="info">
+    <h2 class="title"><span class="emoji">ℹ️</span> 비상 & 실용 정보</h2>
+
+    <div class="card">
+      <h3>🚨 긴급 연락처</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="ic">🚓</div>
+          <div><div class="lbl">홍콩 통합 응급</div><div class="val"><a href="tel:999">999</a></div></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">🚑</div>
+          <div><div class="lbl">마카오 응급</div><div class="val"><a href="tel:999">999</a></div></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">🇰🇷</div>
+          <div><div class="lbl">주홍콩 한국 총영사관</div><div class="val"><a href="tel:+85225293257">+852 2529 3257</a></div></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">📞</div>
+          <div><div class="lbl">영사콜센터 (24시간)</div><div class="val"><a href="tel:+82232100404">+82 2 3210 0404</a></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🚇 교통 정보</h3>
+      <details open>
+        <summary>옥토퍼스(Octopus) 카드</summary>
+        <p style="font-size:13px;">HK$150 (보증금 HK$50 포함)으로 시작. MTR, 버스, 트램, 페리, 편의점, 일부 식당까지 모두 결제 가능. 공항 도착 후 바로 구매 추천.</p>
+      </details>
+      <details>
+        <summary>MTR (지하철)</summary>
+        <p style="font-size:13px;">깨끗하고 정확. 영어 표기 완비. 디즈니 라인, 공항 익스프레스 별도.</p>
+      </details>
+      <details>
+        <summary>마카오 가는 법</summary>
+        <p style="font-size:13px;"><b>페리(터보젯)</b>: 홍콩-마카오 페리터미널(HK) ↔ 아웃타외시 터미널(마카오), 55분, HK$175~. <br/><b>HZMB 버스</b>: 항주아오 대교, 저렴하지만 시간 더 걸림.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>🔌 실용 꿀팁</h3>
+      <details>
+        <summary>콘센트 / 어댑터</summary>
+        <p style="font-size:13px;">영국식 3핀 (Type G). 멀티 어댑터 꼭 챙기세요. 호텔에서 빌려주기도 함.</p>
+      </details>
+      <details>
+        <summary>환율 / 결제</summary>
+        <p style="font-size:13px;">홍콩 달러(HKD), 마카오 파타카(MOP). 마카오에서 HKD도 대부분 통용. 신용카드 잘 되지만, 소액은 현금/옥토퍼스.</p>
+      </details>
+      <details>
+        <summary>물 / 화장실</summary>
+        <p style="font-size:13px;">수돗물은 끓여서 / 생수 권장. 공공 화장실은 MTR역, 쇼핑몰 이용 추천.</p>
+      </details>
+      <details>
+        <summary>아이와 이동 시</summary>
+        <p style="font-size:13px;">유모차는 MTR 엘리베이터 위치 미리 확인. 택시는 현금 선호. Uber도 가능.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<nav class="tabs">
+  <button class="active" data-tab="home"><div class="ic">🏠</div>홈</button>
+  <button data-tab="itinerary"><div class="ic">📆</div>일정</button>
+  <button data-tab="checklist"><div class="ic">✅</div>체크</button>
+  <button data-tab="budget"><div class="ic">💰</div>예산</button>
+  <button data-tab="places"><div class="ic">📍</div>명소</button>
+  <button data-tab="food"><div class="ic">🍜</div>맛집</button>
+  <button data-tab="phrases"><div class="ic">🗣️</div>회화</button>
+  <button data-tab="info"><div class="ic">ℹ️</div>정보</button>
+</nav>
+
+<script>
+  // ---------- Safe storage (fallback to memory) ----------
+  const memStore = {};
+  const store = {
+    get(k) {
+      try { return localStorage.getItem(k); } catch(e) { return memStore[k] ?? null; }
+    },
+    set(k, v) {
+      try { localStorage.setItem(k, v); } catch(e) { memStore[k] = v; }
+    }
+  };
+
+  // ---------- Tabs ----------
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const sections = document.querySelectorAll('main .section');
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      tabs.forEach(b => b.classList.toggle('active', b === btn));
+      sections.forEach(s => s.classList.toggle('active', s.id === tab));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ---------- Countdown & Trip Dates ----------
+  function saveDate() {
+    const s = document.getElementById('start-date').value;
+    const e = document.getElementById('end-date').value;
+    if (!s) { alert('출발일을 선택해주세요.'); return; }
+    if (!e) { alert('귀국일을 선택해주세요.'); return; }
+    if (e < s) { alert('귀국일은 출발일 이후여야 해요.'); return; }
+    store.set('startDate', s);
+    store.set('endDate', e);
+    updateCountdown();
+    renderTripLength();
+    applyDayDates();
+    renderFlights(); // auto-refresh date labels on flight cards
+    alert('여행 날짜가 저장되었어요!');
+  }
+
+  function renderTripLength() {
+    const s = store.get('startDate');
+    const e = store.get('endDate');
+    const el = document.getElementById('trip-length');
+    if (!el) return;
+    if (!s || !e) { el.textContent = ''; return; }
+    const start = new Date(s + 'T00:00:00');
+    const end = new Date(e + 'T00:00:00');
+    const nights = Math.round((end - start) / 86400000);
+    const dayNames = ['일','월','화','수','목','금','토'];
+    const sLbl = `${start.getMonth()+1}/${start.getDate()}(${dayNames[start.getDay()]})`;
+    const eLbl = `${end.getMonth()+1}/${end.getDate()}(${dayNames[end.getDay()]})`;
+    const lenLbl = nights === 0 ? '당일치기' : `${nights}박 ${nights+1}일`;
+    el.textContent = `✈️ ${sLbl}  →  🏠 ${eLbl}  ·  ${lenLbl}`;
+  }
+
+  function applyDayDates() {
+    const s = store.get('startDate');
+    const e = store.get('endDate');
+    if (!s) return;
+    const start = new Date(s + 'T00:00:00');
+    const end = e ? new Date(e + 'T00:00:00') : null;
+    const dayNames = ['일','월','화','수','목','금','토'];
+    document.querySelectorAll('.day-card').forEach(card => {
+      const dayNum = parseInt(card.dataset.day, 10);
+      if (!dayNum) return;
+      const d = new Date(start);
+      d.setDate(d.getDate() + (dayNum - 1));
+      const out = end && d > end;
+      const spanEl = card.querySelector('.day-date');
+      if (spanEl) {
+        spanEl.textContent = `· ${d.getMonth()+1}/${d.getDate()} (${dayNames[d.getDay()]})`;
+        spanEl.classList.toggle('out-of-range', out);
+      }
+    });
+  }
+
+  function syncDateInputsFromStore() {
+    // Populate input values once (on load / on remote sync) — NOT every tick,
+    // otherwise clicking the input mid-edit would overwrite your new pick.
+    const saved = store.get('startDate');
+    const savedEnd = store.get('endDate');
+    const sEl = document.getElementById('start-date');
+    const eEl = document.getElementById('end-date');
+    if (saved && sEl && document.activeElement !== sEl) sEl.value = saved;
+    if (savedEnd && eEl && document.activeElement !== eEl) eEl.value = savedEnd;
+  }
+
+  function updateCountdown() {
+    const saved = store.get('startDate');
+    const savedEnd = store.get('endDate');
+    if (saved) {
+      const target = new Date(saved + 'T09:00:00').getTime();
+      const now = Date.now();
+      const diff = target - now;
+      if (diff > 0) {
+        const d = Math.floor(diff / (1000*60*60*24));
+        const h = Math.floor(diff % (1000*60*60*24) / (1000*60*60));
+        const m = Math.floor(diff % (1000*60*60) / (1000*60));
+        const s = Math.floor(diff % (1000*60) / 1000);
+        document.getElementById('cd-days').textContent = d;
+        document.getElementById('cd-hours').textContent = h;
+        document.getElementById('cd-mins').textContent = m;
+        document.getElementById('cd-secs').textContent = s;
+      } else {
+        // During the trip → show days until return
+        if (savedEnd) {
+          const endT = new Date(savedEnd + 'T23:59:59').getTime();
+          const dTillEnd = Math.max(0, Math.floor((endT - now) / 86400000));
+          document.getElementById('cd-days').textContent = '🎉';
+          document.getElementById('cd-hours').textContent = '여행';
+          document.getElementById('cd-mins').textContent = '중';
+          document.getElementById('cd-secs').textContent = `D-${dTillEnd}`;
+        } else {
+          document.getElementById('cd-days').textContent = '🎉';
+          document.getElementById('cd-hours').textContent = '여행';
+          document.getElementById('cd-mins').textContent = '즐거운';
+          document.getElementById('cd-secs').textContent = '시간!';
+        }
+      }
+    }
+  }
+  setInterval(updateCountdown, 1000);
+  syncDateInputsFromStore();
+  updateCountdown();
+  renderTripLength();
+  applyDayDates();
+
+  // ---------- Checklist ----------
+  const checklistData = {
+    'cl-before': [
+      '여권 유효기간 6개월 이상 확인 (3명 모두)',
+      '홍콩/마카오 입국 서류 (비자 필요 여부 확인)',
+      '항공권 예약 & e-티켓 출력/저장',
+      '호텔 예약 확정 (바우처 저장)',
+      '여행자 보험 가입 (아이 포함)',
+      '환전 (홍콩 달러 HKD) — 일부는 현지 ATM 활용',
+      '로밍 or eSIM 준비 (부모 폰 2대)',
+      '디즈니랜드 티켓 사전 예매',
+      '피크트램 사전 예매',
+      '마카오 페리 왕복 예매',
+      '국제 운전면허증 (필요시)',
+      '해외결제 가능한 카드 확인',
+    ],
+    'cl-luggage': [
+      '멀티 어댑터 (영국식 Type G)',
+      '보조 배터리 (2개, 용량 확인)',
+      '충전 케이블 (라이트닝/C타입)',
+      '접이식 우산 (3개)',
+      '얇은 긴팔 / 가벼운 점퍼',
+      '편한 운동화 (많이 걸음)',
+      '자외선 차단제 (SPF50+)',
+      '선글라스, 모자',
+      '수영복 (호텔 수영장)',
+      '비닐 지퍼백 (분리 수납)',
+      '소형 여행용 세탁 세제',
+      '카메라 / GoPro',
+    ],
+    'cl-kid': [
+      '아이 여권 & 사진 비상용',
+      '아이 상비약 (해열제, 반창고, 소독제)',
+      '멀미약 (페리/트램)',
+      '좋아하는 간식 (비상용)',
+      '휴대용 물티슈 (대용량)',
+      '아이 전용 물병',
+      '갈아입을 옷 2벌 + 양말 여분',
+      '좋아하는 장난감/인형 1개',
+      '색칠북 + 색연필 (비행기용)',
+      '태블릿 + 오프라인 영상/게임',
+      '유모차 or 아기띠 (장거리 도보용)',
+      '수영복 & 수영 튜브',
+      '디즈니에서 쓸 미키 머리띠 (현지 구매 OK)',
+    ],
+    'cl-health': [
+      '종합 감기약',
+      '지사제 / 정장제',
+      '소화제',
+      '알레르기약',
+      '반창고 & 상처 연고',
+      '체온계',
+      '마스크 (미세먼지/기내)',
+      '아이 전용 해열제 시럽',
+      '모기 기피제 & 물린데 연고',
+    ]
+  };
+
+  function renderChecklist() {
+    Object.keys(checklistData).forEach(groupId => {
+      const container = document.getElementById(groupId);
+      container.innerHTML = '';
+      checklistData[groupId].forEach((text, i) => {
+        const key = `${groupId}-${i}`;
+        const checked = store.get(key) === '1';
+        const div = document.createElement('div');
+        div.className = 'check-item' + (checked ? ' done' : '');
+        div.innerHTML = `
+          <input type="checkbox" id="${key}" ${checked ? 'checked' : ''}/>
+          <label for="${key}">${text}</label>
+        `;
+        const input = div.querySelector('input');
+        input.addEventListener('change', () => {
+          store.set(key, input.checked ? '1' : '0');
+          div.classList.toggle('done', input.checked);
+          updateProgress();
+        });
+        container.appendChild(div);
+      });
+    });
+    updateProgress();
+  }
+  function updateProgress() {
+    let total = 0, done = 0;
+    Object.keys(checklistData).forEach(groupId => {
+      checklistData[groupId].forEach((_, i) => {
+        total++;
+        if (store.get(`${groupId}-${i}`) === '1') done++;
+      });
+    });
+    const pct = total ? Math.round(done/total*100) : 0;
+    document.getElementById('prep-progress').style.width = pct + '%';
+    document.getElementById('prep-summary').textContent = `${done} / ${total} 완료 (${pct}%)`;
+  }
+  renderChecklist();
+
+  // ---------- Budget ----------
+  function getExpenses() {
+    try { return JSON.parse(store.get('expenses') || '[]'); } catch(e) { return []; }
+  }
+  function saveExpenses(list) {
+    store.set('expenses', JSON.stringify(list));
+  }
+  function addExpense() {
+    const name = document.getElementById('exp-name').value.trim();
+    const amount = parseInt(document.getElementById('exp-amount').value, 10);
+    const cat = document.getElementById('exp-cat').value;
+    if (!name || !amount) { alert('이름과 금액을 입력하세요'); return; }
+    const list = getExpenses();
+    list.push({ id: Date.now(), name, amount, cat, date: new Date().toISOString() });
+    saveExpenses(list);
+    document.getElementById('exp-name').value = '';
+    document.getElementById('exp-amount').value = '';
+    renderExpenses();
+  }
+  function delExpense(id) {
+    const list = getExpenses().filter(e => e.id !== id);
+    saveExpenses(list);
+    renderExpenses();
+  }
+  function renderExpenses() {
+    const list = getExpenses();
+    const total = list.reduce((s, e) => s + e.amount, 0);
+    document.getElementById('total-amount').textContent = '₩' + total.toLocaleString();
+
+    const byCat = {};
+    list.forEach(e => { byCat[e.cat] = (byCat[e.cat] || 0) + e.amount; });
+    const grid = document.getElementById('budget-cat-grid');
+    grid.innerHTML = '';
+    const icons = { 항공:'✈️', 숙박:'🏨', 식비:'🍜', 교통:'🚇', 관광:'🎢', 쇼핑:'🛍️', 기타:'💳' };
+    Object.keys(byCat).forEach(cat => {
+      const cell = document.createElement('div');
+      cell.innerHTML = `${icons[cat]||''} ${cat}<strong>₩${byCat[cat].toLocaleString()}</strong>`;
+      grid.appendChild(cell);
+    });
+
+    const el = document.getElementById('expense-list');
+    if (!list.length) {
+      el.innerHTML = '<div class="empty">아직 등록된 지출이 없어요.</div>';
+      return;
+    }
+    el.innerHTML = '';
+    list.slice().reverse().forEach(e => {
+      const d = new Date(e.date);
+      const item = document.createElement('div');
+      item.className = 'expense-item';
+      item.innerHTML = `
+        <div>
+          <div><b>${icons[e.cat]||''} ${e.name}</b></div>
+          <div class="meta">${e.cat} · ${d.getMonth()+1}/${d.getDate()}</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <b>₩${e.amount.toLocaleString()}</b>
+          <button onclick="delExpense(${e.id})" title="삭제">×</button>
+        </div>
+      `;
+      el.appendChild(item);
+    });
+  }
+  renderExpenses();
+
+  // ---------- Wishlist ----------
+  const WISH_CAT_ICON = { shop: '🛍', sight: '🗺', food: '🍜' };
+  const WISH_CAT_LABEL = { shop: '쇼핑', sight: '관광', food: '맛집' };
+  const WISH_REGION_LABEL = { macau: '마카오', hk: '홍콩', both: '어디든' };
+  let wishFilter = 'all';
+  let wishStarDraft = 0;
+
+  function getWishlist() {
+    try { return JSON.parse(store.get('wishlist') || '[]'); } catch (_) { return []; }
+  }
+  function saveWishlist(list) {
+    store.set('wishlist', JSON.stringify(list));
+  }
+  function setStarPicker(val) {
+    wishStarDraft = val;
+    const pk = document.getElementById('wish-star-picker');
+    if (!pk) return;
+    pk.dataset.value = String(val);
+    pk.querySelectorAll('.st').forEach(s => {
+      s.classList.toggle('on', parseInt(s.dataset.val, 10) <= val);
+    });
+  }
+  function addWish() {
+    const nameEl = document.getElementById('wish-name');
+    const name = nameEl.value.trim();
+    if (!name) { alert('이름을 입력하세요'); return; }
+    const cat = document.getElementById('wish-cat').value;
+    const region = document.getElementById('wish-region').value;
+    const memo = document.getElementById('wish-memo').value.trim();
+    const list = getWishlist();
+    list.push({
+      id: Date.now() + Math.floor(Math.random()*1000),
+      name,
+      cat,
+      region,
+      memo,
+      stars: wishStarDraft,
+      done: false,
+      ts: Date.now(),
+    });
+    saveWishlist(list);
+    nameEl.value = '';
+    document.getElementById('wish-memo').value = '';
+    setStarPicker(0);
+    renderWishlist();
+    schedulePublishSafe();
+  }
+  function delWish(id) {
+    const list = getWishlist().filter(w => w.id !== id);
+    saveWishlist(list);
+    renderWishlist();
+    schedulePublishSafe();
+  }
+  function toggleWishDone(id) {
+    const list = getWishlist();
+    const item = list.find(w => w.id === id);
+    if (!item) return;
+    item.done = !item.done;
+    saveWishlist(list);
+    renderWishlist();
+    schedulePublishSafe();
+  }
+  function updateWishStars(id, stars) {
+    const list = getWishlist();
+    const item = list.find(w => w.id === id);
+    if (!item) return;
+    item.stars = item.stars === stars ? 0 : stars; // click same = clear
+    saveWishlist(list);
+    renderWishlist();
+    schedulePublishSafe();
+  }
+  function setWishFilter(cat) {
+    wishFilter = cat;
+    document.querySelectorAll('.wish-tab').forEach(b => {
+      b.classList.toggle('active', b.dataset.wishCat === cat);
+    });
+    renderWishlist();
+  }
+  function renderWishlist() {
+    const all = getWishlist();
+    const counts = { all: all.length, shop: 0, sight: 0, food: 0 };
+    all.forEach(w => { if (counts[w.cat] !== undefined) counts[w.cat]++; });
+    Object.keys(counts).forEach(k => {
+      const el = document.getElementById(`wish-count-${k}`);
+      if (el) el.textContent = counts[k];
+    });
+
+    const filtered = wishFilter === 'all'
+      ? all.slice()
+      : all.filter(w => w.cat === wishFilter);
+
+    // sort: not done first, then by stars desc, then by ts asc
+    filtered.sort((a, b) => {
+      if (a.done !== b.done) return a.done ? 1 : -1;
+      if ((b.stars || 0) !== (a.stars || 0)) return (b.stars || 0) - (a.stars || 0);
+      return (a.ts || 0) - (b.ts || 0);
+    });
+
+    const listEl = document.getElementById('wish-list');
+    const sumEl = document.getElementById('wish-summary');
+    if (!listEl) return;
+
+    if (!filtered.length) {
+      listEl.innerHTML = '<div class="empty">' + (all.length
+        ? '이 카테고리엔 아직 없어요.'
+        : '아직 추가된 위시가 없어요. 가고 싶은 곳을 적어보세요 ✨') + '</div>';
+    } else {
+      listEl.innerHTML = '';
+      filtered.forEach(w => {
+        const item = document.createElement('div');
+        item.className = 'wish-item' + (w.done ? ' done' : '');
+        const starsHtml = [1,2,3].map(n =>
+          `<span class="${n <= (w.stars||0) ? '' : 'empty'}" onclick="updateWishStars(${w.id}, ${n})" style="cursor:pointer;">★</span>`
+        ).join('');
+        const memoHtml = w.memo ? `<div class="wish-memo">${escapeHtml(w.memo)}</div>` : '';
+        item.innerHTML = `
+          <div class="wish-cat-icon">${WISH_CAT_ICON[w.cat] || '📌'}</div>
+          <div class="wish-body">
+            <div class="wish-name">${escapeHtml(w.name)}</div>
+            <div class="wish-tags">
+              <span class="wish-tag">${WISH_CAT_LABEL[w.cat] || ''}</span>
+              <span class="wish-tag region-${w.region}">📍 ${WISH_REGION_LABEL[w.region] || ''}</span>
+            </div>
+            <div class="wish-stars">${starsHtml}</div>
+            ${memoHtml}
+          </div>
+          <div class="wish-actions">
+            <button class="done-btn ${w.done ? 'on' : ''}" onclick="toggleWishDone(${w.id})" title="${w.done ? '되돌리기' : '방문함/확정'}">${w.done ? '✓' : '○'}</button>
+            <button class="del-btn" onclick="delWish(${w.id})" title="삭제">×</button>
+          </div>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    if (all.length) {
+      const starCount = all.filter(w => (w.stars || 0) >= 2 && !w.done).length;
+      const doneCount = all.filter(w => w.done).length;
+      sumEl.style.display = 'flex';
+      sumEl.innerHTML = `
+        <span>총 ${all.length}개 · ⭐⭐+ ${starCount}개</span>
+        <span>✓ ${doneCount}개 완료</span>
+      `;
+    } else {
+      sumEl.style.display = 'none';
+    }
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  // wire up tabs + star picker
+  document.querySelectorAll('.wish-tab').forEach(btn => {
+    btn.addEventListener('click', () => setWishFilter(btn.dataset.wishCat));
+  });
+  document.querySelectorAll('#wish-star-picker .st').forEach(s => {
+    s.addEventListener('click', () => {
+      const v = parseInt(s.dataset.val, 10);
+      setStarPicker(wishStarDraft === v ? 0 : v);
+    });
+  });
+  renderWishlist();
+
+  // ---------- Flights ----------
+  const AIRPORT_NAMES = {
+    ICN: '인천', GMP: '김포', PUS: '부산', CJU: '제주', TAE: '대구',
+    HKG: '홍콩', MFM: '마카오',
+    NRT: '나리타', HND: '하네다', KIX: '오사카', FUK: '후쿠오카',
+    PEK: '베이징', PVG: '상하이', CAN: '광저우', TPE: '타이베이',
+    SIN: '싱가포르', BKK: '방콕'
+  };
+  const FLIGHT_PREFIX = { outbound: 'fo', return: 'fr' };
+
+  function getFlights() {
+    try { return JSON.parse(store.get('flights') || '{}'); } catch (_) { return {}; }
+  }
+  function saveFlights(obj) {
+    store.set('flights', JSON.stringify(obj));
+  }
+
+  function renderFlight(key) {
+    const flights = getFlights();
+    const f = flights[key] || {};
+    const p = FLIGHT_PREFIX[key];
+    const defaults = key === 'outbound'
+      ? { depCode: '—', depName: '출발지', arrCode: 'MFM', arrName: '마카오' }
+      : { depCode: 'HKG', depName: '홍콩', arrCode: '—', arrName: '도착지' };
+
+    const depCode = (f.depAirport || '').toUpperCase() || defaults.depCode;
+    const arrCode = (f.arrAirport || '').toUpperCase() || defaults.arrCode;
+
+    setText(`${p}-airline-no`,
+      [f.airline, f.flightNo].filter(Boolean).join(' · ') || '미등록');
+    setText(`${p}-dep-code`, depCode);
+    setText(`${p}-arr-code`, arrCode);
+    setText(`${p}-dep-time`, f.depTime || '--:--');
+    setText(`${p}-arr-time`, f.arrTime || '--:--');
+    setText(`${p}-dep-name`, AIRPORT_NAMES[depCode] || defaults.depName);
+    setText(`${p}-arr-name`, AIRPORT_NAMES[arrCode] || defaults.arrName);
+
+    // Date label
+    const dateStr = f.date || (key === 'outbound' ? store.get('startDate') : store.get('endDate'));
+    let dateLabel = '날짜 미정';
+    if (dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      const dn = ['일','월','화','수','목','금','토'][d.getDay()];
+      dateLabel = `📅 ${d.getFullYear()}.${d.getMonth()+1}.${d.getDate()} (${dn})`;
+    }
+    setText(`${p}-date-label`, dateLabel);
+
+    // Extras row (terminal / seat / PNR)
+    const extras = document.getElementById(`${p}-extras`);
+    if (extras) {
+      extras.innerHTML = '';
+      if (f.terminal) extras.innerHTML += `<span class="tag">🏛 ${escapeHtml(f.terminal)}</span>`;
+      if (f.seats)    extras.innerHTML += `<span class="tag">💺 ${escapeHtml(f.seats)}</span>`;
+      if (f.pnr)      extras.innerHTML += `<span class="tag">🔖 ${escapeHtml(f.pnr)}</span>`;
+      if (f.notes)    extras.innerHTML += `<span class="tag" title="${escapeHtml(f.notes)}">📝 메모</span>`;
+    }
+  }
+  function setText(id, v) { const el = document.getElementById(id); if (el) el.textContent = v; }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  function renderFlights() {
+    renderFlight('outbound');
+    renderFlight('return');
+  }
+
+  function toggleFlightForm(key) {
+    const p = FLIGHT_PREFIX[key];
+    const form = document.getElementById(`${p}-form`);
+    const isOpening = form.classList.contains('hidden');
+    if (isOpening) {
+      // Pre-fill form with current values (or defaults based on trip dates)
+      const flights = getFlights();
+      const f = flights[key] || {};
+      form.airline.value = f.airline || '';
+      form.flightNo.value = f.flightNo || '';
+      form.date.value = f.date || (key === 'outbound' ? (store.get('startDate') || '') : (store.get('endDate') || ''));
+      form.depAirport.value = f.depAirport || (key === 'outbound' ? '' : 'HKG');
+      form.depTime.value = f.depTime || '';
+      form.arrAirport.value = f.arrAirport || (key === 'outbound' ? 'MFM' : '');
+      form.arrTime.value = f.arrTime || '';
+      form.terminal.value = f.terminal || '';
+      form.seats.value = f.seats || '';
+      form.pnr.value = f.pnr || '';
+      form.notes.value = f.notes || '';
+    }
+    form.classList.toggle('hidden');
+  }
+
+  function saveFlight(ev, key) {
+    ev.preventDefault();
+    const form = ev.target;
+    const flights = getFlights();
+    flights[key] = {
+      airline: form.airline.value.trim(),
+      flightNo: form.flightNo.value.trim().toUpperCase(),
+      date: form.date.value,
+      depAirport: form.depAirport.value.trim().toUpperCase(),
+      depTime: form.depTime.value,
+      arrAirport: form.arrAirport.value.trim().toUpperCase(),
+      arrTime: form.arrTime.value,
+      terminal: form.terminal.value.trim(),
+      seats: form.seats.value.trim(),
+      pnr: form.pnr.value.trim(),
+      notes: form.notes.value.trim(),
+    };
+    saveFlights(flights);
+    renderFlight(key);
+    form.classList.add('hidden');
+    schedulePublishSafe();
+    return false;
+  }
+
+  function schedulePublishSafe() {
+    // Will be wired up after sync module loads — safe-call wrapper
+    if (typeof schedulePublish === 'function') schedulePublish();
+  }
+
+  renderFlights();
+
+  // ---------- Weather (Open-Meteo, free, no API key) ----------
+  const HK_LAT = 22.3193;
+  const HK_LON = 114.1694;
+  const REFRESH_MS = 20 * 60 * 1000; // 20 minutes
+  let weatherRefreshTimer = null;
+
+  function weatherCodeInfo(code) {
+    if (code === 0) return { icon: '☀️', desc: '맑음' };
+    if (code === 1) return { icon: '🌤️', desc: '대체로 맑음' };
+    if (code === 2) return { icon: '⛅', desc: '구름 조금' };
+    if (code === 3) return { icon: '☁️', desc: '흐림' };
+    if (code === 45 || code === 48) return { icon: '🌫️', desc: '안개' };
+    if ([51,53,55].includes(code)) return { icon: '🌦️', desc: '이슬비' };
+    if ([56,57].includes(code)) return { icon: '🌧️', desc: '차가운 비' };
+    if ([61,63,65].includes(code)) return { icon: '🌧️', desc: '비' };
+    if ([66,67].includes(code)) return { icon: '🌧️', desc: '찬 비' };
+    if ([71,73,75,77].includes(code)) return { icon: '🌨️', desc: '눈' };
+    if ([80,81,82].includes(code)) return { icon: '🌦️', desc: '소나기' };
+    if ([85,86].includes(code)) return { icon: '🌨️', desc: '진눈깨비' };
+    if (code === 95) return { icon: '⛈️', desc: '천둥번개' };
+    if ([96,99].includes(code)) return { icon: '⛈️', desc: '우박동반' };
+    return { icon: '🌤️', desc: '—' };
+  }
+
+  function toYMD(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  }
+
+  function renderWeatherMessage(msg) {
+    document.getElementById('weather-scroll').innerHTML =
+      `<div class="weather-empty">${msg}</div>`;
+  }
+
+  async function fetchWeather(manual) {
+    const btn = document.getElementById('refresh-weather-btn');
+    if (btn) btn.classList.add('spinning');
+
+    const startStr = store.get('startDate');
+    const endStr = store.get('endDate');
+    if (!startStr || !endStr) {
+      renderWeatherMessage('출발일과 귀국일을 설정하면 날씨 예보가 표시돼요.');
+      if (btn) btn.classList.remove('spinning');
+      return;
+    }
+
+    const start = new Date(startStr + 'T00:00:00');
+    const end = new Date(endStr + 'T00:00:00');
+    if (end < start) {
+      renderWeatherMessage('귀국일이 출발일보다 빨라요. 날짜를 확인해주세요.');
+      if (btn) btn.classList.remove('spinning');
+      return;
+    }
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const daysUntilEnd = Math.floor((end - today) / 86400000);
+    const daysUntilStart = Math.floor((start - today) / 86400000);
+
+    if (daysUntilEnd < 0) {
+      renderWeatherMessage('이미 지난 일정이에요. 출발일을 확인해주세요.');
+      if (btn) btn.classList.remove('spinning');
+      return;
+    }
+    if (daysUntilStart > 16) {
+      renderWeatherMessage(`여행까지 D-${daysUntilStart}일. 예보는 출발 16일 이내부터 제공돼요.`);
+      if (btn) btn.classList.remove('spinning');
+      return;
+    }
+
+    // If trip started already, forecast covers today..end. But Open-Meteo also gives
+    // recent past data; just request full range.
+    const url = `https://api.open-meteo.com/v1/forecast`
+      + `?latitude=${HK_LAT}&longitude=${HK_LON}`
+      + `&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max`
+      + `&timezone=Asia%2FHong_Kong`
+      + `&start_date=${toYMD(start)}&end_date=${toYMD(end)}`;
+
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      renderWeather(data.daily, start);
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2,'0');
+      const mm = String(now.getMinutes()).padStart(2,'0');
+      document.getElementById('weather-updated').textContent =
+        `🔄 ${hh}:${mm} 업데이트` + (manual ? ' (수동)' : '');
+    } catch (e) {
+      renderWeatherMessage('날씨 정보를 가져오지 못했어요. 네트워크 확인 후 새로고침 해주세요.');
+    } finally {
+      if (btn) setTimeout(() => btn.classList.remove('spinning'), 500);
+    }
+  }
+
+  function renderWeather(daily, tripStart) {
+    if (!daily || !daily.time || !daily.time.length) {
+      renderWeatherMessage('표시할 예보 데이터가 없어요.');
+      return;
+    }
+    const dayNames = ['일','월','화','수','목','금','토'];
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    const container = document.getElementById('weather-scroll');
+    container.innerHTML = '';
+
+    daily.time.forEach((dateStr, i) => {
+      const d = new Date(dateStr + 'T00:00:00');
+      const info = weatherCodeInfo(daily.weathercode[i]);
+      const tmax = Math.round(daily.temperature_2m_max[i]);
+      const tmin = Math.round(daily.temperature_2m_min[i]);
+      const pop = daily.precipitation_probability_max?.[i] ?? 0;
+      const isToday = d.getTime() === today.getTime();
+
+      const div = document.createElement('div');
+      div.className = 'weather-day' + (isToday ? ' today' : '');
+      div.innerHTML = `
+        <div class="wd-label">DAY ${i+1}</div>
+        <div class="wd-date">${d.getMonth()+1}/${d.getDate()} ${dayNames[d.getDay()]}</div>
+        <div class="wd-icon">${info.icon}</div>
+        <div class="wd-desc">${info.desc}</div>
+        <div class="wd-temp">
+          <span class="hi">${tmax}°</span><span class="sep">/</span><span class="lo">${tmin}°</span>
+        </div>
+        <div class="wd-rain ${pop >= 50 ? 'high' : ''}">💧 ${pop}%</div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function refreshWeather() { fetchWeather(true); }
+
+  function startWeatherAutoRefresh() {
+    fetchWeather();
+    clearInterval(weatherRefreshTimer);
+    weatherRefreshTimer = setInterval(fetchWeather, REFRESH_MS);
+  }
+
+  // Re-fetch when tab becomes visible again (e.g., user comes back to app)
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) fetchWeather();
+  });
+  window.addEventListener('online', () => fetchWeather());
+
+  // ---------- Family Sync (real-time via ntfy.sh) ----------
+  // We use the public ntfy.sh server as a free pub/sub relay.
+  // Each device with the same "family code" publishes/subscribes to the same topic.
+  // State is replaced on receive (last-write-wins). Each message includes a deviceId
+  // to ignore our own echo.
+
+  let deviceId = store.get('deviceId');
+  if (!deviceId) {
+    deviceId = 'd-' + Math.random().toString(36).slice(2, 10);
+    store.set('deviceId', deviceId);
+  }
+
+  let syncTopic = null;
+  let syncEventSource = null;
+  let pushTimer = null;
+  let lastPushedHash = null;
+  let suppressPublish = false;
+  let syncStatus = 'off'; // off | connecting | connected | error
+
+  function topicForCode(code) {
+    // Namespace to reduce collision; ntfy topics are public so we add a prefix.
+    return 'hkfam-' + code.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
+  }
+
+  function setSyncStatus(s, text) {
+    syncStatus = s;
+    const badge = document.getElementById('sync-badge');
+    badge.classList.remove('connecting','connected','error');
+    if (s !== 'off') badge.classList.add(s);
+    document.getElementById('sync-text').textContent = text || ({
+      off: '미연결', connecting: '연결중', connected: '연결됨', error: '오류'
+    }[s]);
+    const btn = document.getElementById('sync-connect-btn');
+    if (btn) btn.textContent = (s === 'off' ? '연결' : '연결 끊기');
+
+    // Update avatars: when connected, show both parents online
+    const dad = document.getElementById('av-dad');
+    const mom = document.getElementById('av-mom');
+    if (dad && mom) {
+      const on = (s === 'connected');
+      dad.classList.toggle('online', on);
+      mom.classList.toggle('online', on);
+    }
+  }
+
+  function showActivity(msg) {
+    const el = document.getElementById('sync-activity');
+    el.textContent = msg;
+    el.style.display = 'block';
+    clearTimeout(showActivity._t);
+    showActivity._t = setTimeout(() => { el.style.display = 'none'; }, 4000);
+  }
+
+  function collectState() {
+    const checks = {};
+    Object.keys(checklistData).forEach(groupId => {
+      checklistData[groupId].forEach((_, i) => {
+        const key = `${groupId}-${i}`;
+        if (store.get(key) === '1') checks[key] = 1;
+      });
+    });
+    return {
+      v: 1,
+      checks,
+      expenses: getExpenses(),
+      startDate: store.get('startDate') || null,
+      endDate: store.get('endDate') || null,
+      flights: getFlights(),
+      wishlist: getWishlist(),
+    };
+  }
+
+  function applyRemoteState(state) {
+    if (!state || state.v !== 1) return;
+    suppressPublish = true;
+    try {
+      // Apply checklist
+      Object.keys(checklistData).forEach(groupId => {
+        checklistData[groupId].forEach((_, i) => {
+          const key = `${groupId}-${i}`;
+          const should = state.checks && state.checks[key] === 1;
+          store.set(key, should ? '1' : '0');
+        });
+      });
+      // Apply expenses
+      if (Array.isArray(state.expenses)) {
+        saveExpenses(state.expenses);
+      }
+      // Apply trip dates
+      if (state.startDate) store.set('startDate', state.startDate);
+      if (state.endDate) store.set('endDate', state.endDate);
+      // Apply flights
+      if (state.flights) saveFlights(state.flights);
+      // Apply wishlist
+      if (Array.isArray(state.wishlist)) {
+        saveWishlist(state.wishlist);
+      }
+      // Refresh UI
+      renderChecklist();
+      renderExpenses();
+      renderFlights();
+      renderWishlist();
+      syncDateInputsFromStore();
+      updateCountdown();
+      renderTripLength();
+      applyDayDates();
+      fetchWeather();
+    } finally {
+      suppressPublish = false;
+    }
+  }
+
+  function publishStateNow() {
+    if (!syncTopic || suppressPublish) return;
+    const state = collectState();
+    const hash = JSON.stringify(state);
+    if (hash === lastPushedHash) return;
+    lastPushedHash = hash;
+    const payload = { by: deviceId, ts: Date.now(), state };
+    fetch('https://ntfy.sh/' + encodeURIComponent(syncTopic), {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }).then(() => {
+      showActivity('📤 변경사항을 보냈어요');
+    }).catch(() => {
+      showActivity('⚠️ 전송 실패 (네트워크 확인)');
+    });
+  }
+
+  // Debounced publish — to avoid spamming on rapid clicks
+  function schedulePublish() {
+    if (!syncTopic || suppressPublish) return;
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(publishStateNow, 600);
+  }
+
+  function fetchInitialState() {
+    // Pull latest cached message via JSON polling
+    return fetch('https://ntfy.sh/' + encodeURIComponent(syncTopic) + '/json?poll=1&since=all')
+      .then(r => r.text())
+      .then(text => {
+        const lines = text.trim().split('\n').filter(Boolean);
+        // ntfy returns one JSON object per line; pick the latest 'message' event from another device
+        let latest = null;
+        lines.forEach(line => {
+          try {
+            const obj = JSON.parse(line);
+            if (obj.event === 'message' && obj.message) {
+              const payload = JSON.parse(obj.message);
+              if (payload && payload.by !== deviceId) {
+                if (!latest || payload.ts > latest.ts) latest = payload;
+              }
+            }
+          } catch (_) {}
+        });
+        if (latest && latest.state) {
+          applyRemoteState(latest.state);
+          showActivity('⬇️ 와이프 데이터를 가져왔어요');
+        }
+      })
+      .catch(() => {});
+  }
+
+  function connectSync(code) {
+    syncTopic = topicForCode(code);
+    setSyncStatus('connecting');
+    if (syncEventSource) syncEventSource.close();
+
+    // Get history first
+    fetchInitialState().then(() => {
+      // Then open SSE for live updates
+      try {
+        syncEventSource = new EventSource('https://ntfy.sh/' + encodeURIComponent(syncTopic) + '/sse');
+        syncEventSource.onopen = () => setSyncStatus('connected');
+        syncEventSource.onmessage = (e) => {
+          try {
+            const obj = JSON.parse(e.data);
+            if (obj.event === 'message' && obj.message) {
+              const payload = JSON.parse(obj.message);
+              if (payload && payload.by !== deviceId && payload.state) {
+                applyRemoteState(payload.state);
+                showActivity('⬇️ 와이프가 업데이트했어요');
+              }
+            } else if (obj.event === 'open') {
+              setSyncStatus('connected');
+            }
+          } catch (_) {}
+        };
+        syncEventSource.onerror = () => {
+          setSyncStatus('error', '재연결중');
+          // EventSource auto-reconnects
+        };
+        // Push our current state so wife can pull it
+        lastPushedHash = null;
+        setTimeout(publishStateNow, 800);
+      } catch (e) {
+        setSyncStatus('error');
+      }
+    });
+  }
+
+  function disconnectSync() {
+    if (syncEventSource) { syncEventSource.close(); syncEventSource = null; }
+    syncTopic = null;
+    setSyncStatus('off');
+  }
+
+  function toggleSync() {
+    const input = document.getElementById('family-code');
+    if (syncStatus === 'off') {
+      const code = input.value.trim();
+      if (code.length < 3) {
+        alert('가족 코드는 3글자 이상으로 정해주세요. (예: kim-hk-2026)');
+        return;
+      }
+      store.set('familyCode', code);
+      connectSync(code);
+    } else {
+      disconnectSync();
+      store.set('familyCode', '');
+    }
+  }
+
+  function scrollToSync() {
+    // Switch to home tab and scroll to sync card
+    document.querySelector('nav.tabs button[data-tab="home"]').click();
+    setTimeout(() => {
+      document.getElementById('sync-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  }
+
+  // Auto-reconnect on load if previously set
+  const savedCode = store.get('familyCode');
+  if (savedCode) {
+    document.getElementById('family-code').value = savedCode;
+    connectSync(savedCode);
+  } else {
+    setSyncStatus('off');
+  }
+
+  // Hook into changes — wrap mutator functions to also publish
+  const origSaveDate = saveDate;
+  saveDate = function() { origSaveDate(); schedulePublish(); fetchWeather(); };
+
+  const origAddExpense = addExpense;
+  addExpense = function() { origAddExpense(); schedulePublish(); };
+
+  const origDelExpense = delExpense;
+  delExpense = function(id) { origDelExpense(id); schedulePublish(); };
+
+  // Re-render checklist also wires schedulePublish onto each checkbox
+  const origRenderChecklist = renderChecklist;
+  renderChecklist = function() {
+    origRenderChecklist();
+    document.querySelectorAll('.check-item input').forEach(inp => {
+      inp.addEventListener('change', schedulePublish);
+    });
+  };
+  renderChecklist(); // re-bind once with publish hook
+
+  // Expose to global for inline onclick
+  window.saveDate = saveDate;
+  window.addExpense = addExpense;
+  window.delExpense = delExpense;
+  window.toggleSync = toggleSync;
+  window.scrollToSync = scrollToSync;
+  window.refreshWeather = refreshWeather;
+  window.toggleFlightForm = toggleFlightForm;
+  window.saveFlight = saveFlight;
+  window.addWish = addWish;
+  window.delWish = delWish;
+  window.toggleWishDone = toggleWishDone;
+  window.updateWishStars = updateWishStars;
+
+  // Kick off weather fetching + auto refresh
+  startWeatherAutoRefresh();
+</script>
+
+</body>
+</html>
