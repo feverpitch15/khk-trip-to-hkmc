@@ -306,6 +306,30 @@
   .check-item label { flex: 1; font-size: 14px; cursor: pointer; }
 
   /* Itinerary day */
+  .itin-hint {
+    background: linear-gradient(180deg, #fff8ea 0%, #fff 100%);
+    border: 1px dashed var(--primary);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12.5px; color: var(--primary-dark);
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  .timeline-item.tl-flight .tl-time { color: var(--accent); }
+  .timeline-item.tl-flight .ttl { color: var(--accent); }
+  .tl-flag {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--muted);
+    letter-spacing: 0.3px;
+    vertical-align: 1px;
+  }
+  .tl-flag.auto { background: #ffe8d6; color: #b06038; }
   .day-card { border-left: 4px solid var(--accent); }
   .day-card:nth-of-type(odd) { border-left-color: var(--primary); }
   .day-card .day-label {
@@ -1045,7 +1069,7 @@
         <button class="btn" id="sync-connect-btn" onclick="toggleSync()">연결</button>
       </div>
       <div id="sync-info" style="margin-top:8px; font-size:12px; color:var(--muted);">
-        💡 아무 문자열이나 OK. 단, 남이 맞추기 어렵게 지어주세요 (예: 성씨+여행지+날짜)
+        💡 6글자 이상 · 남이 맞추기 어렵게 지어주세요 (예: 성씨+여행지+연도). Firebase 클라우드에 저장돼요.
       </div>
       <div id="sync-activity" style="margin-top:6px; font-size:12px; color:var(--primary); display:none;"></div>
     </div>
@@ -1232,66 +1256,38 @@
       <div class="wish-summary" id="wish-summary" style="display:none;"></div>
     </div>
 
+    <div class="itin-hint" id="itin-hint">
+      💡 홈 화면에서 비행기 출국·귀국 시각을 등록하면 Day 1·Day 5 일정이 자동으로 맞춰져요.
+    </div>
+
     <div class="card day-card" data-day="1">
       <div class="day-label">DAY 1 · 마카오 도착 <span class="day-date"></span></div>
-      <h3>🛬 마카오 입성 & 코타이 야경</h3>
-      <div class="timeline">
-        <div class="timeline-item"><div class="tl-time">오후</div><div class="tl-body"><div class="ttl">마카오 국제공항(MFM) 도착</div><div class="desc">입국 후 셔틀버스 or 택시로 코타이 지역 이동 (대부분 호텔 무료 셔틀 제공)</div></div></div>
-        <div class="timeline-item"><div class="tl-time">16:00</div><div class="tl-body"><div class="ttl">호텔 체크인 & 휴식</div><div class="desc">베네시안·파리지앵·그랜드 리스보아 등 코타이 추천. 장거리 비행 후 아이 낮잠 or 호텔 수영장</div></div></div>
-        <div class="timeline-item"><div class="tl-time">18:30</div><div class="tl-body"><div class="ttl">세나도 광장 저녁 산책</div><div class="desc">포르투갈풍 물결무늬 바닥 타일. 근처 카페에서 포르투갈 요리 or 마카오식 돼지고기 번</div></div></div>
-        <div class="timeline-item"><div class="tl-time">20:30</div><div class="tl-body"><div class="ttl">파리지앵 에펠탑 라이팅</div><div class="desc">일몰 후 조명쇼 장관. 아이와 전망대(37층) 야경 추천</div></div></div>
-      </div>
+      <h3 id="day-1-title">🛬 마카오 입성 & 코타이 야경</h3>
+      <div class="timeline" id="day-1-timeline"></div>
     </div>
 
     <div class="card day-card" data-day="2">
       <div class="day-label">DAY 2 · 마카오 풀데이 <span class="day-date"></span></div>
-      <h3>🏛️ 마카오 구석구석 탐방</h3>
-      <div class="timeline">
-        <div class="timeline-item"><div class="tl-time">09:30</div><div class="tl-body"><div class="ttl">성 바울 성당 & 마운트 포트</div><div class="desc">유네스코 세계유산. 파사드만 남은 성당과 뒷편 요새. 완만한 경사라 유주도 OK</div></div></div>
-        <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-body"><div class="ttl">마가렛 에그타르트 (원조)</div><div class="desc">세나도 광장 근처. 줄 서도 먹어볼 가치 있음. 포장해서 이동 간식으로도</div></div></div>
-        <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="ttl">베네시안 실내 곤돌라 & 점심</div><div class="desc">실내 운하에서 곤돌라 타기! 유주 반응 최고. 식당 다양</div></div></div>
-        <div class="timeline-item"><div class="tl-time">15:00</div><div class="tl-body"><div class="ttl">마카오 타워 전망 (일몰)</div><div class="desc">338m 전망대 + 스카이워크 구경. 시간대별 풍경 다름</div></div></div>
-        <div class="timeline-item"><div class="tl-time">17:30</div><div class="tl-body"><div class="ttl">타이파 빌리지 산책</div><div class="desc">포르투갈풍 거리, 파스텔 건물. 골목 예쁨, 사진 명소</div></div></div>
-        <div class="timeline-item"><div class="tl-time">19:30</div><div class="tl-body"><div class="ttl">저녁 (포르투갈식 or 마카오식)</div><div class="desc">포르투갈 치킨, 아프리카 치킨, 미니 에그타르트로 마무리</div></div></div>
-      </div>
+      <h3 id="day-2-title">🏛️ 마카오 구석구석 탐방</h3>
+      <div class="timeline" id="day-2-timeline"></div>
     </div>
 
     <div class="card day-card" data-day="3">
       <div class="day-label">DAY 3 · 마카오 → 홍콩 <span class="day-date"></span></div>
-      <h3>⛴️ 페리 이동 & 침사추이 야경</h3>
-      <div class="timeline">
-        <div class="timeline-item"><div class="tl-time">09:00</div><div class="tl-body"><div class="ttl">호텔 조식 & 여유</div><div class="desc">체크아웃 전까지 수영장 or 산책. 아이 컨디션 관리 우선</div></div></div>
-        <div class="timeline-item"><div class="tl-time">11:00</div><div class="tl-body"><div class="ttl">체크아웃 → 외항 페리 터미널</div><div class="desc">짐 가지고 택시로 이동 (15분 내외). 여권·입국카드 준비</div></div></div>
-        <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="ttl">터보젯 페리 (MFM → HK)</div><div class="desc">1시간 소요. 사전 예매 추천. 창가석이면 유주에게 바닷길 구경</div></div></div>
-        <div class="timeline-item"><div class="tl-time">14:00</div><div class="tl-body"><div class="ttl">홍콩 호텔 체크인</div><div class="desc">침사추이 or 센트럴 지역 추천. MTR 접근성 최우선. 옥토퍼스 카드 구매</div></div></div>
-        <div class="timeline-item"><div class="tl-time">16:30</div><div class="tl-body"><div class="ttl">에비뉴 오브 스타 & 해변 산책</div><div class="desc">이소룡 동상, 홍콩 영화 스타 손도장. 침사추이 수변 여유</div></div></div>
-        <div class="timeline-item"><div class="tl-time">18:30</div><div class="tl-body"><div class="ttl">저녁 (딤섬 or 완탕면)</div><div class="desc">팀호완, 카우키 등. 유주는 새우만두·완탕면·볶음밥 안전</div></div></div>
-        <div class="timeline-item"><div class="tl-time">20:00</div><div class="tl-body"><div class="ttl">심포니 오브 라이트 쇼</div><div class="desc">매일 저녁 8시, 수변에서 무료 관람 (10분). 보고 바로 호텔</div></div></div>
-      </div>
+      <h3 id="day-3-title">⛴️ 페리 이동 & 침사추이 야경</h3>
+      <div class="timeline" id="day-3-timeline"></div>
     </div>
 
     <div class="card day-card" data-day="4">
       <div class="day-label">DAY 4 · 디즈니랜드 <span class="day-date"></span></div>
-      <h3>🏰 홍콩 디즈니랜드 (유주 메인이벤트!)</h3>
-      <div class="timeline">
-        <div class="timeline-item"><div class="tl-time">09:30</div><div class="tl-body"><div class="ttl">MTR 디즈니 라인 탑승</div><div class="desc">선니 역에서 디즈니 전용 열차로 환승 (창문이 미키 모양!)</div></div></div>
-        <div class="timeline-item"><div class="tl-time">10:00</div><div class="tl-body"><div class="ttl">개장과 동시에 입장</div><div class="desc">인기 어트랙션 먼저: 아이언맨, 미스틱 포인트, 크리스탈의 미키</div></div></div>
-        <div class="timeline-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="ttl">테마 레스토랑 점심</div><div class="desc">Royal Banquet Hall 또는 Tahitian Terrace (캐릭터 푸드)</div></div></div>
-        <div class="timeline-item"><div class="tl-time">15:00</div><div class="tl-body"><div class="ttl">퍼레이드 관람 + 사진</div><div class="desc">메인 스트리트 USA 쪽 자리 일찍 잡기</div></div></div>
-        <div class="timeline-item"><div class="tl-time">20:00</div><div class="tl-body"><div class="ttl">불꽃놀이 "Momentous"</div><div class="desc">성 앞에서 감상 → 바로 호텔 (유주 피곤함 주의)</div></div></div>
-      </div>
+      <h3 id="day-4-title">🏰 홍콩 디즈니랜드 (유주 메인이벤트!)</h3>
+      <div class="timeline" id="day-4-timeline"></div>
     </div>
 
     <div class="card day-card" data-day="5">
       <div class="day-label">DAY 5 · 홍콩 마지막날 & 출국 <span class="day-date"></span></div>
-      <h3>🚡 빅토리아 피크 → 쇼핑 → HKG</h3>
-      <div class="timeline">
-        <div class="timeline-item"><div class="tl-time">09:00</div><div class="tl-body"><div class="ttl">피크트램 탑승</div><div class="desc">중환에서 출발, 예약 필수! 스카이테라스 428에서 전망 감상</div></div></div>
-        <div class="timeline-item"><div class="tl-time">11:30</div><div class="tl-body"><div class="ttl">센트럴 점심 (딤섬)</div><div class="desc">Tim Ho Wan(팀호완) 또는 Yum Cha 추천 (유주용 팬더 번!)</div></div></div>
-        <div class="timeline-item"><div class="tl-time">13:00</div><div class="tl-body"><div class="ttl">스타페리 → 하버시티 쇼핑</div><div class="desc">저렴한 2층 페리(5분), 유주 캐릭터 용품. Jenny Bakery 쿠키는 기념품 최고</div></div></div>
-        <div class="timeline-item"><div class="tl-time">15:30</div><div class="tl-body"><div class="ttl">호텔 체크아웃 → 공항</div><div class="desc">공항 익스프레스(AEL) 이용, 홍콩 시내에서 24분. 인-타운 체크인 활용 시 편해요</div></div></div>
-        <div class="timeline-item"><div class="tl-time">17:00</div><div class="tl-body"><div class="ttl">홍콩 국제공항(HKG) 도착</div><div class="desc">출국 2~2.5시간 전 도착 권장. 마지막 딤섬 or 공차로 피날레</div></div></div>
-      </div>
+      <h3 id="day-5-title">🚡 빅토리아 피크 → 쇼핑 → HKG</h3>
+      <div class="timeline" id="day-5-timeline"></div>
     </div>
   </section>
 
@@ -1514,6 +1510,55 @@
   <button data-tab="phrases"><div class="ic">🗣️</div>회화</button>
   <button data-tab="info"><div class="ic">ℹ️</div>정보</button>
 </nav>
+
+<script type="module">
+  // ---------- Firebase Firestore sync ----------
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+  import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp }
+    from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBXe_wS89Jnq1i96QkS8FhndZ-UWIItwQM",
+    authDomain: "trip-to-hkmc.firebaseapp.com",
+    projectId: "trip-to-hkmc",
+    storageBucket: "trip-to-hkmc.firebasestorage.app",
+    messagingSenderId: "1017524629057",
+    appId: "1:1017524629057:web:d74f26b3ff93084be920c0"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  let unsub = null;
+
+  window.firebaseSync = {
+    ready: true,
+    subscribe(code, onData, onError) {
+      if (unsub) { unsub(); unsub = null; }
+      try {
+        const ref = doc(db, 'families', code);
+        unsub = onSnapshot(ref,
+          (snap) => {
+            if (!snap.exists()) return;
+            const data = snap.data();
+            if (data) onData(data);
+          },
+          (err) => { console.error('Firestore onSnapshot error:', err); onError && onError(err); }
+        );
+      } catch (err) {
+        console.error('Firestore subscribe error:', err);
+        onError && onError(err);
+      }
+    },
+    unsubscribe() {
+      if (unsub) { unsub(); unsub = null; }
+    },
+    async publish(code, payload) {
+      const ref = doc(db, 'families', code);
+      await setDoc(ref, { ...payload, updatedAt: serverTimestamp() });
+    }
+  };
+  window.dispatchEvent(new Event('firebase-ready'));
+</script>
 
 <script>
   // ---------- Safe storage (fallback to memory) ----------
@@ -2417,6 +2462,244 @@
   function renderFlights() {
     renderFlight('outbound');
     renderFlight('return');
+    renderItinerary();
+  }
+
+  // ---------- Itinerary (dynamic timelines) ----------
+  function hmToMin(hm) {
+    if (!hm || !/^\d{1,2}:\d{2}$/.test(hm)) return null;
+    const [h, m] = hm.split(':').map(Number);
+    return h * 60 + m;
+  }
+  function minToHM(mins) {
+    if (mins == null) return '--:--';
+    // clamp within day
+    if (mins < 0) mins = 0;
+    if (mins >= 24*60) mins = 24*60 - 1;
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0');
+  }
+  function roundTo5(mins) {
+    return Math.round(mins / 5) * 5;
+  }
+
+  function renderTimeline(elId, items) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    el.innerHTML = items.map(it => {
+      const cls = it.isFlight ? 'timeline-item tl-flight' : 'timeline-item';
+      const autoTag = it.auto ? ' <span class="tl-flag auto">자동</span>' : '';
+      return `
+        <div class="${cls}">
+          <div class="tl-time">${escapeHtml(it.time)}</div>
+          <div class="tl-body">
+            <div class="ttl">${escapeHtml(it.title)}${autoTag}</div>
+            <div class="desc">${escapeHtml(it.desc)}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // --- Day 1: Arrival at Macau (MFM), anchored to arrTime ---
+  function buildDay1(outbound) {
+    const arrMin = hmToMin(outbound && outbound.arrTime);
+    const isAuto = arrMin != null;
+    const arrivalTime = isAuto ? minToHM(arrMin) : '오후';
+    const arrCode = (outbound && outbound.arrAirport || 'MFM').toUpperCase();
+    const arrName = AIRPORT_NAMES[arrCode] || '마카오';
+    const flightNoLabel = outbound && outbound.flightNo ? ` (${outbound.flightNo})` : '';
+
+    const items = [];
+    items.push({
+      time: arrivalTime,
+      title: `🛬 ${arrName} 공항(${arrCode}) 도착${flightNoLabel}`,
+      desc: '기내 대기 없이 내려요. 여권·마카오 입국카드 미리 챙기기.',
+      isFlight: true, auto: isAuto
+    });
+
+    if (!isAuto) {
+      // fallback static schedule
+      items.push({ time: '16:00', title: '호텔 체크인 & 휴식', desc: '베네시안·파리지앵·그랜드 리스보아 등 코타이 추천. 장거리 비행 후 아이 낮잠 or 호텔 수영장' });
+      items.push({ time: '18:30', title: '세나도 광장 저녁 산책', desc: '포르투갈풍 물결무늬 바닥 타일. 근처 카페에서 포르투갈 요리 or 마카오식 돼지고기 번' });
+      items.push({ time: '20:30', title: '파리지앵 에펠탑 라이팅', desc: '일몰 후 조명쇼 장관. 아이와 전망대(37층) 야경 추천' });
+      return items;
+    }
+
+    // Dynamic scheduling
+    const immig = roundTo5(arrMin + 50);            // 입국·수하물
+    const hotelArrive = roundTo5(arrMin + 50 + 40); // 셔틀·택시 40분
+    const restUntil = roundTo5(hotelArrive + 60);   // 체크인 + 짧은 휴식 60분
+
+    items.push({
+      time: minToHM(immig),
+      title: '입국·수하물 → 호텔 이동',
+      desc: '셔틀버스 or 택시로 코타이(호텔 무료 셔틀 있는 곳 확인). 짐 끌고 약 40분.',
+      auto: true
+    });
+    items.push({
+      time: minToHM(hotelArrive),
+      title: '호텔 체크인 & 휴식',
+      desc: '장거리 비행 후 아이 낮잠 or 호텔 수영장. 짐 풀고 한숨 돌리기.',
+      auto: true
+    });
+
+    // Evening decisions based on how late we checked in
+    if (restUntil <= 17*60) {
+      // 저녁 전에 외출 가능: 세나도 산책 + 에펠탑
+      items.push({ time: minToHM(Math.max(restUntil, 17*60 + 30)), title: '세나도 광장 저녁 산책 + 저녁', desc: '포르투갈풍 바닥 타일, 근처 카페에서 가볍게 저녁. 유주 컨디션 봐가며.', auto: true });
+      items.push({ time: '20:30', title: '파리지앵 에펠탑 라이팅', desc: '일몰 후 조명쇼. 37층 전망대 야경 추천.', auto: true });
+    } else if (restUntil <= 20*60) {
+      // 저녁 바로 근처에서
+      items.push({ time: minToHM(Math.max(restUntil, 19*60)), title: '호텔 근처 저녁 (코타이)', desc: '베네시안/파리지앵 푸드코트 or 근처 포르투갈 식당. 이동 최소화.', auto: true });
+      items.push({ time: '21:00', title: '파리지앵 에펠탑 라이팅', desc: '호텔에서 도보로 충분. 짧게 인증샷.', auto: true });
+    } else if (restUntil <= 21*60) {
+      items.push({ time: minToHM(restUntil), title: '호텔 근처 간단 저녁', desc: '24시간 푸드코트 or 룸서비스. 아이 먼저 재우기.', auto: true });
+    } else {
+      items.push({ time: minToHM(restUntil), title: '호텔 휴식', desc: '도착 매우 늦음 — 오늘은 호텔에서 쉬고 내일 아침 바로 일정 시작.', auto: true });
+    }
+
+    return items;
+  }
+
+  // --- Day 2: Static (Macau full day) ---
+  function buildDay2() {
+    return [
+      { time: '09:30', title: '성 바울 성당 & 몬테 요새', desc: '유네스코 세계유산. 파사드만 남은 성당 + 뒷편 요새. 완만한 경사라 유주도 OK.' },
+      { time: '11:30', title: '마가렛 에그타르트 (원조)', desc: '세나도 광장 근처. 줄 서도 먹어볼 가치 있음. 포장해서 이동 간식으로도.' },
+      { time: '12:30', title: '베네시안 실내 곤돌라 & 점심', desc: '실내 운하 곤돌라 — 유주 반응 최고. 식당 다양.' },
+      { time: '15:00', title: '마카오 타워 전망', desc: '338m 전망대 + 스카이워크 구경. 일몰 타이밍 맞추기.' },
+      { time: '17:30', title: '타이파 빌리지 산책', desc: '포르투갈풍 거리, 파스텔 건물. 골목 예쁨, 사진 명소.' },
+      { time: '19:30', title: '저녁 (포르투갈식 or 마카오식)', desc: '포르투갈 치킨, 아프리카 치킨, 미니 에그타르트로 마무리.' }
+    ];
+  }
+
+  // --- Day 3: Static (Macau → HK by ferry) ---
+  function buildDay3() {
+    return [
+      { time: '09:00', title: '호텔 조식 & 여유', desc: '체크아웃 전까지 수영장 or 산책. 아이 컨디션 관리 우선.' },
+      { time: '11:00', title: '체크아웃 → 외항 페리 터미널', desc: '짐 가지고 택시로 이동 (15분 내외). 여권·입국카드 준비.' },
+      { time: '12:30', title: '터보젯 페리 (MFM → HK)', desc: '1시간 소요. 사전 예매 추천. 창가석이면 유주에게 바닷길 구경.' },
+      { time: '14:00', title: '홍콩 호텔 체크인', desc: '침사추이 or 센트럴 지역 추천. MTR 접근성 최우선. 옥토퍼스 카드 구매.' },
+      { time: '16:30', title: '에비뉴 오브 스타 & 해변 산책', desc: '이소룡 동상, 홍콩 영화 스타 손도장. 침사추이 수변 여유.' },
+      { time: '18:30', title: '저녁 (딤섬 or 완탕면)', desc: '팀호완, 카우키 등. 유주는 새우만두·완탕면·볶음밥 안전.' },
+      { time: '20:00', title: '심포니 오브 라이트 쇼', desc: '매일 저녁 8시, 수변에서 무료 관람 (10분). 보고 바로 호텔.' }
+    ];
+  }
+
+  // --- Day 4: Static (Disneyland) ---
+  function buildDay4() {
+    return [
+      { time: '09:30', title: 'MTR 디즈니 라인 탑승', desc: '선니 역에서 디즈니 전용 열차로 환승 (창문이 미키 모양!).' },
+      { time: '10:00', title: '개장과 동시에 입장', desc: '인기 어트랙션 먼저: 아이언맨, 미스틱 포인트, 크리스탈의 미키.' },
+      { time: '12:30', title: '테마 레스토랑 점심', desc: 'Royal Banquet Hall 또는 Tahitian Terrace (캐릭터 푸드).' },
+      { time: '15:00', title: '퍼레이드 관람 + 사진', desc: '메인 스트리트 USA 쪽 자리 일찍 잡기.' },
+      { time: '20:00', title: '불꽃놀이 "Momentous"', desc: '성 앞에서 감상 → 바로 호텔 (유주 피곤함 주의).' }
+    ];
+  }
+
+  // --- Day 5: Departure from HKG, anchored to depTime ---
+  function buildDay5(ret) {
+    const depMin = hmToMin(ret && ret.depTime);
+    const isAuto = depMin != null;
+    const depCode = (ret && ret.depAirport || 'HKG').toUpperCase();
+    const depName = AIRPORT_NAMES[depCode] || '홍콩';
+    const flightNoLabel = ret && ret.flightNo ? ` (${ret.flightNo})` : '';
+
+    if (!isAuto) {
+      return [
+        { time: '09:00', title: '피크트램 탑승', desc: '중환에서 출발, 예약 필수! 스카이테라스 428에서 전망 감상.' },
+        { time: '11:30', title: '센트럴 점심 (딤섬)', desc: 'Tim Ho Wan(팀호완) 또는 Yum Cha 추천 (유주용 팬더 번!).' },
+        { time: '13:00', title: '스타페리 → 하버시티 쇼핑', desc: '저렴한 2층 페리(5분), 유주 캐릭터 용품. Jenny Bakery 쿠키는 기념품 최고.' },
+        { time: '15:30', title: '호텔 체크아웃 → 공항', desc: '공항 익스프레스(AEL) 이용, 홍콩 시내에서 24분.' },
+        { time: '17:00', title: '홍콩 국제공항(HKG) 도착', desc: '출국 2~2.5시간 전 도착 권장. 마지막 딤섬 or 공차로 피날레.', isFlight: true }
+      ];
+    }
+
+    // Work backward from flight departure
+    const bufferAtAirport = 150; // 2.5 hours before takeoff
+    const airportArriveAt = roundTo5(depMin - bufferAtAirport); // HKG 도착
+    const aelRideMin = 25;
+    const aelBoardAt = roundTo5(airportArriveAt - aelRideMin - 10); // ride + buffer
+    const hotelCheckoutAt = roundTo5(aelBoardAt - 25); // checkout + taxi to AEL station
+    const earliestMorning = 7*60 + 30;
+
+    const items = [];
+
+    // Morning slots based on how much runway we have
+    const runwayBeforeCheckout = hotelCheckoutAt - earliestMorning;
+
+    if (runwayBeforeCheckout >= 8*60) {
+      // plenty of time — full morning + lunch + shopping
+      items.push({ time: '08:30', title: '호텔 조식 + 짐 정리', desc: '큰 짐은 호텔 보관 맡기고 가볍게 외출.', auto: true });
+      items.push({ time: '09:30', title: '피크트램 + 빅토리아 피크', desc: '스카이테라스 428 전망. 예약 필수.', auto: true });
+      items.push({ time: '12:00', title: '센트럴 점심 (딤섬)', desc: '팀호완 or Yum Cha. 빠른 회전 가능.', auto: true });
+      items.push({ time: '13:30', title: '스타페리 → 하버시티 쇼핑', desc: '2층 페리 경험 + Jenny Bakery 쿠키 픽업.', auto: true });
+    } else if (runwayBeforeCheckout >= 5*60) {
+      items.push({ time: '08:30', title: '호텔 조식', desc: '아이 컨디션 체크 + 짐 마무리.', auto: true });
+      items.push({ time: '09:30', title: '피크트램 + 빅토리아 피크', desc: '스카이테라스 428. 예약 필수.', auto: true });
+      items.push({ time: '12:00', title: '센트럴 딤섬 점심 + 기념품', desc: 'Jenny Bakery 쿠키 or 공차로 마무리.', auto: true });
+    } else if (runwayBeforeCheckout >= 3*60) {
+      items.push({ time: '08:30', title: '호텔 조식 + 체크아웃 준비', desc: '근처 카페 or 호텔 조식으로 가볍게.', auto: true });
+      items.push({ time: '10:00', title: '호텔 근처 산책 + 기념품', desc: '큰 이동 없이 침사추이/센트럴 근처에서.', auto: true });
+    } else if (runwayBeforeCheckout >= 1*60) {
+      items.push({ time: minToHM(Math.max(earliestMorning, hotelCheckoutAt - 60)), title: '호텔 조식 + 짐 정리', desc: '시간 타이트 — 간단히 먹고 바로 공항행.', auto: true });
+    }
+    // If runwayBeforeCheckout < 1h, jump straight to checkout
+
+    items.push({
+      time: minToHM(hotelCheckoutAt),
+      title: '호텔 체크아웃 → 공항 익스프레스(AEL)',
+      desc: 'AEL 스테이션까지 택시 or 도보. 인-타운 체크인 활용 시 편해요.',
+      auto: true
+    });
+    items.push({
+      time: minToHM(aelBoardAt),
+      title: 'AEL 탑승 (홍콩역 → HKG)',
+      desc: '공항까지 24분. 좌석 넓고 빠름.',
+      auto: true
+    });
+    items.push({
+      time: minToHM(airportArriveAt),
+      title: `${depName} 공항(${depCode}) 도착`,
+      desc: '출국 수속 + 보안 검사 여유있게. 마지막 딤섬 or 공차로 피날레.',
+      auto: true
+    });
+    items.push({
+      time: minToHM(depMin),
+      title: `🛫 ${depName} 출발${flightNoLabel}`,
+      desc: '안전 귀국! 기내식 + 수면으로 한국 시간대 맞추기.',
+      isFlight: true, auto: true
+    });
+
+    return items;
+  }
+
+  function renderItinerary() {
+    const flights = getFlights();
+    const out = flights.outbound || {};
+    const ret = flights.return || {};
+
+    renderTimeline('day-1-timeline', buildDay1(out));
+    renderTimeline('day-2-timeline', buildDay2());
+    renderTimeline('day-3-timeline', buildDay3());
+    renderTimeline('day-4-timeline', buildDay4());
+    renderTimeline('day-5-timeline', buildDay5(ret));
+
+    // Hint text toggles between "set up flights" and "synced"
+    const hintEl = document.getElementById('itin-hint');
+    if (hintEl) {
+      const hasOut = !!(out && out.arrTime);
+      const hasRet = !!(ret && ret.depTime);
+      if (hasOut && hasRet) {
+        hintEl.innerHTML = '✅ Day 1·Day 5가 등록된 비행기 시각에 맞춰 자동 조정됐어요. 홈에서 시각을 바꾸면 여기도 바뀌어요.';
+      } else if (hasOut || hasRet) {
+        hintEl.innerHTML = '🟡 한쪽 비행기만 등록됐어요. 홈에서 나머지 편도 등록하면 Day 1·5가 모두 자동 맞춰져요.';
+      } else {
+        hintEl.innerHTML = '💡 홈 화면에서 비행기 출국·귀국 시각을 등록하면 Day 1·Day 5 일정이 자동으로 맞춰져요.';
+      }
+    }
   }
 
   function toggleFlightForm(key) {
@@ -2461,6 +2744,7 @@
     };
     saveFlights(flights);
     renderFlight(key);
+    renderItinerary();
     form.classList.add('hidden');
     schedulePublishSafe();
     return false;
@@ -2619,11 +2903,11 @@
   });
   window.addEventListener('online', () => fetchWeather());
 
-  // ---------- Family Sync (real-time via ntfy.sh) ----------
-  // We use the public ntfy.sh server as a free pub/sub relay.
-  // Each device with the same "family code" publishes/subscribes to the same topic.
-  // State is replaced on receive (last-write-wins). Each message includes a deviceId
-  // to ignore our own echo.
+  // ---------- Family Sync (real-time via Firebase Firestore) ----------
+  // We use a single document at `families/{code}` in Firestore.
+  // Both spouses subscribe with the same family code. State is replaced on
+  // receive (last-write-wins). Each write includes a deviceId so we can
+  // ignore our own echo.
 
   let deviceId = store.get('deviceId');
   if (!deviceId) {
@@ -2632,15 +2916,17 @@
   }
 
   let syncTopic = null;
-  let syncEventSource = null;
   let pushTimer = null;
   let lastPushedHash = null;
   let suppressPublish = false;
   let syncStatus = 'off'; // off | connecting | connected | error
 
   function topicForCode(code) {
-    // Namespace to reduce collision; ntfy topics are public so we add a prefix.
-    return 'hkfam-' + code.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
+    // Firestore document id — keep at least 6 chars to match security rules.
+    // Normalize to lower + safe chars, and pad short input.
+    let c = String(code || '').trim().toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+    if (c.length < 6) c = ('trip-' + c).slice(0, 40);
+    return c.slice(0, 40);
   }
 
   function setSyncStatus(s, text) {
@@ -2739,95 +3025,90 @@
 
   function publishStateNow() {
     if (!syncTopic || suppressPublish) return;
+    if (!window.firebaseSync || !window.firebaseSync.ready) return;
     const state = collectState();
     const hash = JSON.stringify(state);
     if (hash === lastPushedHash) return;
     lastPushedHash = hash;
     const payload = { by: deviceId, ts: Date.now(), state };
-    fetch('https://ntfy.sh/' + encodeURIComponent(syncTopic), {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    }).then(() => {
-      showActivity('📤 변경사항을 보냈어요');
-    }).catch(() => {
-      showActivity('⚠️ 전송 실패 (네트워크 확인)');
-    });
+    window.firebaseSync.publish(syncTopic, payload)
+      .then(() => showActivity('📤 클라우드에 저장됨'))
+      .catch((err) => {
+        console.error('Firestore publish error:', err);
+        showActivity('⚠️ 저장 실패 — 규칙/네트워크 확인');
+      });
   }
 
-  // Debounced publish — to avoid spamming on rapid clicks
+  // Debounced publish — avoid spamming on rapid clicks
   function schedulePublish() {
     if (!syncTopic || suppressPublish) return;
     clearTimeout(pushTimer);
     pushTimer = setTimeout(publishStateNow, 600);
   }
 
-  function fetchInitialState() {
-    // Pull latest cached message via JSON polling
-    return fetch('https://ntfy.sh/' + encodeURIComponent(syncTopic) + '/json?poll=1&since=all')
-      .then(r => r.text())
-      .then(text => {
-        const lines = text.trim().split('\n').filter(Boolean);
-        // ntfy returns one JSON object per line; pick the latest 'message' event from another device
-        let latest = null;
-        lines.forEach(line => {
-          try {
-            const obj = JSON.parse(line);
-            if (obj.event === 'message' && obj.message) {
-              const payload = JSON.parse(obj.message);
-              if (payload && payload.by !== deviceId) {
-                if (!latest || payload.ts > latest.ts) latest = payload;
-              }
-            }
-          } catch (_) {}
-        });
-        if (latest && latest.state) {
-          applyRemoteState(latest.state);
-          showActivity('⬇️ 와이프 데이터를 가져왔어요');
-        }
-      })
-      .catch(() => {});
+  function handleRemotePayload(payload) {
+    // Called whenever Firestore doc changes
+    if (!payload || !payload.state) return;
+    // Ignore our own echo (from just-published write)
+    if (payload.by === deviceId) {
+      setSyncStatus('connected');
+      return;
+    }
+    applyRemoteState(payload.state);
+    setSyncStatus('connected');
+    showActivity('⬇️ 와이프가 업데이트했어요');
   }
 
   function connectSync(code) {
     syncTopic = topicForCode(code);
     setSyncStatus('connecting');
-    if (syncEventSource) syncEventSource.close();
 
-    // Get history first
-    fetchInitialState().then(() => {
-      // Then open SSE for live updates
-      try {
-        syncEventSource = new EventSource('https://ntfy.sh/' + encodeURIComponent(syncTopic) + '/sse');
-        syncEventSource.onopen = () => setSyncStatus('connected');
-        syncEventSource.onmessage = (e) => {
-          try {
-            const obj = JSON.parse(e.data);
-            if (obj.event === 'message' && obj.message) {
-              const payload = JSON.parse(obj.message);
-              if (payload && payload.by !== deviceId && payload.state) {
-                applyRemoteState(payload.state);
-                showActivity('⬇️ 와이프가 업데이트했어요');
-              }
-            } else if (obj.event === 'open') {
-              setSyncStatus('connected');
-            }
-          } catch (_) {}
-        };
-        syncEventSource.onerror = () => {
-          setSyncStatus('error', '재연결중');
-          // EventSource auto-reconnects
-        };
-        // Push our current state so wife can pull it
-        lastPushedHash = null;
-        setTimeout(publishStateNow, 800);
-      } catch (e) {
-        setSyncStatus('error');
+    const start = () => {
+      if (!window.firebaseSync || !window.firebaseSync.ready) {
+        setSyncStatus('error', 'Firebase 로딩 실패');
+        return;
       }
-    });
+      window.firebaseSync.subscribe(
+        syncTopic,
+        (data) => {
+          // First snapshot OR subsequent updates
+          if (data && data.by && data.state) {
+            handleRemotePayload(data);
+          } else {
+            setSyncStatus('connected');
+          }
+        },
+        (err) => {
+          console.error(err);
+          setSyncStatus('error', '연결 오류');
+        }
+      );
+      // Push our current state so the other side can pull it
+      // (small delay so first snapshot arrives first and we don't overwrite)
+      lastPushedHash = null;
+      setTimeout(() => {
+        setSyncStatus('connected');
+        publishStateNow();
+      }, 1200);
+    };
+
+    if (window.firebaseSync && window.firebaseSync.ready) {
+      start();
+    } else {
+      window.addEventListener('firebase-ready', start, { once: true });
+      // safety timeout if the module script failed to load
+      setTimeout(() => {
+        if (syncStatus === 'connecting' && (!window.firebaseSync || !window.firebaseSync.ready)) {
+          setSyncStatus('error', 'Firebase 로딩 실패');
+        }
+      }, 8000);
+    }
   }
 
   function disconnectSync() {
-    if (syncEventSource) { syncEventSource.close(); syncEventSource = null; }
+    if (window.firebaseSync && window.firebaseSync.unsubscribe) {
+      window.firebaseSync.unsubscribe();
+    }
     syncTopic = null;
     setSyncStatus('off');
   }
@@ -2836,8 +3117,8 @@
     const input = document.getElementById('family-code');
     if (syncStatus === 'off') {
       const code = input.value.trim();
-      if (code.length < 3) {
-        alert('가족 코드는 3글자 이상으로 정해주세요. (예: kim-hk-2026)');
+      if (code.length < 6) {
+        alert('가족 코드는 6글자 이상으로 정해주세요. (예: kim-hk-2026)');
         return;
       }
       store.set('familyCode', code);
