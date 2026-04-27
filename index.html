@@ -711,6 +711,88 @@
   }
   .flight-form-actions button { flex: 1; }
 
+  /* Hotel cards */
+  .hotel-card {
+    border-radius: 14px;
+    background: linear-gradient(180deg, #fdf6e8 0%, #fff 100%);
+    border: 1px solid rgba(125, 79, 34, 0.18);
+    padding: 14px 16px;
+    margin: 10px 0 0;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+  }
+  .hotel-card .hotel-region-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+    background: var(--primary); color: #fff;
+    padding: 3px 8px; border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .hotel-card .hotel-region-tag.mc { background: #b06038; }
+  .hotel-card h4 {
+    margin: 0 0 4px; font-size: 16px; font-weight: 700;
+    color: var(--text);
+  }
+  .hotel-card .hotel-name-en {
+    font-size: 12px; color: var(--muted); margin-bottom: 8px;
+  }
+  .hotel-card .hotel-rows {
+    display: flex; flex-direction: column; gap: 4px;
+    font-size: 13px; color: var(--text);
+    margin: 8px 0;
+  }
+  .hotel-card .hotel-row {
+    display: grid; grid-template-columns: 28px 1fr;
+    gap: 6px; align-items: baseline;
+  }
+  .hotel-card .hotel-row .ic { font-size: 14px; color: var(--muted); }
+  .hotel-card .hotel-row .val { color: var(--text); word-break: break-word; }
+  .hotel-card .hotel-row a {
+    color: var(--primary-dark);
+    text-decoration: underline;
+    text-decoration-color: rgba(125,79,34,0.3);
+  }
+  .hotel-card .hotel-empty {
+    font-size: 12.5px; color: var(--muted); font-style: italic;
+    padding: 4px 0;
+  }
+  .hotel-card .hotel-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px dashed rgba(125, 79, 34, 0.18);
+    font-size: 11.5px; color: var(--muted);
+  }
+  .hotel-card .hotel-edit-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--primary-dark); border-radius: 999px;
+    padding: 4px 12px; font-size: 11px; font-weight: 700;
+    cursor: pointer;
+  }
+  .hotel-form {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px dashed rgba(125, 79, 34, 0.3);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .hotel-form.hidden { display: none; }
+  .hotel-form .full { grid-column: 1 / -1; }
+  .hotel-form label {
+    font-size: 10px; color: var(--muted); font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .hotel-form input, .hotel-form textarea {
+    width: 100%;
+    padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--surface); color: var(--text); font-size: 13px;
+    font-family: inherit;
+    margin-top: 2px;
+  }
+  .hotel-form textarea { min-height: 50px; resize: vertical; }
+  .hotel-form-actions {
+    grid-column: 1 / -1;
+    display: flex; gap: 6px; margin-top: 4px;
+  }
+  .hotel-form-actions button { flex: 1; }
+
   /* Wishlist */
   .wish-card {
     background:
@@ -1183,6 +1265,67 @@
     </div>
 
     <div class="card">
+      <h3>🏨 호텔 정보</h3>
+      <p class="lead" style="margin:0 0 4px;">마카오·홍콩 숙소를 등록해두면 주소·전화·예약번호를 한 번에 볼 수 있어요. 주소·전화는 탭하면 지도/통화로 바로 연결돼요.</p>
+
+      <!-- Macau hotel -->
+      <div class="hotel-card" id="hotel-macau">
+        <span class="hotel-region-tag mc">🇲🇴 마카오</span>
+        <h4 id="hm-name">호텔 미등록</h4>
+        <div class="hotel-name-en" id="hm-name-en"></div>
+        <div class="hotel-rows" id="hm-rows"></div>
+        <div class="hotel-footer">
+          <span id="hm-stay-label">체크인 미정</span>
+          <button class="hotel-edit-btn" onclick="toggleHotelForm('macau')">편집</button>
+        </div>
+        <form class="hotel-form hidden" id="hm-form" onsubmit="return saveHotel(event,'macau')">
+          <div class="full"><label>호텔명</label><input type="text" name="name" placeholder="예: 베네시안 마카오" /></div>
+          <div class="full"><label>영문명 (선택)</label><input type="text" name="nameEn" placeholder="The Venetian Macao" /></div>
+          <div class="full"><label>주소</label><input type="text" name="address" placeholder="Estrada da Baía de N. Senhora da Esperança, Macau" /></div>
+          <div><label>체크인</label><input type="date" name="checkIn" /></div>
+          <div><label>체크아웃</label><input type="date" name="checkOut" /></div>
+          <div><label>전화</label><input type="tel" name="phone" placeholder="+853 ..." /></div>
+          <div><label>객실 번호</label><input type="text" name="room" placeholder="예: 1234" /></div>
+          <div class="full"><label>예약번호</label><input type="text" name="confirmation" placeholder="예: BK12345678" /></div>
+          <div class="full"><label>Wi-Fi (체크인 후 입력)</label><input type="text" name="wifi" placeholder="네트워크 / 비번" /></div>
+          <div class="full"><label>메모</label><textarea name="notes" placeholder="조식 시간, 셔틀 정보 등"></textarea></div>
+          <div class="hotel-form-actions">
+            <button type="button" class="btn ghost" onclick="toggleHotelForm('macau')">취소</button>
+            <button type="submit" class="btn">저장</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Hong Kong hotel -->
+      <div class="hotel-card" id="hotel-hk">
+        <span class="hotel-region-tag">🇭🇰 홍콩</span>
+        <h4 id="hh-name">호텔 미등록</h4>
+        <div class="hotel-name-en" id="hh-name-en"></div>
+        <div class="hotel-rows" id="hh-rows"></div>
+        <div class="hotel-footer">
+          <span id="hh-stay-label">체크인 미정</span>
+          <button class="hotel-edit-btn" onclick="toggleHotelForm('hk')">편집</button>
+        </div>
+        <form class="hotel-form hidden" id="hh-form" onsubmit="return saveHotel(event,'hk')">
+          <div class="full"><label>호텔명</label><input type="text" name="name" placeholder="예: 침사추이 호텔" /></div>
+          <div class="full"><label>영문명 (선택)</label><input type="text" name="nameEn" placeholder="Hotel Tsim Sha Tsui" /></div>
+          <div class="full"><label>주소</label><input type="text" name="address" placeholder="Tsim Sha Tsui, Hong Kong" /></div>
+          <div><label>체크인</label><input type="date" name="checkIn" /></div>
+          <div><label>체크아웃</label><input type="date" name="checkOut" /></div>
+          <div><label>전화</label><input type="tel" name="phone" placeholder="+852 ..." /></div>
+          <div><label>객실 번호</label><input type="text" name="room" placeholder="예: 1234" /></div>
+          <div class="full"><label>예약번호</label><input type="text" name="confirmation" placeholder="예: BK12345678" /></div>
+          <div class="full"><label>Wi-Fi (체크인 후 입력)</label><input type="text" name="wifi" placeholder="네트워크 / 비번" /></div>
+          <div class="full"><label>메모</label><textarea name="notes" placeholder="MTR 도보 거리, 짐 보관 가능 시간 등"></textarea></div>
+          <div class="hotel-form-actions">
+            <button type="button" class="btn ghost" onclick="toggleHotelForm('hk')">취소</button>
+            <button type="submit" class="btn">저장</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
       <h3>✅ 준비 진행률</h3>
       <div id="prep-summary" style="font-size:13px; color:var(--muted);">체크리스트에서 항목을 확인해보세요.</div>
       <div class="progress-bar"><div class="progress-fill" id="prep-progress" style="width:0%"></div></div>
@@ -1409,30 +1552,20 @@
   <!-- PHRASES -->
   <section class="section" id="phrases">
     <h2 class="title"><span class="emoji">🗣️</span> 여행 회화</h2>
-    <p class="lead">홍콩은 영어가 잘 통하지만, 광둥어 한 마디가 분위기를 바꿔요.</p>
+    <p class="lead">홍콩·마카오는 영어가 잘 통해요. 광둥어 한 마디는 분위기 메이커. 한국어 → 영어 → 광둥어(발음) 순서.</p>
 
-    <div class="card">
-      <h3>기본 인사</h3>
-      <div class="phrase"><div class="ko">안녕하세요</div><div class="en">Hello</div><div class="ca">你好 네이호우 (nei5 hou2)</div></div>
-      <div class="phrase"><div class="ko">감사합니다 (음식/서비스)</div><div class="en">Thank you</div><div class="ca">唔該 음꼬이 (m4 goi1)</div></div>
-      <div class="phrase"><div class="ko">감사합니다 (선물/호의)</div><div class="en">Thanks (gift)</div><div class="ca">多謝 도쩨 (do1 ze6)</div></div>
-      <div class="phrase"><div class="ko">죄송합니다</div><div class="en">Sorry / Excuse me</div><div class="ca">對唔住 도이음쥬 (deoi3 m4 zyu6)</div></div>
+    <div class="food-tabs" id="phrase-tabs">
+      <button class="food-tab active" data-phrase-cat="basic">🙋 기본인사</button>
+      <button class="food-tab" data-phrase-cat="restaurant">🍜 식당</button>
+      <button class="food-tab" data-phrase-cat="hotel">🏨 호텔</button>
+      <button class="food-tab" data-phrase-cat="shopping">🛍 쇼핑</button>
+      <button class="food-tab" data-phrase-cat="sight">🗺 관광·길묻기</button>
+      <button class="food-tab" data-phrase-cat="transport">🚇 교통</button>
+      <button class="food-tab" data-phrase-cat="emergency">🆘 긴급·도움</button>
+      <button class="food-tab" data-phrase-cat="kids">👶 아이</button>
     </div>
 
-    <div class="card">
-      <h3>식당에서</h3>
-      <div class="phrase"><div class="ko">메뉴판 주세요</div><div class="en">Menu, please</div><div class="ca">唔該, 餐牌 음꼬이, 찬파이</div></div>
-      <div class="phrase"><div class="ko">이거 주세요</div><div class="en">I'll have this</div><div class="ca">我要呢個 응요우 니고</div></div>
-      <div class="phrase"><div class="ko">계산해주세요</div><div class="en">Check, please</div><div class="ca">埋單 마이단 (maai4 daan1)</div></div>
-      <div class="phrase"><div class="ko">맵지 않게 해주세요</div><div class="en">Not spicy, please</div><div class="ca">唔該, 唔辣 음꼬이 음랏</div></div>
-    </div>
-
-    <div class="card">
-      <h3>이동 / 위급</h3>
-      <div class="phrase"><div class="ko">이거 얼마예요?</div><div class="en">How much?</div><div class="ca">幾多錢? 게이도친?</div></div>
-      <div class="phrase"><div class="ko">도와주세요</div><div class="en">Help me!</div><div class="ca">救命! 까우멩!</div></div>
-      <div class="phrase"><div class="ko">화장실 어디예요?</div><div class="en">Where is the toilet?</div><div class="ca">洗手間喺邊度? 사이사우깐 하이빈도우?</div></div>
-    </div>
+    <div id="phrase-content"></div>
   </section>
 
   <!-- INFO -->
@@ -2399,6 +2532,147 @@
   });
   renderPlaces();
 
+  // ---------- Phrases (회화) ----------
+  const PHRASE_CAT_LABEL = {
+    basic:      '🙋 기본 인사',
+    restaurant: '🍜 식당에서',
+    hotel:      '🏨 호텔에서',
+    shopping:   '🛍 쇼핑·흥정',
+    sight:      '🗺 관광·길 묻기',
+    transport:  '🚇 교통·택시',
+    emergency:  '🆘 긴급·도움',
+    kids:       '👶 아이 동반'
+  };
+  const PHRASE_CAT_ORDER = ['basic','restaurant','hotel','shopping','sight','transport','emergency','kids'];
+
+  const PHRASE_DATA = {
+    basic: [
+      { ko: '안녕하세요', en: 'Hello', ca: '你好 네이호우 (nei5 hou2)' },
+      { ko: '감사합니다 (서비스)', en: 'Thank you', ca: '唔該 음꼬이 (m4 goi1)' },
+      { ko: '감사합니다 (선물·호의)', en: 'Thanks a lot', ca: '多謝 도쩨 (do1 ze6)' },
+      { ko: '죄송합니다 / 실례합니다', en: 'Sorry / Excuse me', ca: '對唔住 도이음쥬 (deoi3 m4 zyu6)' },
+      { ko: '잠시만요', en: 'One moment, please', ca: '等一等 당얏당 (dang2 jat1 dang2)' },
+      { ko: '안녕히 계세요', en: 'Goodbye', ca: '拜拜 / 再見 자이긴 (zoi3 gin3)' },
+      { ko: '네 / 아니오', en: 'Yes / No', ca: '係 / 唔係 하이 / 음하이' },
+      { ko: '괜찮아요', en: 'It\'s okay', ca: '冇問題 모우만타이 (mou5 man6 tai4)' }
+    ],
+    restaurant: [
+      { ko: '메뉴판 주세요', en: 'Menu, please', ca: '唔該, 餐牌 음꼬이, 찬파이' },
+      { ko: '이거 주세요', en: 'I\'ll have this', ca: '我要呢個 응요우 니고 (ngo5 jiu3 ni1 go3)' },
+      { ko: '추천 메뉴 있나요?', en: 'What do you recommend?', ca: '有咩好食? 야우메호섹? (jau5 me1 hou2 sik6)' },
+      { ko: '맵지 않게 해주세요', en: 'Not spicy, please', ca: '唔該, 唔辣 음꼬이, 음랏' },
+      { ko: '아이용 의자 있나요?', en: 'Do you have a high chair?', ca: '有冇BB凳? 야우모우비비당?' },
+      { ko: '물 한 잔 주세요', en: 'A glass of water, please', ca: '一杯水, 唔該 얏뿌이쇠이, 음꼬이' },
+      { ko: '계산해주세요', en: 'Check, please', ca: '埋單 마이단 (maai4 daan1)' },
+      { ko: '영수증 주세요', en: 'Receipt, please', ca: '收據, 唔該 사우거이, 음꼬이' },
+      { ko: '정말 맛있어요!', en: 'Really delicious!', ca: '好好食! 호우호섹! (hou2 hou2 sik6)' },
+      { ko: '포장해 주세요', en: 'To go, please', ca: '外賣 응이마이 (ngoi6 maai6)' }
+    ],
+    hotel: [
+      { ko: '체크인하고 싶어요', en: 'I\'d like to check in', ca: '我想入住 응홍얍쥬 (ngo5 soeng2 jap6 zyu6)' },
+      { ko: '체크아웃할게요', en: 'Check out, please', ca: '退房 토이퐁 (teoi3 fong2)' },
+      { ko: '예약번호는 ___ 입니다', en: 'Booking number is ___', ca: '預訂編號係 ___ 위팅핀호우 하이' },
+      { ko: '룸카드 한 개 더 주세요', en: 'One more key card, please', ca: '多張房卡, 唔該 도종퐁카, 음꼬이' },
+      { ko: 'Wi-Fi 비밀번호 알려주세요', en: 'Wi-Fi password, please', ca: 'Wi-Fi密碼? 미마? (mat6 maa5)' },
+      { ko: '늦은 체크아웃 가능해요?', en: 'Late checkout possible?', ca: '可以延遲退房嗎? 호이인치토이퐁마' },
+      { ko: '짐 보관 부탁해요', en: 'Can you store my luggage?', ca: '寄存行李 게이춘항라이' },
+      { ko: '아침 식사는 몇 시예요?', en: 'What time is breakfast?', ca: '早餐幾點開? 조우찬게이딤호이' },
+      { ko: '수건 더 주세요', en: 'More towels, please', ca: '多啲毛巾 도디모우간' },
+      { ko: '에어컨이 안 돼요', en: 'A/C doesn\'t work', ca: '冷氣壞咗 랑헤이와이조' }
+    ],
+    shopping: [
+      { ko: '이거 얼마예요?', en: 'How much is this?', ca: '幾多錢? 게이도친? (gei2 do1 cin2)' },
+      { ko: '좀 깎아주세요', en: 'Can you give a discount?', ca: '平啲啦 펭디라 (peng4 di1 laa1)' },
+      { ko: '너무 비싸요', en: 'Too expensive', ca: '太貴啦 타이꽈이라 (taai3 gwai3 laa1)' },
+      { ko: '다른 색깔 있어요?', en: 'Another color?', ca: '有冇其他顏色? 야우모우게이타안색' },
+      { ko: '입어봐도 돼요?', en: 'Can I try it on?', ca: '試下得唔得? 시하닥음닥' },
+      { ko: '카드 결제 되나요?', en: 'Do you accept cards?', ca: '收唔收信用卡? 사우음사우신용카' },
+      { ko: '면세 처리 가능해요?', en: 'Tax-free shopping?', ca: '可唔可以退稅? 호우음호우토이서이' },
+      { ko: '영수증 주세요', en: 'Receipt, please', ca: '收據, 唔該 사우거이, 음꼬이' },
+      { ko: '그냥 보는 거예요', en: 'Just browsing', ca: '我睇下啫 응타이하제' },
+      { ko: '포장해주세요', en: 'Gift wrap, please', ca: '請幫我包裝 청봉응바우종' }
+    ],
+    sight: [
+      { ko: '___은 어디예요?', en: 'Where is ___?', ca: '___ 喺邊度? 하이빈도우? (hai2 bin1 dou6)' },
+      { ko: '입장료가 얼마예요?', en: 'How much is the entry fee?', ca: '入場費幾多錢? 얍청페이게이도친' },
+      { ko: '몇 시에 닫아요?', en: 'What time does it close?', ca: '幾點關門? 게이딤꽌문' },
+      { ko: '사진 좀 찍어주실래요?', en: 'Could you take a photo?', ca: '幫我影張相 봉응잉종셩 (bong1 ngo5 jing2 zoeng1 soeng2)' },
+      { ko: '같이 사진 찍어도 돼요?', en: 'Can I take a photo together?', ca: '可以一齊影相嗎? 호우얏차이잉셩마' },
+      { ko: '한국어 안내 있어요?', en: 'Korean guide available?', ca: '有冇韓文指南? 야우모우혼만지남' },
+      { ko: '영어 메뉴/안내 주세요', en: 'English menu/guide, please', ca: '英文版, 唔該 얭만빤, 음꼬이' },
+      { ko: '여기서 쉴 수 있어요?', en: 'Can we rest here?', ca: '可以喺度休息嗎? 호우하이도우야우식마' }
+    ],
+    transport: [
+      { ko: '택시 불러주세요', en: 'Call a taxi, please', ca: '唔該, 叫的士 음꼬이, 깨우딕시 (giu3 dik1 si2)' },
+      { ko: '여기로 가주세요 (주소 보여주며)', en: 'Take me here', ca: '我要去呢度 응요우호이니도우' },
+      { ko: '얼마나 걸려요?', en: 'How long does it take?', ca: '要幾耐? 요우게이노이' },
+      { ko: '여기서 세워주세요', en: 'Stop here, please', ca: '喺呢度落車 하이니도우록체' },
+      { ko: '미터기로 가주세요', en: 'By the meter, please', ca: '咪錶, 唔該 마이비우, 음꼬이' },
+      { ko: 'MTR역이 어디예요?', en: 'Where is the MTR station?', ca: '地鐵站喺邊度? 데이팃잠하이빈도우' },
+      { ko: '옥토퍼스 카드 충전해주세요', en: 'Top up Octopus card', ca: '八達通增值, 唔該 빳닷통증쳇, 음꼬이' },
+      { ko: '____행 페리는 어디서 타요?', en: 'Where to board the ferry to ___?', ca: '去 ___ 嘅船喺邊度? 호이~ 게선하이빈도우' }
+    ],
+    emergency: [
+      { ko: '도와주세요!', en: 'Help me!', ca: '救命! 까우멩! (gau3 meng6)' },
+      { ko: '의사가 필요해요', en: 'I need a doctor', ca: '我要睇醫生 응요우타이이상' },
+      { ko: '병원 어디예요?', en: 'Where is the hospital?', ca: '醫院喺邊度? 이윈하이빈도우' },
+      { ko: '약국 어디예요?', en: 'Where is the pharmacy?', ca: '藥房喺邊度? 옥퐁하이빈도우' },
+      { ko: '경찰 불러주세요', en: 'Call the police', ca: '報警! 보우껭!' },
+      { ko: '여권 잃어버렸어요', en: 'I lost my passport', ca: '護照唔見咗 우치우음긴조' },
+      { ko: '아이가 아파요', en: 'My child is sick', ca: '小朋友病咗 시우팡야우뺑조' },
+      { ko: '한국어 하시는 분 있어요?', en: 'Anyone speak Korean?', ca: '有冇人識韓文? 야우모우얀식혼만' },
+      { ko: '영어 할 수 있어요?', en: 'Do you speak English?', ca: '你識英文嗎? 네이식얭만마' },
+      { ko: '화장실 어디예요?', en: 'Where is the toilet?', ca: '洗手間喺邊度? 사이사우깐하이빈도우' }
+    ],
+    kids: [
+      { ko: '아이용 의자 있어요?', en: 'High chair available?', ca: '有冇BB凳? 야우모우비비당' },
+      { ko: '택시에 카시트 있나요?', en: 'Child seat in taxi?', ca: '有冇兒童座椅? 야우모우이통조이' },
+      { ko: '기저귀 갈이대 있어요?', en: 'Diaper changing table?', ca: '有冇換尿片台? 야우모우운니우핀토이' },
+      { ko: '따뜻한 물 좀 주세요', en: 'Warm water, please', ca: '暖水, 唔該 뉜쇠이, 음꼬이' },
+      { ko: '아이가 매운 거 못 먹어요', en: 'My child can\'t eat spicy', ca: '細路唔食得辣 사이로음섹닥랏' },
+      { ko: '아이 메뉴 있어요?', en: 'Kids menu available?', ca: '有冇兒童餐? 야우모우이통찬' },
+      { ko: '조금만 주세요 (소량)', en: 'A small portion, please', ca: '細份 사이판' },
+      { ko: '유모차 들어갈 수 있어요?', en: 'Can a stroller fit?', ca: '推車入唔入到? 토이체얍음얍도우' }
+    ]
+  };
+
+  let phraseFilter = 'basic';
+
+  function phraseItemHtml(p) {
+    return `
+      <div class="phrase">
+        <div class="ko">${escapeHtml(p.ko)}</div>
+        <div class="en">${escapeHtml(p.en)}</div>
+        <div class="ca">${escapeHtml(p.ca)}</div>
+      </div>
+    `;
+  }
+
+  function renderPhrases() {
+    const el = document.getElementById('phrase-content');
+    if (!el) return;
+    const list = PHRASE_DATA[phraseFilter] || [];
+    el.innerHTML = `
+      <div class="card">
+        <h3>${PHRASE_CAT_LABEL[phraseFilter] || ''}</h3>
+        ${list.map(phraseItemHtml).join('')}
+      </div>
+    `;
+  }
+
+  function setPhraseFilter(cat) {
+    phraseFilter = cat || 'basic';
+    document.querySelectorAll('#phrase-tabs .food-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.phraseCat === phraseFilter);
+    });
+    renderPhrases();
+  }
+
+  document.querySelectorAll('#phrase-tabs .food-tab').forEach(btn => {
+    btn.addEventListener('click', () => setPhraseFilter(btn.dataset.phraseCat));
+  });
+  renderPhrases();
+
   // ---------- Flights ----------
   const AIRPORT_NAMES = {
     ICN: '인천', GMP: '김포', PUS: '부산', CJU: '제주', TAE: '대구',
@@ -2464,6 +2738,178 @@
     renderFlight('return');
     renderItinerary();
   }
+
+  // ---------- Hotels ----------
+  const HOTEL_PREFIX = { macau: 'hm', hk: 'hh' };
+  const HOTEL_REGION_LABEL = { macau: '마카오', hk: '홍콩' };
+
+  function getHotels() {
+    try { return JSON.parse(store.get('hotels') || '{}'); } catch (_) { return {}; }
+  }
+  function saveHotels(obj) {
+    store.set('hotels', JSON.stringify(obj));
+  }
+
+  function hotelMapUrl(h, region) {
+    const q = [h.name, h.nameEn, h.address, region === 'macau' ? 'Macau' : 'Hong Kong']
+      .filter(Boolean).join(' ');
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+
+  function fmtStayDates(checkIn, checkOut) {
+    if (!checkIn && !checkOut) return '체크인 미정';
+    const f = (d) => {
+      if (!d) return '?';
+      const dt = new Date(d + 'T00:00:00');
+      const dn = ['일','월','화','수','목','금','토'][dt.getDay()];
+      return `${dt.getMonth()+1}.${dt.getDate()} (${dn})`;
+    };
+    return `🛏 ${f(checkIn)} → ${f(checkOut)}`;
+  }
+
+  function renderHotel(key) {
+    const hotels = getHotels();
+    const h = hotels[key] || {};
+    const p = HOTEL_PREFIX[key];
+
+    setText(`${p}-name`, h.name || '호텔 미등록');
+    setText(`${p}-name-en`, h.nameEn || '');
+
+    const rowsEl = document.getElementById(`${p}-rows`);
+    if (rowsEl) {
+      const rows = [];
+      if (h.address) {
+        rows.push(`
+          <div class="hotel-row">
+            <span class="ic">📍</span>
+            <span class="val"><a href="${hotelMapUrl(h, key)}" target="_blank" rel="noopener">${escapeHtml(h.address)}</a></span>
+          </div>
+        `);
+      }
+      if (h.phone) {
+        rows.push(`
+          <div class="hotel-row">
+            <span class="ic">📞</span>
+            <span class="val"><a href="tel:${escapeHtml(h.phone.replace(/\s+/g,''))}">${escapeHtml(h.phone)}</a></span>
+          </div>
+        `);
+      }
+      if (h.confirmation) {
+        rows.push(`
+          <div class="hotel-row">
+            <span class="ic">🔖</span>
+            <span class="val">예약 ${escapeHtml(h.confirmation)}</span>
+          </div>
+        `);
+      }
+      if (h.room) {
+        rows.push(`
+          <div class="hotel-row">
+            <span class="ic">🚪</span>
+            <span class="val">객실 ${escapeHtml(h.room)}</span>
+          </div>
+        `);
+      }
+      if (h.wifi) {
+        rows.push(`
+          <div class="hotel-row">
+            <span class="ic">📶</span>
+            <span class="val">${escapeHtml(h.wifi)}</span>
+          </div>
+        `);
+      }
+      if (h.notes) {
+        rows.push(`
+          <div class="hotel-row">
+            <span class="ic">📝</span>
+            <span class="val">${escapeHtml(h.notes)}</span>
+          </div>
+        `);
+      }
+      if (rows.length === 0) {
+        rowsEl.innerHTML = `<div class="hotel-empty">📌 편집 버튼을 눌러 ${HOTEL_REGION_LABEL[key]} 호텔 정보를 입력해주세요.</div>`;
+      } else {
+        rowsEl.innerHTML = rows.join('');
+      }
+    }
+
+    setText(`${p}-stay-label`, fmtStayDates(h.checkIn, h.checkOut));
+  }
+
+  function renderHotels() {
+    renderHotel('macau');
+    renderHotel('hk');
+  }
+
+  function toggleHotelForm(key) {
+    const p = HOTEL_PREFIX[key];
+    const form = document.getElementById(`${p}-form`);
+    const isOpening = form.classList.contains('hidden');
+    if (isOpening) {
+      const hotels = getHotels();
+      const h = hotels[key] || {};
+      // Default check-in/out by trip dates
+      const startDate = store.get('startDate') || '';
+      const endDate = store.get('endDate') || '';
+      const flights = getFlights();
+      let defaultCheckIn = '', defaultCheckOut = '';
+      if (key === 'macau') {
+        // Day 1 → check-in same as outbound flight date or trip start
+        defaultCheckIn = (flights.outbound && flights.outbound.date) || startDate;
+        // Day 3 → check-out is 2 days after check-in
+        if (defaultCheckIn) {
+          const d = new Date(defaultCheckIn + 'T00:00:00');
+          d.setDate(d.getDate() + 2);
+          defaultCheckOut = d.toISOString().slice(0,10);
+        }
+      } else {
+        // Hong Kong: check-in 2 days after trip start, check-out = return flight date
+        if (startDate) {
+          const d = new Date(startDate + 'T00:00:00');
+          d.setDate(d.getDate() + 2);
+          defaultCheckIn = d.toISOString().slice(0,10);
+        }
+        defaultCheckOut = (flights.return && flights.return.date) || endDate;
+      }
+
+      form.name.value = h.name || '';
+      form.nameEn.value = h.nameEn || '';
+      form.address.value = h.address || '';
+      form.checkIn.value = h.checkIn || defaultCheckIn || '';
+      form.checkOut.value = h.checkOut || defaultCheckOut || '';
+      form.phone.value = h.phone || '';
+      form.room.value = h.room || '';
+      form.confirmation.value = h.confirmation || '';
+      form.wifi.value = h.wifi || '';
+      form.notes.value = h.notes || '';
+    }
+    form.classList.toggle('hidden');
+  }
+
+  function saveHotel(ev, key) {
+    ev.preventDefault();
+    const form = ev.target;
+    const hotels = getHotels();
+    hotels[key] = {
+      name: form.name.value.trim(),
+      nameEn: form.nameEn.value.trim(),
+      address: form.address.value.trim(),
+      checkIn: form.checkIn.value,
+      checkOut: form.checkOut.value,
+      phone: form.phone.value.trim(),
+      room: form.room.value.trim(),
+      confirmation: form.confirmation.value.trim(),
+      wifi: form.wifi.value.trim(),
+      notes: form.notes.value.trim(),
+    };
+    saveHotels(hotels);
+    renderHotel(key);
+    form.classList.add('hidden');
+    schedulePublishSafe();
+    return false;
+  }
+
+  renderHotels();
 
   // ---------- Itinerary (dynamic timelines) ----------
   function hmToMin(hm) {
@@ -2973,6 +3419,7 @@
       startDate: store.get('startDate') || null,
       endDate: store.get('endDate') || null,
       flights: getFlights(),
+      hotels: getHotels(),
       wishlist: getWishlist(),
       rates: getRates(),
     };
@@ -2999,6 +3446,8 @@
       if (state.endDate) store.set('endDate', state.endDate);
       // Apply flights
       if (state.flights) saveFlights(state.flights);
+      // Apply hotels
+      if (state.hotels) saveHotels(state.hotels);
       // Apply wishlist
       if (Array.isArray(state.wishlist)) {
         saveWishlist(state.wishlist);
@@ -3012,6 +3461,7 @@
       renderRates();
       renderExpenses();
       renderFlights();
+      renderHotels();
       renderWishlist();
       syncDateInputsFromStore();
       updateCountdown();
@@ -3175,6 +3625,8 @@
   window.refreshWeather = refreshWeather;
   window.toggleFlightForm = toggleFlightForm;
   window.saveFlight = saveFlight;
+  window.toggleHotelForm = toggleHotelForm;
+  window.saveHotel = saveHotel;
   window.addWish = addWish;
   window.delWish = delWish;
   window.toggleWishDone = toggleWishDone;
