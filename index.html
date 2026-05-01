@@ -2967,81 +2967,86 @@
 
     if (!isAuto) {
       // fallback static schedule
-      items.push({ time: '16:00', title: '호텔 체크인 & 휴식', desc: '베네시안·파리지앵·그랜드 리스보아 등 코타이 추천. 장거리 비행 후 아이 낮잠 or 호텔 수영장' });
-      items.push({ time: '18:30', title: '세나도 광장 저녁 산책', desc: '포르투갈풍 물결무늬 바닥 타일. 근처 카페에서 포르투갈 요리 or 마카오식 돼지고기 번' });
-      items.push({ time: '20:30', title: '파리지앵 에펠탑 라이팅', desc: '일몰 후 조명쇼 장관. 아이와 전망대(37층) 야경 추천' });
+      items.push({ time: '16:00', title: '🏨 스튜디오 시티 마카오 체크인 & 휴식', desc: '코타이 스트립. 짐 풀고 워터파크/키즈존 가능.' });
+      items.push({ time: '18:30', title: '세나도 광장 저녁 산책', desc: '포르투갈풍 물결무늬 바닥 타일. 근처 카페에서 가볍게 저녁.' });
+      items.push({ time: '20:30', title: '🎡 스튜디오 시티 골든릴 야경', desc: '호텔 안 8자 페리스휠. 야경 인증샷.' });
       return items;
     }
 
     // Dynamic scheduling
     const immig = roundTo5(arrMin + 50);            // 입국·수하물
-    const hotelArrive = roundTo5(arrMin + 50 + 40); // 셔틀·택시 40분
+    const hotelArrive = roundTo5(arrMin + 50 + 40); // 셔틀·택시 40분 to Cotai
     const restUntil = roundTo5(hotelArrive + 60);   // 체크인 + 짧은 휴식 60분
 
     items.push({
       time: minToHM(immig),
-      title: '입국·수하물 → 호텔 이동',
-      desc: '셔틀버스 or 택시로 코타이(호텔 무료 셔틀 있는 곳 확인). 짐 끌고 약 40분.',
+      title: '입국·수하물 → 코타이 이동',
+      desc: 'MFM에서 스튜디오 시티는 가까워요 (택시 약 15분, 무료 셔틀 있을 시 활용). 8세 여아 탑승 가능.',
       auto: true
     });
     items.push({
       time: minToHM(hotelArrive),
-      title: '호텔 체크인 & 휴식',
-      desc: '장거리 비행 후 아이 낮잠 or 호텔 수영장. 짐 풀고 한숨 돌리기.',
+      title: '🏨 스튜디오 시티 마카오 체크인 & 휴식',
+      desc: '코타이 스트립. 비행 피로 풀고 호텔 워터파크 or 키즈존 권장 (8세 여아 추천).',
       auto: true
     });
 
     // Evening decisions based on how late we checked in
     if (restUntil <= 17*60) {
-      // 저녁 전에 외출 가능: 세나도 산책 + 에펠탑
-      items.push({ time: minToHM(Math.max(restUntil, 17*60 + 30)), title: '세나도 광장 저녁 산책 + 저녁', desc: '포르투갈풍 바닥 타일, 근처 카페에서 가볍게 저녁. 유주 컨디션 봐가며.', auto: true });
-      items.push({ time: '20:30', title: '파리지앵 에펠탑 라이팅', desc: '일몰 후 조명쇼. 37층 전망대 야경 추천.', auto: true });
+      // 저녁 전에 외출 가능: 세나도 산책 + 골든릴
+      items.push({ time: minToHM(Math.max(restUntil, 17*60 + 30)), title: '세나도 광장 저녁 산책 + 저녁', desc: '코타이→마카오 반도 택시 20분. 포르투갈풍 바닥 타일 + 마카오식 돼지고기 번.', auto: true });
+      items.push({ time: '21:00', title: '🎡 스튜디오 시티 골든릴 야경', desc: '호텔 복귀 후 8자 페리스휠. 호텔 안이라 늦어도 OK.', auto: true });
     } else if (restUntil <= 20*60) {
       // 저녁 바로 근처에서
-      items.push({ time: minToHM(Math.max(restUntil, 19*60)), title: '호텔 근처 저녁 (코타이)', desc: '베네시안/파리지앵 푸드코트 or 근처 포르투갈 식당. 이동 최소화.', auto: true });
-      items.push({ time: '21:00', title: '파리지앵 에펠탑 라이팅', desc: '호텔에서 도보로 충분. 짧게 인증샷.', auto: true });
+      items.push({ time: minToHM(Math.max(restUntil, 19*60)), title: '호텔/코타이 저녁', desc: '스튜디오 시티 푸드코트 or 베네시안/파리지앵까지 도보·셔틀. 이동 최소화.', auto: true });
+      items.push({ time: '21:00', title: '🎡 스튜디오 시티 골든릴 야경', desc: '8자 페리스휠. 짧게 인증샷.', auto: true });
     } else if (restUntil <= 21*60) {
-      items.push({ time: minToHM(restUntil), title: '호텔 근처 간단 저녁', desc: '24시간 푸드코트 or 룸서비스. 아이 먼저 재우기.', auto: true });
+      items.push({ time: minToHM(restUntil), title: '호텔 간단 저녁', desc: '스튜디오 시티 24시간 푸드코트 or 룸서비스. 아이 먼저 재우기.', auto: true });
     } else {
-      items.push({ time: minToHM(restUntil), title: '호텔 휴식', desc: '도착 매우 늦음 — 오늘은 호텔에서 쉬고 내일 아침 바로 일정 시작.', auto: true });
+      items.push({ time: minToHM(restUntil), title: '호텔 휴식', desc: '도착 매우 늦음 — 오늘은 스튜디오 시티에서 쉬고 내일 아침 일정 시작.', auto: true });
     }
 
     return items;
   }
 
-  // --- Day 2: Static (Macau full day) ---
+  // --- Day 2: Static (Macau full day, base: Studio City Cotai) ---
   function buildDay2() {
     return [
-      { time: '09:30', title: '성 바울 성당 & 몬테 요새', desc: '유네스코 세계유산. 파사드만 남은 성당 + 뒷편 요새. 완만한 경사라 유주도 OK.' },
+      { time: '08:30', title: '🏨 스튜디오 시티 조식', desc: '호텔 조식 후 컨디션 체크. 골든릴(8자 페리스휠)은 저녁 야경에 맞춰 탑승 추천.' },
+      { time: '09:30', title: '성 바울 성당 & 몬테 요새', desc: '코타이 → 마카오 반도 택시 약 20분. 유네스코 세계유산. 파사드 + 뒷편 요새.' },
       { time: '11:30', title: '마가렛 에그타르트 (원조)', desc: '세나도 광장 근처. 줄 서도 먹어볼 가치 있음. 포장해서 이동 간식으로도.' },
-      { time: '12:30', title: '베네시안 실내 곤돌라 & 점심', desc: '실내 운하 곤돌라 — 유주 반응 최고. 식당 다양.' },
-      { time: '15:00', title: '마카오 타워 전망', desc: '338m 전망대 + 스카이워크 구경. 일몰 타이밍 맞추기.' },
-      { time: '17:30', title: '타이파 빌리지 산책', desc: '포르투갈풍 거리, 파스텔 건물. 골목 예쁨, 사진 명소.' },
-      { time: '19:30', title: '저녁 (포르투갈식 or 마카오식)', desc: '포르투갈 치킨, 아프리카 치킨, 미니 에그타르트로 마무리.' }
+      { time: '12:30', title: '베네시안 실내 곤돌라 & 점심', desc: '호텔 셔틀로 코타이 복귀. 실내 운하 곤돌라 — 사진 명소. 식당 다양.' },
+      { time: '15:00', title: '마카오 타워 전망', desc: '338m 전망대 + 스카이워크 구경. 8세면 키 제한 OK. 일몰 타이밍 맞추기.' },
+      { time: '17:30', title: '타이파 빌리지 산책', desc: '포르투갈풍 거리, 파스텔 건물. 골목 예쁨, 사진 명소. 스튜디오 시티에서 가까워요.' },
+      { time: '19:30', title: '저녁 (타이파 빌리지)', desc: '리토랄(포르투갈식) or 안토니오. 미니 에그타르트로 마무리.' },
+      { time: '21:00', title: '🎡 스튜디오 시티 골든릴 야경', desc: '8자 페리스휠 야경. 호텔 안이라 늦어도 OK. 세계 최고높이 8자 관람차.' }
     ];
   }
 
-  // --- Day 3: Static (Macau → HK by ferry) ---
+  // --- Day 3: Static (Macau → HK by ferry, Studio City → Hyatt Regency TST) ---
   function buildDay3() {
     return [
-      { time: '09:00', title: '호텔 조식 & 여유', desc: '체크아웃 전까지 수영장 or 산책. 아이 컨디션 관리 우선.' },
-      { time: '11:00', title: '체크아웃 → 외항 페리 터미널', desc: '짐 가지고 택시로 이동 (15분 내외). 여권·입국카드 준비.' },
-      { time: '12:30', title: '터보젯 페리 (MFM → HK)', desc: '1시간 소요. 사전 예매 추천. 창가석이면 유주에게 바닷길 구경.' },
-      { time: '14:00', title: '홍콩 호텔 체크인', desc: '침사추이 or 센트럴 지역 추천. MTR 접근성 최우선. 옥토퍼스 카드 구매.' },
-      { time: '16:30', title: '에비뉴 오브 스타 & 해변 산책', desc: '이소룡 동상, 홍콩 영화 스타 손도장. 침사추이 수변 여유.' },
-      { time: '18:30', title: '저녁 (딤섬 or 완탕면)', desc: '팀호완, 카우키 등. 유주는 새우만두·완탕면·볶음밥 안전.' },
-      { time: '20:00', title: '심포니 오브 라이트 쇼', desc: '매일 저녁 8시, 수변에서 무료 관람 (10분). 보고 바로 호텔.' }
+      { time: '08:30', title: '🏨 스튜디오 시티 조식 + 워터파크', desc: '체크아웃 전까지 호텔 워터파크 or 키즈존. 8세 여아 인기. 짐 보관 가능.' },
+      { time: '11:00', title: '체크아웃 → 타이파 페리 터미널', desc: '코타이에서 가까워요 (택시 약 10분). 여권·홍콩 입국카드 준비.' },
+      { time: '12:30', title: '코타이젯 페리 (Taipa → HK Macau Ferry, 셩완)', desc: '약 1시간. 사전 예매 추천. 창가석이면 바닷길 구경.' },
+      { time: '14:00', title: '🏨 하얏트 리젠시 침사추이 체크인', desc: '셩완역 → MTR 침사추이역 → P1 출구 직결. 짐 풀고 옥토퍼스 카드 구매.' },
+      { time: '16:30', title: '에비뉴 오브 스타 & 해변 산책', desc: '호텔에서 도보 5분. 이소룡 동상, 홍콩 영화 스타 손도장.' },
+      { time: '18:30', title: '저녁 (딤섬 or 완탕면)', desc: '팀호완(IFC몰) or 카우키 우육면. 새우만두·완탕면·볶음밥 안전.' },
+      { time: '20:00', title: '심포니 오브 라이트 쇼', desc: '매일 저녁 8시, 호텔 앞 수변에서 무료 관람 (10분). 보고 바로 호텔.' }
     ];
   }
 
-  // --- Day 4: Static (Disneyland) ---
+  // --- Day 4: Static (HK Disneyland 종일, Hyatt 출발) ---
   function buildDay4() {
     return [
-      { time: '09:30', title: 'MTR 디즈니 라인 탑승', desc: '선니 역에서 디즈니 전용 열차로 환승 (창문이 미키 모양!).' },
-      { time: '10:00', title: '개장과 동시에 입장', desc: '인기 어트랙션 먼저: 아이언맨, 미스틱 포인트, 크리스탈의 미키.' },
-      { time: '12:30', title: '테마 레스토랑 점심', desc: 'Royal Banquet Hall 또는 Tahitian Terrace (캐릭터 푸드).' },
-      { time: '15:00', title: '퍼레이드 관람 + 사진', desc: '메인 스트리트 USA 쪽 자리 일찍 잡기.' },
-      { time: '20:00', title: '불꽃놀이 "Momentous"', desc: '성 앞에서 감상 → 바로 호텔 (유주 피곤함 주의).' }
+      { time: '08:30', title: '🏨 호텔 조식 + 출발 준비', desc: '하얏트에서 가벼운 조식. 디즈니에서 점심 먹을 거니까 가볍게.' },
+      { time: '09:30', title: 'MTR 디즈니 라인 탑승', desc: '침사추이역 → 라이킹 → 통충 → 선니 환승 → 디즈니 전용 열차 (창문이 미키 모양!).' },
+      { time: '10:30', title: '개장 후 입장', desc: '인기 어트랙션: 미스틱 매너, 그리즐리 거얼치, 아이언맨 익스피리언스, 토이스토리 랜드.' },
+      { time: '12:30', title: '테마 레스토랑 점심', desc: 'Royal Banquet Hall(왕궁풍) or Tahitian Terrace(캐릭터 푸드).' },
+      { time: '15:00', title: '퍼레이드 관람 + 사진', desc: '메인 스트리트 USA 쪽 자리 일찍 잡기. 8세면 캐릭터와 사진 좋아할 시기.' },
+      { time: '17:30', title: '슈퍼히어로 만나기 / 캐릭터 그리팅', desc: '토이스토리 랜드, 마블 어벤저스 캠퍼스 캐릭터 만남 코너.' },
+      { time: '19:00', title: '저녁 (파크 안 or 외부)', desc: '간단히 또는 호텔 복귀해서 외부에서. 불꽃놀이 전 시간 안배.' },
+      { time: '20:00', title: '불꽃놀이 "Momentous"', desc: '성 앞에서 감상 → MTR로 침사추이 호텔 복귀.' }
     ];
   }
 
@@ -3055,11 +3060,12 @@
 
     if (!isAuto) {
       return [
-        { time: '09:00', title: '피크트램 탑승', desc: '중환에서 출발, 예약 필수! 스카이테라스 428에서 전망 감상.' },
-        { time: '11:30', title: '센트럴 점심 (딤섬)', desc: 'Tim Ho Wan(팀호완) 또는 Yum Cha 추천 (유주용 팬더 번!).' },
-        { time: '13:00', title: '스타페리 → 하버시티 쇼핑', desc: '저렴한 2층 페리(5분), 유주 캐릭터 용품. Jenny Bakery 쿠키는 기념품 최고.' },
-        { time: '15:30', title: '호텔 체크아웃 → 공항', desc: '공항 익스프레스(AEL) 이용, 홍콩 시내에서 24분.' },
-        { time: '17:00', title: '홍콩 국제공항(HKG) 도착', desc: '출국 2~2.5시간 전 도착 권장. 마지막 딤섬 or 공차로 피날레.', isFlight: true }
+        { time: '08:30', title: '🏨 하얏트 조식 + 짐 정리', desc: '호텔에 큰 짐 보관 맡기고 가볍게 외출.' },
+        { time: '09:30', title: '피크트램 + 빅토리아 피크', desc: '센트럴에서 출발, 예약 필수. 스카이테라스 428 전망.' },
+        { time: '12:00', title: '센트럴 점심 (딤섬)', desc: '팀호완(IFC몰) 또는 Yum Cha. 8세 여아도 좋아할 팬더 딤섬.' },
+        { time: '13:30', title: '스타페리 → 하버시티 쇼핑', desc: '2층 페리 5분. 하버시티 도보. Jenny Bakery 쿠키 기념품.' },
+        { time: '15:00', title: '🏨 하얏트 체크아웃 → K1 셔틀(AEL Kowloon)', desc: '하얏트 → 코우룬역 셔틀 무료. AEL 21분 후 HKG.' },
+        { time: '17:00', title: 'HKG 공항 도착', desc: '출국 수속 + 보안 검사 여유있게.', isFlight: true }
       ];
     }
 
@@ -3078,32 +3084,32 @@
 
     if (runwayBeforeCheckout >= 8*60) {
       // plenty of time — full morning + lunch + shopping
-      items.push({ time: '08:30', title: '호텔 조식 + 짐 정리', desc: '큰 짐은 호텔 보관 맡기고 가볍게 외출.', auto: true });
-      items.push({ time: '09:30', title: '피크트램 + 빅토리아 피크', desc: '스카이테라스 428 전망. 예약 필수.', auto: true });
-      items.push({ time: '12:00', title: '센트럴 점심 (딤섬)', desc: '팀호완 or Yum Cha. 빠른 회전 가능.', auto: true });
-      items.push({ time: '13:30', title: '스타페리 → 하버시티 쇼핑', desc: '2층 페리 경험 + Jenny Bakery 쿠키 픽업.', auto: true });
+      items.push({ time: '08:30', title: '🏨 하얏트 조식 + 짐 정리', desc: '큰 짐은 호텔 보관 맡기고 가볍게 외출. 침사추이역 P1 출구 직결.', auto: true });
+      items.push({ time: '09:30', title: '피크트램 + 빅토리아 피크', desc: '센트럴역까지 MTR. 스카이테라스 428 전망. 예약 필수.', auto: true });
+      items.push({ time: '12:00', title: '센트럴 점심 (딤섬)', desc: '팀호완(IFC몰) or Yum Cha. 8세 여아 좋아할 팬더 딤섬.', auto: true });
+      items.push({ time: '13:30', title: '스타페리 → 하버시티 쇼핑', desc: '2층 페리 5분. Jenny Bakery 쿠키 기념품 픽업.', auto: true });
     } else if (runwayBeforeCheckout >= 5*60) {
-      items.push({ time: '08:30', title: '호텔 조식', desc: '아이 컨디션 체크 + 짐 마무리.', auto: true });
+      items.push({ time: '08:30', title: '🏨 하얏트 조식', desc: '아이 컨디션 체크 + 짐 마무리.', auto: true });
       items.push({ time: '09:30', title: '피크트램 + 빅토리아 피크', desc: '스카이테라스 428. 예약 필수.', auto: true });
       items.push({ time: '12:00', title: '센트럴 딤섬 점심 + 기념품', desc: 'Jenny Bakery 쿠키 or 공차로 마무리.', auto: true });
     } else if (runwayBeforeCheckout >= 3*60) {
-      items.push({ time: '08:30', title: '호텔 조식 + 체크아웃 준비', desc: '근처 카페 or 호텔 조식으로 가볍게.', auto: true });
-      items.push({ time: '10:00', title: '호텔 근처 산책 + 기념품', desc: '큰 이동 없이 침사추이/센트럴 근처에서.', auto: true });
+      items.push({ time: '08:30', title: '🏨 하얏트 조식 + 체크아웃 준비', desc: '호텔 조식으로 가볍게.', auto: true });
+      items.push({ time: '10:00', title: '침사추이 산책 + 기념품', desc: '하버시티 + 캔톤로드 부근. 호텔 도보권에서 마무리.', auto: true });
     } else if (runwayBeforeCheckout >= 1*60) {
-      items.push({ time: minToHM(Math.max(earliestMorning, hotelCheckoutAt - 60)), title: '호텔 조식 + 짐 정리', desc: '시간 타이트 — 간단히 먹고 바로 공항행.', auto: true });
+      items.push({ time: minToHM(Math.max(earliestMorning, hotelCheckoutAt - 60)), title: '🏨 하얏트 조식 + 짐 정리', desc: '시간 타이트 — 간단히 먹고 바로 공항행.', auto: true });
     }
     // If runwayBeforeCheckout < 1h, jump straight to checkout
 
     items.push({
       time: minToHM(hotelCheckoutAt),
-      title: '호텔 체크아웃 → 공항 익스프레스(AEL)',
-      desc: 'AEL 스테이션까지 택시 or 도보. 인-타운 체크인 활용 시 편해요.',
+      title: '🏨 하얏트 체크아웃 → AEL Kowloon',
+      desc: '하얏트 → 코우룬역 K1 무료 셔틀(약 5분) 또는 택시. 인-타운 체크인으로 짐 미리 부치기.',
       auto: true
     });
     items.push({
       time: minToHM(aelBoardAt),
-      title: 'AEL 탑승 (홍콩역 → HKG)',
-      desc: '공항까지 24분. 좌석 넓고 빠름.',
+      title: 'AEL 탑승 (Kowloon → HKG)',
+      desc: '공항까지 21분. 좌석 넓고 빠름.',
       auto: true
     });
     items.push({
